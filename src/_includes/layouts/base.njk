@@ -16,6 +16,20 @@
   </head>
   <body>
     {% include "header.njk" %}
-    {{ content | safe }}    
+    <div class="flex flex-col justify-between min-h-screen pt-20">
+      <div class="container flex-1 flex-grow">
+        {{ content | safe }} 
+      </div>
+      {% include "footer.njk" %}
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    {# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-179034238-1');
+    </script> #}
   </body>
 </html>

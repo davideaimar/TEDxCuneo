@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  src:
+      url("/assets/font/Inter-Regular.woff2") format("woff2"),
+      url("/assets/font/Inter-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  src:
+      url("/assets/font/Inter-Bold.woff2") format("woff2"),
+      url("/assets/font/Inter-Bold.woff") format("woff");
+}
+
 @layer base {
   html{
-    @apply bg-black text-white;
+    @apply bg-tedBlack text-tedWhite text-base;
   }
   h1 {
     @apply text-3xl font-bold;
@@ -12,12 +30,12 @@
   h2 {
     @apply text-2xl font-bold;
   }
-  h3 {
-    @apply text-xl font-bold;
-  }
   .container {
     @apply px-2 mx-auto w-full;
     max-width: 1440px !important;
+  }
+  a{
+    @apply underline;
   }
   @screen md{
     .container {

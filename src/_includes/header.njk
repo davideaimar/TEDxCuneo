@@ -1,7 +1,7 @@
-<header>
+<header class="fixed w-full bg-tedBlack">
     <div class="container flex justify-between py-4 items-end" x-data="{ isOpen: false }">
-        <div class="flex-0"><a href="/"><h1>TEDxCuneo</h1></a></div>
-        <nav class="absolute top-16 right-2 text-right md:text-left md:flex-1 md:max-w-sm md:relative md:top-auto md:align-middle">
+        <div class="flex-0 w-52 md:mr-4"><a href="/"><img src="/assets/img/logo_white.svg" alt="TEDxCuneo logo"></a></div>
+        {# <nav class="bg-tedBlack absolute top-16 right-0 left-0 p-2 text-right md:p-0 md:text-left md:flex-1 md:max-w-sm md:relative md:top-auto md:align-middle">
             <ul class="flex justify-between flex-col md:flex-row"
                 :class="{ 'hidden md:flex': !isOpen }"
                 @click.away="isOpen = false"
@@ -33,6 +33,6 @@
                 d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
             />
             </svg>
-        </button>
+        </button> #}
     </div>
 </header>

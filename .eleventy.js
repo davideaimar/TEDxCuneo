@@ -1,9 +1,11 @@
 const htmlmin = require('html-minifier')
+require('dotenv').config()
 const { DateTime } = require("luxon");
 
 const now = String(Date.now())
 
 module.exports = function (eleventyConfig) {
+
   eleventyConfig.setUseGitIgnore(false)
 
   eleventyConfig.addWatchTarget('./_tmp/style.css')
@@ -12,6 +14,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     './node_modules/alpinejs/dist/alpine.js': './js/alpine.js',
+  })
+  
+  eleventyConfig.addPassthroughCopy({
+    './assets': './assets',
   })
 
   eleventyConfig.addShortcode('version', function () {
