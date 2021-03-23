@@ -1,0 +1,15 @@
+---
+pagination:
+    data: pages
+    size: 1
+    alias: page_data
+    addAllPagesToCollections: true
+permalink: "{{ page_data.slug }}"
+layout: base.njk
+eleventyComputed:
+    title: "{{ page_data.seo.title }}"
+---
+
+{% set d=page_data.content %}
+{% include page_data.layout %}
+

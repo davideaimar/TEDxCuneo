@@ -1,0 +1,7 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	<h1 class="capitalize">{{ d.title }}</h1>
+	{% documentToHtmlString d.text %}
+</div>

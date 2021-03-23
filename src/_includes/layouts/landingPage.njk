@@ -1,0 +1,32 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+
+
+<div class="container relative landing-map">
+
+	{# <img src="/assets/img/mappa_cuneo_2.png" alt="TEDxCuneo mappa" class="landing-map absolute"> #}
+
+	<h1 class=" mt-9 mb-20 max-w-615 md:mb-28 md:mt-16">{{ d.introText }}</h1>
+
+	<p class="max-w-287 mb-3 md:mb-5">{{ d.introSecondaryText }}</p>
+
+	<img src="/assets/img/arrow_white.svg" alt="arrow svg" class="fill-current h-6 mb-24 md:mb-40">
+
+	{% set form=d.newsletterForm %}
+	{% set class="mb-52" %}
+	{% include "newsletter.njk" %}
+
+	{% if d.landingFaqsCollection.items and d.landingFaqsCollection.items.length > 0 %}
+		<div class="grid grid-cols-1 gap-y-20 md:gap-y-44 md:grid-cols-2 md:gap-x-10">
+			{% for faq in d.landingFaqsCollection.items %}
+				<div class="faq-block max-w-sm">
+					{% documentToHtmlString faq.text.json %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<div class="h-20 md:h-36"></div>
+
+</div>

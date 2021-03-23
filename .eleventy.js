@@ -1,8 +1,16 @@
 const htmlmin = require('html-minifier')
 require('dotenv').config()
 const { DateTime } = require("luxon");
+const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
+const { BLOCKS } = require('@contentful/rich-text-types');
 
 const now = String(Date.now())
+
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace(/\n/g, '<br/>')}</p>`,
+  }
+};
 
 module.exports = function (eleventyConfig) {
 
@@ -23,6 +31,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode('version', function () {
     return now
   })
+
+  //render from rich text editor
+  eleventyConfig.addShortcode('documentToHtmlString', content => documentToHtmlString(content, options));
 
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');

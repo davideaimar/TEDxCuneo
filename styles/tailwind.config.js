@@ -7,36 +7,56 @@ module.exports = {
   },
   theme: {
     colors: {
-      tedBlack: '#000',
+      tedBlack: '#0E0E0E',
       tedWhite: '#fff',
       tedRed: '#FF2B06',
+      transparent: 'transparent',
     },
     fontFamily: {
       'sans': ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
     },
     fontSize: {
-      'base': ['20px', {
+      'small': ['14px', {
         letterSpacing: '-0.02em',
         lineHeight: '24px',
       }],
-      '3xl': ['64px', {
+      'd_base': ['20px', {
+        letterSpacing: '-0.02em',
+        lineHeight: '24px',
+      }],
+      'd_3xl': ['64px', {
         letterSpacing: '-0.02em',
         lineHeight: '68px',
       }],
-      '2xl': ['40px', {
+      'd_2xl': ['40px', {
         letterSpacing: '-0.02em',
         lineHeight: '48px',
       }],
-      // 'xl': ['36px', {
-      //   letterSpacing: '-0.02em',
-      //   lineHeight: '40px',
-      // }],
+      'm_base': ['18px', {
+        letterSpacing: '-0.02em',
+        lineHeight: '23px',
+      }],
+      'm_3xl': ['46px', {
+        letterSpacing: '-0.02em',
+        lineHeight: '52px',
+      }],
+      'm_2xl': ['32px', {
+        letterSpacing: '-0.02em',
+        lineHeight: '36px',
+      }],
     },
     fontWeight: {
       normal: 400,
       bold: 700
+    },
+    extend: {
+      maxWidth: {
+        '287': "287px",
+        '615': "615px",
+      }
     }
   },
+  
   variants: {},
   plugins: [],
 }

@@ -14,10 +14,10 @@
     {% block head %}{% endblock %}
     <script src="/js/alpine.js?v={% version %}"></script>
   </head>
-  <body>
+  <body style="overflow-x: hidden;">
     {% include "header.njk" %}
-    <div class="flex flex-col justify-between min-h-screen pt-20">
-      <div class="container flex-1 flex-grow">
+    <div class="flex flex-col justify-between min-h-screen">
+      <div class="flex-1 flex-grow">
         {{ content | safe }} 
       </div>
       {% include "footer.njk" %}
