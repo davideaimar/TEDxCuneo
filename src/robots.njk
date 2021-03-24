@@ -1,0 +1,11 @@
+---
+permalink: /robots.txt
+layout: null
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+{% for page in pages %}{% if page.seo and page.seo.hide and page.seo.hide==true %}
+Disallow: {{page.slug}}
+{% endif %}{% endfor %}
+
+Sitemap: {{ site.url }}/sitemap.xml
