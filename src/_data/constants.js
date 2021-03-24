@@ -25,5 +25,10 @@ module.exports = {
           json
         }
       }
+    }`,
+  "PRIVACY_POLICY_FIELDS": `
+    title
+    text{
+      json
     }`
 }

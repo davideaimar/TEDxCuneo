@@ -1,0 +1,35 @@
+{# {{ seo | log }} #}
+{# {{ slug | log }} #}
+
+
+{% if seo.hide and seo.hide==true  %}
+    <meta name="robots" content="noindex" />
+{% else %}
+    <meta name="robots" content="max-snippet:-1, max-image-preview: large">
+{% endif %}
+
+<title>{{ seo.title or site.seo.title | escape }}</title>
+<meta property="og:title" content="{{ seo.title or site.seo.title | escape }}">
+
+{% set desc = seo.description or site.seo.description %}
+{% if desc %}
+    <meta name="description" content="{{ desc | escape  }}">
+    <meta property="og:description" content="{{ desc | escape }}">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+{# <meta name="twitter:site" content="@{{ metadata.author.twitterHandle }}">
+<meta name="twitter:creator" content="@{{ metadata.author.twitterHandle }}"> #}
+
+{% if seo.image and seo.image.url %}
+    <meta property="og:image" content="{{ seo.image.url | toOgImage }}">
+{% else %}
+    <meta property="og:image" content="{{ site.seo.gImage }}">
+{% endif %}
+
+<link rel="canonical" href="{{ site.url }}{{ slug }}">
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy -->
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<link rel="preconnect" href="/" crossorigin>

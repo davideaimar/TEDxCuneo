@@ -30,6 +30,9 @@ const pages_query = `query {
           ...on LandingPage{
             ${constants.LANDING_PAGE_FIELDS}
           }
+          ...on PrivacyPolicy{
+            ${constants.PRIVACY_POLICY_FIELDS}
+          }
         }
       }
     }

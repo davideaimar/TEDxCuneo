@@ -6,8 +6,6 @@ pagination:
     addAllPagesToCollections: true
 permalink: "{{ page_data.slug }}"
 layout: base.njk
-eleventyComputed:
-    title: "{{ page_data.seo.title }}"
 ---
 
 {% set d=page_data.content %}

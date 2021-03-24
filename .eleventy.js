@@ -2,13 +2,16 @@ const htmlmin = require('html-minifier')
 require('dotenv').config()
 const { DateTime } = require("luxon");
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
-const { BLOCKS } = require('@contentful/rich-text-types');
+const { BLOCKS, INLINES } = require('@contentful/rich-text-types');
 
 const now = String(Date.now())
 
 const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace(/\n/g, '<br/>')}</p>`,
+    [INLINES.HYPERLINK]: (node, next) => {
+      return `<a href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
+    }
   }
 };
 
@@ -34,6 +37,8 @@ module.exports = function (eleventyConfig) {
 
   //render from rich text editor
   eleventyConfig.addShortcode('documentToHtmlString', content => documentToHtmlString(content, options));
+  //resize image for og tags {{ page.seo.url | toOgImage }}
+  eleventyConfig.addFilter('toOgImage', (url) => (url + '?fm=jpg&q=70&w=1200&h=630&fit=thumb') )
 
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');

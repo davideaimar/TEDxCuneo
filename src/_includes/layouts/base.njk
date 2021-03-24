@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-    <title>
-      {{ title }} | TEDxCuneo
-    </title>
     <meta charset="UTF-8"/>
-    {% if description %}
-      <meta name="description" content="{{description}}"/>
-    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% set seo=page_data.seo %}
+    {% set slug=page_data.slug %}
+    {% include "seo.njk" %}
+    <meta name="theme-color" content="#0E0E0E">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
     <link rel="stylesheet" href="/style.css?v={% version %}"/>
     {% block head %}{% endblock %}
     <script src="/js/alpine.js?v={% version %}"></script>
   </head>
-  <body style="overflow-x: hidden;">
-    {% include "header.njk" %}
-    <div class="flex flex-col justify-between min-h-screen">
-      <div class="flex-1 flex-grow">
-        {{ content | safe }} 
+  <body>
+    <div style="overflow-x: hidden;">
+      {% include "header.njk" %}
+      <div class="flex flex-col justify-between min-h-screen">
+        <main class="flex-1 flex-grow">
+          {{ content | safe }} 
+        </main>
+        {% include "footer.njk" %}
       </div>
-      {% include "footer.njk" %}
     </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     {# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
