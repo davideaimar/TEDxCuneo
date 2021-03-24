@@ -60,6 +60,9 @@
 }
 
 @layer components{
+  .checkbox:checked + svg {
+  	display: block;
+  }
   .landing-map::before{
     content: ' ';
     width: 1437px;
@@ -95,9 +98,6 @@
   .markdown  ol{
       list-style: initial;
       list-style-type: decimal;
-  }
-  .markdown a{
-    @apply text-decoration-tedRed;
   }
   .markdown  > *:first-child{
       margin-top: 0px !important;
