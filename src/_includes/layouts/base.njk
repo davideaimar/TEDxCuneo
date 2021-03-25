@@ -12,8 +12,6 @@
     {% block head %}{% endblock %}
     {# temporarily remove alpine.js #}
     {# <script src="/js/alpine.js?v={% version %}"></script> #}
-    {# Netlify identity #}
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <div style="overflow-x: hidden;">
@@ -25,7 +23,26 @@
         {% include "footer.njk" %}
       </div>
     </div>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style:  normal;
+        font-weight: 400;
+        src:
+            url("/assets/font/Inter-Regular.woff2") format("woff2"),
+            url("/assets/font/Inter-Regular.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style:  normal;
+        font-weight: 700;
+        src:
+            url("/assets/font/Inter-Bold.woff2") format("woff2"),
+            url("/assets/font/Inter-Bold.woff") format("woff");
+      }
+    </style>
+    {# <!-- Global site tag (gtag.js) - Google Analytics --> #}
     {# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,16 +51,20 @@
 
       gtag('config', 'UA-179034238-1');
     </script> #}
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function(user){
-          if (!user) {
-            window.netlifyIdentity.on("login", function(){
-              document.location.href = "/settings/";
-            });
-          }
-        });
-      }
-    </script>
+    {# Netlify identity #}
+    {% if page_data.slug=="/" %}
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      <script>
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", function(user){
+            if (!user) {
+              window.netlifyIdentity.on("login", function(){
+                document.location.href = "/settings/";
+              });
+            }
+          });
+        }
+      </script>
+    {% endif %}
   </body>
 </html>

@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* MOVED to base.njk */
+/* @font-face {
   font-family: 'Inter';
   font-style:  normal;
   font-weight: 400;
@@ -18,7 +19,7 @@
   src:
       url("/assets/font/Inter-Bold.woff2") format("woff2"),
       url("/assets/font/Inter-Bold.woff") format("woff");
-}
+} */
 
 @layer base {
   a{

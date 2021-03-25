@@ -3,7 +3,13 @@
         <div class="">
             <p class="mb-4 md:mb-6">{{ footer.site_name }}</p>
             <p> 
-                {{ footer.address_text | nl2br | safe }}<br/>
+                {% if footer.address_url and footer.address_url.length > 0 %}
+                    <a target="_blank" href="{{ footer.address_url }}">{{ footer.address_text | nl2br | safe }}</a>
+                {% else %}
+                    {{ footer.address_text | nl2br | safe }}
+                {% endif %}
+                <br/>
+                <br/>
                 CF&nbsp;{{ footer.cf }}
             </p>
         </div>
