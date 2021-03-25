@@ -1,18 +1,19 @@
 <footer class="container flex-grow-0 py-4 ">
     <div class="border-t border-tedWhite grid grid-cols-1 py-4 gap-y-5 md:gap-x-10 md:grid-cols-2 md:py-7">
         <div class="">
-            <p class="mb-4 md:mb-6">TEDxCuneo</p>
+            <p class="mb-4 md:mb-6">{{ footer.site_name }}</p>
             <p> 
-                Associazione Animae Silva <br/>
-                Via Luigi Teresio Cavallo 7/B - Cuneo <br/>
-                CF BNNDVD7OE17D205K
+                {{ footer.address_text | nl2br | safe }}<br/>
+                CF&nbsp;{{ footer.cf }}
             </p>
         </div>
         <div>
-            <p class="mb-4 md:mb-6"><a href="mailto:info@tedxcuneo.com">info@tedxcuneo.com</a></p>
-            <p> 
-                <a href="/informativa-trattamento-dei-dati/">Informativa per il trattamento dei dati personali</a>
-            </p>
+            <p class="mb-4 md:mb-6"><a href="mailto:{{ footer.email }}">{{ footer.email }}</a></p>
+            {% for link in footer.links %}
+                <p> 
+                    <a href="{{ link.url }}">{{ link.label }}</a>
+                </p>
+            {% endfor %}
         </div>
     </div>
     
