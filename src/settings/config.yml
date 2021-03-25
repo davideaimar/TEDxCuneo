@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/img/uploads"
+
+site_url: https://tedxcuneo.com
+display_url: https://tedxcuneo.com
+
+logo_url: https://tedxcuneo.netlify.app/assets/img/logo_white.svg
+
+collections:
+  - name: 'settings'
+    label: 'Impostazioni'
+    create: false
+    delete: false 
+    editor:
+      preview: false
+    files:
+      - name: 'general'
+        label: 'Impostazioni sito web'
+        file: 'src/_data/site.json'
+        description: 'Impostazioni generali del sito TEDxCuneo.com'
+        fields:
+          - { label: 'Url sito', name: 'url', widget: 'string' }

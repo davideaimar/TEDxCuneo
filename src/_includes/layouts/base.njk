@@ -12,6 +12,8 @@
     {% block head %}{% endblock %}
     {# temporarily remove alpine.js #}
     {# <script src="/js/alpine.js?v={% version %}"></script> #}
+    {# Netlify identity #}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <div style="overflow-x: hidden;">
@@ -32,5 +34,16 @@
 
       gtag('config', 'UA-179034238-1');
     </script> #}
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function(user){
+          if (!user) {
+            window.netlifyIdentity.on("login", function(){
+              document.location.href = "/settings/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
