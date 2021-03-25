@@ -8,10 +8,10 @@
     <meta name="robots" content="max-snippet:-1, max-image-preview: large">
 {% endif %}
 
-<title>{{ seo.title or site.seo.title | escape }}</title>
-<meta property="og:title" content="{{ seo.title or site.seo.title | escape }}">
+<title>{{ seo.title or settings.default_seo.title | escape }}</title>
+<meta property="og:title" content="{{ seo.title or settings.default_seo.title | escape }}">
 
-{% set desc = seo.description or site.seo.description %}
+{% set desc = seo.description or settings.default_seo.description %}
 {% if desc %}
     <meta name="description" content="{{ desc | escape  }}">
     <meta property="og:description" content="{{ desc | escape }}">
@@ -24,7 +24,7 @@
 {% if seo.image and seo.image.url %}
     <meta property="og:image" content="{{ seo.image.url | toOgImage }}">
 {% else %}
-    <meta property="og:image" content="{{ site.seo.gImage }}">
+    <meta property="og:image" content="{{ settings.default_seo.image }}">
 {% endif %}
 
 <link rel="canonical" href="{{ site.url }}{{ slug }}">

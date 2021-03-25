@@ -19,7 +19,40 @@ collections:
     files:
       - name: 'general'
         label: 'Impostazioni sito web'
-        file: 'src/_data/site.json'
+        file: 'src/_data/settings.json'
         description: 'Impostazioni generali del sito TEDxCuneo.com'
         fields:
-          - { label: 'Url sito', name: 'url', widget: 'string' }
+          - label: 'Url sito'
+            name: 'url'
+            widget: 'string'
+          - label: 'SEO di default'
+            name: 'default_seo'
+            widget: 'object'
+            fields:
+              - {label: "Titolo", name: "title", widget: "string"}
+              - {label: "Descrizione", name: "description", widget: "string"}
+              - {label: "Immagine", name: "image", widget: "image", default: '/assets/img/uploads/tedxcuneo_og_image.jpg', allow_multiple: false}
+      - name: 'footer'
+        label: 'Impostazioni footer'
+        file: 'src/_data/footer.json'
+        description: 'Impostazioni del footer di TEDxCuneo.com'
+        fields:
+          - label: 'Nome iniziale'
+            name: 'site_name'
+            widget: 'string' 
+            default: 'TEDxCuneo'
+          - label: 'Indirizzo testuale'
+            name: 'address_text'
+            widget: 'text'
+          - label: 'URL indirizzo'
+            name: 'address_url'
+            widget: 'string'
+          - label: 'email'
+            name: 'email'
+            widget: 'string'
+          - label: 'Links footer'
+            name: 'links'
+            widget: 'list'
+            fields:
+              - {label: "Label", name: "label", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
