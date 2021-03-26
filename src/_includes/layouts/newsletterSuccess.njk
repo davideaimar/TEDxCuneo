@@ -1,0 +1,11 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	<div class="markdown mt-8 mb-6 md:mb-8 md:mt-16">
+		{% documentToHtmlString d.content.json %}
+	</div>
+	<p class="mb-20 md:mb-36">
+		<a href="/" class="button no-underline cursor-pointer font-bold text-small uppercase text-tedBlack bg-tedWhite py-3 px-4 rounded-none">{{ d.buttonText }}</a>
+	</p>
+</div>

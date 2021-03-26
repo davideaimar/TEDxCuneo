@@ -30,5 +30,10 @@ module.exports = {
     title
     text{
       json
+    }`,
+  "NEWSLETTER_SUCCESS_PAGE": `
+    buttonText
+    content{
+      json
     }`
 }

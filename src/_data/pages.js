@@ -33,6 +33,9 @@ const pages_query = `query {
           ...on PrivacyPolicy{
             ${constants.PRIVACY_POLICY_FIELDS}
           }
+          ...on NewsletterSuccessPage{
+            ${constants.NEWSLETTER_SUCCESS_PAGE}
+          }
         }
       }
     }
@@ -62,6 +65,9 @@ module.exports = async function() {
             break;
           case "LandingPage":
             page.layout = "layouts/landingPage.njk"
+            break;
+          case "NewsletterSuccessPage":
+            page.layout = "layouts/newsletterSuccess.njk"
             break;
           default:
             page.layout = "base.njk"
