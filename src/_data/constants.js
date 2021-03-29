@@ -24,6 +24,11 @@ module.exports = {
           json
         }
       }
+    }
+    ctaPartnership{
+      text{
+        json
+      }
     }`,
   "PARTNERSHIP_PAGE_FIELDS": `
     introText

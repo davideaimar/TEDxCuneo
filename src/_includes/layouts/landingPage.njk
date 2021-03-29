@@ -20,12 +20,18 @@
 	{% include "newsletter.njk" %}
 
 	{% if d.landingFaqsCollection.items and d.landingFaqsCollection.items.length > 0 %}
-		<div class="grid grid-cols-1 gap-y-20 md:gap-y-44 md:grid-cols-2 md:gap-x-10">
+		<div class="grid grid-cols-1 gap-y-20 md:gap-y-36 md:grid-cols-2 md:gap-x-10">
 			{% for faq in d.landingFaqsCollection.items %}
 				<div class="faq-block max-w-sm">
 					{% documentToHtmlString faq.text.json %}
 				</div>
 			{% endfor %}
+		</div>
+	{% endif %}
+
+	{% if d.ctaPartnership %}
+		<div class="faq-block cta-partnership mt-40 md:w-3/4 md:mt-60">
+			{% documentToHtmlString d.ctaPartnership.text.json %}
 		</div>
 	{% endif %}
 

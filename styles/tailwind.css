@@ -72,7 +72,7 @@
     z-index: -1;
     top: -1000px;
     right: -500px;
-    background: url('/assets/img/mappa_cuneo_2-min.png');
+    background: url('/assets/img/mappa_cuneo_empty.png');
     background-repeat: no-repeat;
   }
   .markdown p,
@@ -110,15 +110,15 @@
   .faq-block > * {
     min-height: theme('fontSize.m_base.1.lineHeight')
   }
-  .faq-block:first-child {
-    margin-bottom: theme('fontSize.m_2xl.1.lineHeight')
+  .cta-partnership > h2{
+    @apply text-m_3xl;
   }
   @screen md{
+    .cta-partnership > h2{
+      @apply text-d_3xl;
+    }
     .faq-block > p, .markdown > p {
       min-height: theme('fontSize.d_base.1.lineHeight')
-    }
-    .faq-block > h2:last-child {
-      margin-bottom: theme('fontSize.d_2xl.1.lineHeight')
     }
     .landing-map::before{
       top: -380px;
