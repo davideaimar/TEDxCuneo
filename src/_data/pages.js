@@ -36,6 +36,9 @@ const pages_query = `query {
           ...on NewsletterSuccessPage{
             ${constants.NEWSLETTER_SUCCESS_PAGE}
           }
+          ...on PartnershipPage{
+            ${constants.PARTNERSHIP_PAGE_FIELDS}
+          }
         }
       }
     }
@@ -44,6 +47,15 @@ const pages_query = `query {
   ${constants.SEO_FRAGMENT}
   }`
 
+const normalizeSlug = function(slug){
+  if(!slug.startsWith("/")){
+    slug = "/" + slug;
+  }
+  if(!slug.endsWith("/")){
+    slug = slug + "/";
+  }
+  return slug;
+}
 
 module.exports = async function() {
 
@@ -53,12 +65,8 @@ module.exports = async function() {
 
       let pages = response.data.pageCollection.items;
       pages = pages.map(page => {
-        if(!page.slug.startsWith("/")){
-          page.slug = "/" + page.slug;
-        }
-        if(!page.slug.endsWith("/")){
-          page.slug = page.slug + "/";
-        }
+        page.slug = normalizeSlug(page.slug);
+
         switch(page.content.__typename){
           case "PrivacyPolicy":
             page.layout = "layouts/privacyPolicy.njk"
@@ -68,6 +76,9 @@ module.exports = async function() {
             break;
           case "NewsletterSuccessPage":
             page.layout = "layouts/newsletterSuccess.njk"
+            break;
+          case "PartnershipPage":
+            page.layout = "layouts/partnership.njk"
             break;
           default:
             page.layout = "base.njk"

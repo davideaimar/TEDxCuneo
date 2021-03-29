@@ -13,13 +13,29 @@ module.exports = {
     introSecondaryText
     newsletterForm{
       title
-      emailPlaceholder
       buttonText
       privacyPage{
         slug
       }
     }
     landingFaqsCollection{
+      items{
+        text{
+          json
+        }
+      }
+    }`,
+  "PARTNERSHIP_PAGE_FIELDS": `
+    introText
+    ctaText
+    form{
+      title
+      buttonText
+      privacyPage{
+        slug
+      }
+    }
+    faqsCollection{
       items{
         text{
           json

@@ -1,0 +1,33 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+
+
+<div class="container relative landing-map">
+ 
+	<h1 class=" mt-9 mb-20 max-w-615 md:mb-28 md:mt-16">{{ d.introText }}</h1>
+
+	<a href="#form" class="block w-40 text-center box-content uppercase no-underline font-bold text-small p-3 border-tedWhite border mb-4 md:p-4 md:text-d_base md:mb-5">{{ d.ctaText }}</a>
+
+	<svg class="h-6 mb-24 md:mb-40" viewBox="0 0 13 24" xmlns="http://www.w3.org/2000/svg">
+		<path fill="white" d="M2.03383e-07 17.1647L6.5 24L13 17.1647L11.8973 15.9898L7.29799 20.8264L7.29799 -2.49243e-07L5.70201 -3.19005e-07L5.70201 20.8264L1.11719 15.9898L2.03383e-07 17.1647Z" />
+	</svg>
+
+	{% set form=d.form %}
+	{% set class="mb-52 pt-8" %}
+	{% set anchor="form" %}
+	{% include "partner-form.njk" %}
+
+	{% if d.faqsCollection.items and d.faqsCollection.items.length > 0 %}
+		<div class="grid grid-cols-1 gap-y-20 md:gap-y-44 md:grid-cols-2 md:gap-x-10">
+			{% for faq in d.faqsCollection.items %}
+				<div class="faq-block max-w-sm">
+					{% documentToHtmlString faq.text.json %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<div class="h-20 md:h-36"></div>
+
+</div>

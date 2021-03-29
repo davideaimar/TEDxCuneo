@@ -15,6 +15,16 @@ const options = {
   }
 };
 
+const normalizeSlug = function(slug){
+  if(!slug.startsWith("/")){
+    slug = "/" + slug;
+  }
+  if(!slug.endsWith("/")){
+    slug = slug + "/";
+  }
+  return slug;
+}
+
 module.exports = function (eleventyConfig) {
 
   eleventyConfig.setUseGitIgnore(false)
@@ -38,8 +48,12 @@ module.exports = function (eleventyConfig) {
 
   //render from rich text editor
   eleventyConfig.addShortcode('documentToHtmlString', content => documentToHtmlString(content, options));
+  
   //resize image for og tags {{ page.seo.url | toOgImage }}
   eleventyConfig.addFilter('toOgImage', (url) => (url + '?fm=jpg&q=70&w=1200&h=630&fit=thumb') )
+  
+  // fix eventually not valid absolute urls
+  eleventyConfig.addFilter('absoluteUrl', (url) => normalizeSlug(url) )
 
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');

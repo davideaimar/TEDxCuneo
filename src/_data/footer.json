@@ -6,6 +6,10 @@
   "email": "info@tedxcuneo.com",
   "links": [
     {
+      "label": "Diventa partner",
+      "url": "https://tedxcuneo.netlify.app/partnership/"
+    },
+    {
       "label": "Informativa per il trattamento dei dati personali",
       "url": "https://tedxcuneo.netlify.app/informativa-trattamento-dei-dati/"
     }
