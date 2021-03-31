@@ -10,7 +10,6 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace(/\n/g, '<br/>')}</p>`,
     [INLINES.HYPERLINK]: (node, next) => {
-      console.log(node.data.uri.startsWith('/'));
       return `<a href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') || node.data.uri.startsWith('/') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
     }
   }
@@ -36,7 +35,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     './_tmp/style.css': './style.css',
     './node_modules/alpinejs/dist/alpine.js': './js/alpine.js',
-    "./src/settings": '/settings'
+    "./src/settings": '/settings',
+    "./src/_redirects": '/_redirects'
   })
   
   eleventyConfig.addPassthroughCopy({
