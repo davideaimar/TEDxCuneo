@@ -10,7 +10,8 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace(/\n/g, '<br/>')}</p>`,
     [INLINES.HYPERLINK]: (node, next) => {
-      return `<a href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
+      console.log(node.data.uri.startsWith('/'));
+      return `<a href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') || node.data.uri.startsWith('/') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
     }
   }
 };
