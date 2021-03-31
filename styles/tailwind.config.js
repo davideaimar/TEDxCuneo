@@ -50,9 +50,24 @@ module.exports = {
       bold: 700
     },
     extend: {
+      height:{
+        '600': '600px',
+        '800': '800px',
+      },
       maxWidth: {
         '287': "287px",
+        '400': "400px",
         '615': "615px",
+        '660': "660px",
+      },
+      minHeight:{
+        '500': '500px'
+      },
+      zIndex:{
+        '-1': '-1'
+      },
+      padding:{
+        '1/2': '50%'
       }
     }
   },
