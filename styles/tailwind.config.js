@@ -52,6 +52,7 @@ module.exports = {
     extend: {
       height:{
         '600': '600px',
+        '750': '750px',
         '800': '800px',
       },
       maxWidth: {
