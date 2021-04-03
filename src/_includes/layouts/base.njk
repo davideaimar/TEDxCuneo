@@ -28,6 +28,9 @@
       }
     </style>
     <link rel="stylesheet" href="/style.css?v={% version %}"/>
+    {% if page_data.slug=="/" %}
+      <meta name="facebook-domain-verification" content="aei0k7kgeaw6u7jdd9s9oz5w0lfsdc" />
+    {% endif %}
     {% block head %}{% endblock %}
     {# temporarily remove alpine.js #}
     {# <script src="/js/alpine.js?v={% version %}"></script> #}
