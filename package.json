@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "eleventy --serve & postcss styles/main.css --o _tmp/main.css --watch",
-    "build": "ELEVENTY_PRODUCTION=true eleventy && NODE_ENV=production postcss styles/main.css --o _site/style.css && cleancss _site/style.css -o _site/style.css"
+    "build": "ELEVENTY_PRODUCTION=true eleventy && NODE_ENV=production postcss styles/main.css --o _site/style/main.css && cleancss _site/style/main.css -o _site/style/main.css"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
