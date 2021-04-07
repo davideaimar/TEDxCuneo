@@ -54,7 +54,12 @@
             </svg>
             </a>
         </div>
-        <div class="mt-8 md:text-right md:flex-1 md:align-middle md:mt-0">
+        {% if page_data.slug=="/partnership/" %}
+            <div class="h-14 md:hidden"></div>
+            <div class="mt-8 hidden md:block md:text-right md:flex-1 md:align-middle md:mt-0">
+        {% else %}
+            <div class="mt-8 md:text-right md:flex-1 md:align-middle md:mt-0">
+        {% endif %}
             <p>
                 <span class="mr-2 md:mr-4">seguici su:</span>
                 <a target="_blank" class="mr-2 md:mr-4" href="{{ settings.instagram }}">Instagram↗</a>

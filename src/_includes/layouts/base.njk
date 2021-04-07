@@ -8,21 +8,6 @@
     {% include "seo.njk" %}
     <meta name="theme-color" content="#0E0E0E">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <link rel="stylesheet" href="/style.css?v={% version %}"/>
-    {% block head %}{% endblock %}
-    {# temporarily remove alpine.js #}
-    {# <script src="/js/alpine.js?v={% version %}"></script> #}
-  </head>
-  <body>
-    <div class="overflow-x-hidden">
-      {% include "header.njk" %}
-      <div class="flex flex-col justify-between min-h-screen">
-        <main class="flex-1 flex-grow">
-          {{ content | safe }} 
-        </main>
-        {% include "footer.njk" %}
-      </div>
-    </div>
     <style>
       @font-face {
         font-family: 'Inter';
@@ -42,16 +27,36 @@
             url("/assets/font/Inter-Bold.woff") format("woff");
       }
     </style>
+    <link rel="stylesheet" href="/style.css?v={% version %}"/>
+    {% if page_data.slug=="/" %}
+      <meta name="facebook-domain-verification" content="aei0k7kgeaw6u7jdd9s9oz5w0lfsdc" />
+    {% endif %}
+    {% block head %}{% endblock %}
+    {# temporarily remove alpine.js #}
+    {# <script src="/js/alpine.js?v={% version %}"></script> #}
+  </head>
+  <body>
+    <div class="overflow-x-hidden">
+      {% include "header.njk" %}
+      <div class="flex flex-col justify-between min-h-screen">
+        <main class="flex-1 flex-grow">
+          {{ content | safe }} 
+        </main>
+        {% include "footer.njk" %}
+      </div>
+    </div>
+
+    {% block bottom %}{% endblock %}
     
     {# <!-- Global site tag (gtag.js) - Google Analytics --> #}
-    {# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'UA-179034238-1');
-    </script> #}
+    </script>
 
     {# Uncomment to make Netlify identity working for new users #}
     {# {% if page_data.slug=="/" %}
