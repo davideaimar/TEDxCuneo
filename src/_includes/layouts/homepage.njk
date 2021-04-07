@@ -1,0 +1,81 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+
+<div data-scroll-container>
+
+    <section data-scroll-section id="scroll-direction" class="relative" style="min-height: 200vh;">
+
+        {% include "header.njk" %}
+
+        <div data-scroll data-scroll-sticky data-scroll-target="#scroll-direction" class="container">
+            <h1 class=" mt-9 mb-20 max-w-615 md:mb-28 md:mt-16">{{ d.introText }}</h1>
+
+            <svg class="h-6 mb-24 md:mb-40" viewBox="0 0 13 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="white" d="M2.03383e-07 17.1647L6.5 24L13 17.1647L11.8973 15.9898L7.29799 20.8264L7.29799 -2.49243e-07L5.70201 -3.19005e-07L5.70201 20.8264L1.11719 15.9898L2.03383e-07 17.1647Z" />
+            </svg>
+
+            <div class="h-20 md:h-36"></div>
+        </div>
+
+        <div id="direction" class="absolute left-0 right-0" style="top: -50vw; bottom: -50vh;">
+            <div class="direction-block-item -one">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-speed="6" data-scroll-target="#direction">
+                    TEDxCuneo
+                </span>
+            </div>
+            <div class="direction-block-item -two">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-speed="-8" data-scroll-target="#direction">
+                    La prima edizione
+                </span>
+            </div>
+            <div class="direction-block-item -three">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-speed="9" data-scroll-target="#direction" data-scroll-delay="0.05">
+                    festinalente
+                </span>
+            </div>
+            <div class="direction-block-item -four">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-speed="15" data-scroll-target="#direction">
+                    Lorem ipsum dolor sit amet 
+                </span>
+            </div>
+            <div class="direction-block-item -five">
+                <span data-scroll="" data-scroll-direction="horizontal" data-scroll-speed="-20" data-scroll-target="#direction" data-scroll-delay="0.05">
+                    consectetur adipiscing elit. 
+                </span>
+            </div>
+        </div>
+
+    </section>
+
+    <section data-scroll-section>
+
+        <div class="container">
+            {% set form=d.newsletterForm %}
+            {% set class="mb-52" %}
+            {% include "newsletter.njk" %}
+
+            <div class="h-20 md:h-36"></div>
+        
+        </div>
+
+        {% include "footer.njk" %}
+
+    </section>
+	
+
+	
+
+	
+
+    <script src="/assets/js/locomotive.min.js"></script>
+    <script>
+    window.onload = function () {
+        var scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true
+        });
+    };
+</script>
+
+</div>

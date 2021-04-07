@@ -1,50 +1,28 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% set seo=page_data.seo %}
-    {% set slug=page_data.slug %}
-    {% include "seo.njk" %}
-    <meta name="theme-color" content="#0E0E0E">
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <style>
-      @font-face {
-        font-family: 'Inter';
-        font-style:  normal;
-        font-weight: 400;
-        src:
-            url("/assets/font/Inter-Regular.woff2") format("woff2"),
-            url("/assets/font/Inter-Regular.woff") format("woff");
-      }
-
-      @font-face {
-        font-family: 'Inter';
-        font-style:  normal;
-        font-weight: 700;
-        src:
-            url("/assets/font/Inter-Bold.woff2") format("woff2"),
-            url("/assets/font/Inter-Bold.woff") format("woff");
-      }
-    </style>
-    <link rel="stylesheet" href="/style.css?v={% version %}"/>
-    {% if page_data.slug=="/" %}
-      <meta name="facebook-domain-verification" content="aei0k7kgeaw6u7jdd9s9oz5w0lfsdc" />
-    {% endif %}
+    {% include "head.njk" %}
     {% block head %}{% endblock %}
-    {# temporarily remove alpine.js #}
-    {# <script src="/js/alpine.js?v={% version %}"></script> #}
   </head>
   <body>
-    <div class="overflow-x-hidden">
-      {% include "header.njk" %}
-      <div class="flex flex-col justify-between min-h-screen">
-        <main class="flex-1 flex-grow">
-          {{ content | safe }} 
-        </main>
-        {% include "footer.njk" %}
+
+
+    {% if page_data.layout=="layouts/homepage.njk" %}
+      {{ content | safe }} 
+    {% else %}
+
+      <div class="overflow-x-hidden">
+        {% include "header.njk" %}
+        <div class="flex flex-col justify-between min-h-screen">
+          <main class="flex-1 flex-grow">
+            {{ content | safe }} 
+          </main>
+          {% include "footer.njk" %}
+        </div>
       </div>
-    </div>
+
+    {% endif %}
+    
 
     {% block bottom %}{% endblock %}
     

@@ -33,7 +33,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('./src/settings/config.yml')
 
   eleventyConfig.addPassthroughCopy({
-    './_tmp/style.css': './style.css',
+    './_tmp': './style',
     './node_modules/alpinejs/dist/alpine.js': './js/alpine.js',
     "./src/settings": '/settings',
     "./src/_redirects": '/_redirects'

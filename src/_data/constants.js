@@ -30,6 +30,15 @@ module.exports = {
         json
       }
     }`,
+  "HOME_PAGE_FIELDS": `
+    introText
+    newsletterForm{
+      title
+      buttonText
+      privacyPage{
+        slug
+      }
+    }`,
   "PARTNERSHIP_PAGE_FIELDS": `
     introText
     ctaText

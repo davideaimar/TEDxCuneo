@@ -39,6 +39,9 @@ const pages_query = `query {
           ...on PartnershipPage{
             ${constants.PARTNERSHIP_PAGE_FIELDS}
           }
+          ...on HomePage{
+            ${constants.HOME_PAGE_FIELDS}
+          }
         }
       }
     }
@@ -79,6 +82,9 @@ module.exports = async function() {
             break;
           case "PartnershipPage":
             page.layout = "layouts/partnership.njk"
+            break;
+          case "HomePage":
+            page.layout = "layouts/homepage.njk"
             break;
           default:
             page.layout = "base.njk"
