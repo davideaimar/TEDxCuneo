@@ -3,6 +3,7 @@ require('dotenv').config()
 const { DateTime } = require("luxon");
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 const { BLOCKS, INLINES } = require('@contentful/rich-text-types');
+const helpers = require('./src/_data/helpers')
 
 const now = String(Date.now())
 
@@ -14,16 +15,6 @@ const options = {
     }
   }
 };
-
-const normalizeSlug = function(slug){
-  if(!slug.startsWith("/")){
-    slug = "/" + slug;
-  }
-  if(!slug.endsWith("/")){
-    slug = slug + "/";
-  }
-  return slug;
-}
 
 module.exports = function (eleventyConfig) {
 
@@ -54,7 +45,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('toOgImage', (url) => (url + '?fm=jpg&q=70&w=1200&h=630&fit=thumb') )
   
   // fix eventually not valid absolute urls
-  eleventyConfig.addFilter('absoluteUrl', (url) => normalizeSlug(url) )
+  eleventyConfig.addFilter('absoluteUrl', (url) => helpers.normalizeSlug(url) )
 
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');

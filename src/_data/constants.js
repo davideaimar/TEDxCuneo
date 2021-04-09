@@ -39,6 +39,10 @@ module.exports = {
         slug
       }
     }`,
+  "TED_PAGE_FIELDS": `
+    title`,
+  "CONTACTS_PAGE_FIELDS": `
+    title`,
   "PARTNERSHIP_PAGE_FIELDS": `
     introText
     ctaText

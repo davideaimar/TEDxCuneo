@@ -10,6 +10,8 @@
 
 <title>{{ seo.title or settings.default_seo.title | escape }}</title>
 <meta property="og:title" content="{{ seo.title or settings.default_seo.title | escape }}">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="TEDxCuneo">
 
 {% set desc = seo.description or settings.default_seo.description %}
 {% if desc %}

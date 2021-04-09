@@ -1,6 +1,6 @@
-<header class="w-full md:pt-8">
-    <div class="container flex py-4 flex-col md:items-end md:flex-row md:justify-between" x-data="{ isOpen: false }">
-        <div class="flex-0 w-52 md:mr-4">
+<header class="w-full fixed top-0 z-50 bg-tedBlack">
+    <div class="container flex py-4 justify-between" x-data="{ isOpen: false }">
+        <div class="flex-0 w-52 lg:mr-4">
             <a href="/">
                 <svg viewBox="0 0 204 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
@@ -54,35 +54,35 @@
             </svg>
             </a>
         </div>
-        {% if page_data.slug=="/partnership/" %}
-            <div class="h-14 md:hidden"></div>
-            <div class="mt-8 hidden md:block md:text-right md:flex-1 md:align-middle md:mt-0">
+        {# {% if page_data.slug=="/partnership/" %}
+            <div class="h-14 lg:hidden"></div>
+            <div class="mt-8 hidden lg:block lg:text-right lg:flex-1 lg:align-middle lg:mt-0">
         {% else %}
-            <div class="mt-8 md:text-right md:flex-1 md:align-middle md:mt-0">
+            <div class="mt-8 lg:text-right lg:flex-1 lg:align-middle lg:mt-0">
         {% endif %}
             <p>
-                <span class="mr-2 md:mr-4">seguici su:</span>
-                <a target="_blank" class="mr-2 md:mr-4" href="{{ settings.instagram }}">Instagram↗</a>
+                <span class="mr-2 lg:mr-4">seguici su:</span>
+                <a target="_blank" class="mr-2 lg:mr-4" href="{{ settings.instagram }}">Instagram↗</a>
                 <a target="_blank" href="{{ settings.facebook }}">Facebook↗</a>
             </p>
-        </div>
-        {# <nav class="bg-tedBlack absolute top-16 right-0 left-0 p-2 text-right md:p-0 md:text-left md:flex-1 md:max-w-sm md:relative md:top-auto md:align-middle">
-            <ul class="flex justify-between flex-col md:flex-row"
-                :class="{ 'hidden md:flex': !isOpen }"
+        </div> #}
+        <nav class="bg-tedBlack z-40 fixed top-16 right-0 left-0 bottom-0 p-2 lg:p-0 lg:flex-1 lg:relative lg:top-auto lg:self-end"
+             :class="{ 'block': isOpen, 'hidden lg:block': !isOpen }"
+        >
+            <ul class="flex flex-col px-2 md:px-12 lg:flex-row lg:justify-end lg:px-0"
+                :class="{ 'hidden lg:flex': !isOpen }"
                 @click.away="isOpen = false"
                 x-show.transition="true"
             >
-                <li><a href="/">Home</a></li>
-                <li>Contatti</li>
-                <li>Speakers</li>
-                <li>Biglietti</li>
-                <li>TEDx</li>
+                {% for item in header %}
+                    <li class="py-3 lg:px-4"><a href="{{item.slug}}" class="{{ 'underline' if page_data.slug == item.slug else 'no-underline'}}">{{item.headerTitle}}</a></li>
+                {% endfor %}
             </ul>
         </nav>
         <button
             @click="isOpen = !isOpen"
             type="button"
-            class="block flex-0 text-white focus:outline-none md:hidden"
+            class="block flex-0 text-white focus:outline-none self-end lg:hidden"
             :class="{ 'transition transform-180': isOpen }" 
         >
             <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
@@ -98,6 +98,6 @@
                 d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
             />
             </svg>
-        </button> #}
+        </button>
     </div>
 </header>

@@ -1,19 +1,6 @@
-const constants = require("./constants");
-const fetch = require("node-fetch");
-
-async function fetchGraphQL(query) {
-    return fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-        },
-        body: JSON.stringify({ query }),
-      }
-    ).then((response) => response.json())
-  }
+const helpers = require('./helpers')
+const api = require('./api')
+const constants = require('./constants')
 
 const pages_query = `query {
     pageCollection{
@@ -42,33 +29,29 @@ const pages_query = `query {
           ...on HomePage{
             ${constants.HOME_PAGE_FIELDS}
           }
+          ...on TedPage{
+            ${constants.TED_PAGE_FIELDS}
+          }
+          ...on ContactsPage{
+            ${constants.CONTACTS_PAGE_FIELDS}
+          }
         }
       }
     }
   }
   
   ${constants.SEO_FRAGMENT}
-  }`
-
-const normalizeSlug = function(slug){
-  if(!slug.startsWith("/")){
-    slug = "/" + slug;
-  }
-  if(!slug.endsWith("/")){
-    slug = slug + "/";
-  }
-  return slug;
-}
+  }`;
 
 module.exports = async function() {
 
-    let pages = fetchGraphQL(pages_query)
+    let pages = api.fetchGraphQL(pages_query)
     .then(function(response){
       // console.log(response.data.pageCollection.items)
 
       let pages = response.data.pageCollection.items;
       pages = pages.map(page => {
-        page.slug = normalizeSlug(page.slug);
+        page.slug = helpers.normalizeSlug(page.slug);
 
         switch(page.content.__typename){
           case "PrivacyPolicy":
@@ -85,6 +68,12 @@ module.exports = async function() {
             break;
           case "HomePage":
             page.layout = "layouts/homepage.njk"
+            break;
+          case "TedPage":
+            page.layout = "layouts/ted.njk"
+            break;
+          case "ContactsPage":
+            page.layout = "layouts/contacts.njk"
             break;
           default:
             page.layout = "base.njk"

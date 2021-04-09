@@ -1,3 +1,12 @@
+#direction{
+  top: -50vw;
+  bottom: -50vh;
+}
+
+#scroll-direction{
+  min-height: 200vh;
+}
+
 .direction-block-item{
   position: absolute;
   font-size: 10vw;
@@ -6,20 +15,25 @@
   text-transform: uppercase;
   line-height: 1;
   & span{
-    @apply block bg-tedRed whitespace-nowrap p-4;
+    @apply block bg-tedRed whitespace-nowrap p-4 text-center;
+    min-height: 120px;
+    width: 110vw;
+    box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
+    z-index: 60;
   }
 }
 
 .-one {
-    top: 40%;
-    transform: translateX(-10vw) rotate(26deg);
+    top: 38%;
+    transform: rotate(7.03deg);
 }
 .-two {
-    top: 45%;
+    top: 40%;
+    transform: rotate(-9.54deg);
 }
 .-three {
-    top: 55%;
-    transform: rotate(9deg);
+    top: 42%;
+    transform: rotate(3.5deg);
 }
 .-four {
     top: 68%;
