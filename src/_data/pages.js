@@ -67,7 +67,7 @@ module.exports = async function() {
             page.layout = "layouts/partnership.njk"
             break;
           case "HomePage":
-            page.layout = "layouts/homepage.njk"
+            page.layout = "layouts/homepage_new.njk"
             break;
           case "TedPage":
             page.layout = "layouts/ted.njk"

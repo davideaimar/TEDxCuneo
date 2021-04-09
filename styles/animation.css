@@ -1,4 +1,4 @@
-#direction{
+/* #direction{
   top: -50vw;
   bottom: -50vh;
 }
@@ -44,7 +44,6 @@
     transform: translateX(-10vw) rotate(3deg);
 }
 
-/*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {
     overflow: hidden;
   }
@@ -125,4 +124,4 @@ html.has-scroll-smooth {
   [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
     right: auto;
     bottom: 0;
-  }
+  } */
