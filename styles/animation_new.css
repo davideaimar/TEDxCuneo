@@ -4,13 +4,20 @@
 #bands-wrapper{
   left: -20px;
 }
+
 .direction-block-item{
   @apply relative block bg-tedRed;
-  left: -50px;
-  min-height: 120px;
-  width: 110vw;
-  box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
-  z-index: 60;
+  font-size: 64px;
+  white-space: nowrap;
+  line-height: 68px;
+  overflow-x: hidden;
+  & span{
+    @apply block bg-tedRed whitespace-nowrap p-4 text-center;
+    min-height: 120px;
+    width: 110vw;
+    box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
+    z-index: 60;
+  }
 }
 
 .-one {
