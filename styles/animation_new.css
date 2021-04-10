@@ -7,13 +7,13 @@
 
 .direction-block-item{
   @apply relative block bg-tedRed;
-  font-size: 64px;
+  font-size: 46px;
   white-space: nowrap;
   line-height: 68px;
   overflow-x: hidden;
   & span{
     @apply block bg-tedRed whitespace-nowrap p-4 text-center;
-    min-height: 120px;
+    min-height: 100px;
     width: 110vw;
     box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
     z-index: 60;
@@ -28,4 +28,15 @@
 }
 .-three {
   transform: rotate(3.5deg);
+}
+
+@screen md{
+  .direction-block-item{
+    font-size: 64px;
+    line-height: 68px;
+    & span{
+      min-height: 120px;
+      width: 110vw;
+    }
+  }
 }

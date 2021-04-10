@@ -1,25 +1,27 @@
 {# Uncomment for logging page fields avaliable #}
 {# {{ d | log }} #}
 
+{% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />    
+{% endblock %}
 
 <div>
+    <section id="intro-wrapper" class="mb-32">
 
-    <section id="intro-wrapper" class="">
-
-        <div id="bands-wrapper" class="sticky z-10 h-screen overflow-x-hidden">
+        <div id="bands-wrapper" class="overflow-hidden absolute z-10 pb-20 pt-28 w-screen">
             <div class="direction-block-item -one" id="band-one">
                 <span>
-                    15 maggio 2020 @ Varco 15 maggio 2020 @ Varco 15 maggio 2020 @ Varco 15 maggio 2020 @ Varco
+                    la prima edizione di tedxcuneo
                 </span>
             </div>
             <div class="direction-block-item -two" id="band-two">
                 <span>
-                    a ognuno il suo tempo a ognuno il suo tempo a ognuno il suo tempo a ognuno il suo tempo
+                    15 maggio 2020 - evento in streaming
                 </span>
             </div>
             <div class="direction-block-item -three" id="band-three">
                 <span>
-                    festinalentefestinalentefestinalentefestinalentefestinalentefestinalentefestinalente
+                    festinalente - ad ognuno il suo tempo
                 </span>
             </div>
         </div>
@@ -68,12 +70,92 @@
 
     </section>
 
+    <div class="container">
+
+        <section class="grid grid-cols-1 mb-32 gap-y-24 md:mb-60 lg:grid-cols-2 lg:gap-x-32">
+            <h1 class="max-w-615">{{ d.introText }}</h1>
+            <div class="max-w-400">
+                {% documentToHtmlString d.initialDescription.text.json %}
+            </div>
+        </section>
+
+        {% set form=d.newsletterForm %}
+        {% set class="mb-32 md:mb-60" %}
+        {% include "newsletter.njk" %}
+
+        <section class="mb-32 md:mb-60">
+            <h1 class="mb-8 md:mb-16">Speakers</h1>
+            <div x-data="{swiper: null, index: 0}"
+                x-init="swiper = new Swiper($refs.container, {
+                            loop: false,
+                            slidesPerView: 2,
+                            spaceBetween: 0,
+                        
+                            breakpoints: {
+                                1024: {
+                                slidesPerView: 4,
+                                spaceBetween: 0,
+                                },
+                            },
+                        });
+                        swiper.on('transitionEnd', function() {
+                            index=swiper.realIndex;
+                        });"
+                class="relative w-full mx-auto flex flex-col"
+                >
+
+                <div class="swiper-container w-full mb-16" x-ref="container">
+                    <div class="swiper-wrapper">
+                        {% for speaker in d.speakersCollection.items %}
+                            <div class="swiper-slide pr-16">
+                                <div class="flex flex-col shadow overflow-hidden">
+                                <div class="flex-shrink-0 mb-6">
+                                    <img class="h-48 w-full object-cover" src="{{ speaker.image.url }}?w=310&h=240&fit=thumb&q=60&fm=jpg" alt="{{ speaker.image.title }}">
+                                </div>
+                                <h3 class="mb-2">{{ speaker.name }}<br/>{{ speaker.surname }}</h3>
+                                <p> {{ speaker.job }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <div class="flex items-center">
+                        <button @click="{ swiper.slideTo(0); index=0; }" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                            <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span :class="{ 'border-b-2 font-bold': swiper.activeIndex < 2 }" class="border-tedRed mr-2 ml-6 cursor-pointer" @click="{ swiper.slideTo(0); index=0; }">1</span>
+                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 2 }" class="border-tedRed mx-2 md:ml-2 md:mr-6 cursor-pointer" @click="{ swiper.slideTo(2); index=2; }">2</span>
+                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 4 }" class="border-tedRed mx-2 cursor-pointer md:hidden" @click="{ swiper.slideTo(4); index=4; }">3</span>
+                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 6 }" class="border-tedRed ml-2 mr-6 cursor-pointer md:hidden" @click="{ swiper.slideTo(6); index=6; }">4</span>
+                    <div class="flex items-center">
+                        <button @click="{ swiper.slideTo(index ); index=8; }" 
+                                class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                            <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
 </div>
 
 {% block bottom %}
+    <script src="/assets/js/swiper.min.js"></script>
     <script>
 
-        var duration = 1000;
+        var duration = 100;
         
         (function() {
             var wrapper = document.getElementById("intro-wrapper");
@@ -85,16 +167,16 @@
             var height = window.innerHeight + duration;
             wrapper.style.height = height + "px";
             introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
-            bandsWrapper.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
+            bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2 ) + "px";
 
             window.addEventListener('resize', function() {
                 height = window.innerHeight + duration;
                 wrapper.style.height = height + "px";
                 introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
-                bandsWrapper.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
+                bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2 ) + "px";
             });
             window.addEventListener('scroll', function() {
-                var progress =  window.scrollY  / (wrapper.offsetHeight-window.innerHeight);
+                var progress =  window.scrollY  / (wrapper.offsetHeight);
                 bandOne.style.left =  progress * window.innerWidth + "px";
                 bandTwo.style.left =  "-" + progress * window.innerWidth + "px";
                 bandThree.style.left =  progress * window.innerWidth + "px";

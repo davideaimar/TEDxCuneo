@@ -7,7 +7,18 @@ module.exports = {
       image{
         title
         url
-      }`,
+      }
+    }`,
+  "SPEAKER_FRAGMENT": `
+    fragment SpeakerFields on Speaker{
+      name
+      surname
+      job
+      image{
+        title
+        url
+      }
+    }`,
   "LANDING_PAGE_FIELDS": `
     introText
     introSecondaryText
@@ -32,11 +43,28 @@ module.exports = {
     }`,
   "HOME_PAGE_FIELDS": `
     introText
+    initialDescription{
+      text{
+        json
+      }
+    }
     newsletterForm{
       title
       buttonText
       privacyPage{
         slug
+      }
+    }
+    speakersTitle
+    speakersCollection{
+      items{
+        name
+        surname
+        job
+        image{
+          url
+          title
+        }
       }
     }`,
   "TED_PAGE_FIELDS": `
