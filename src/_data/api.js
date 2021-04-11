@@ -34,5 +34,25 @@ module.exports = {
       .catch(console.error);
     
     return homepage;
+  },
+
+  fetchTedPage: async function(content_id){
+    const query = `
+      query{
+        tedPage(id: "${content_id}"){
+          ${constants.TED_PAGE_FIELDS}
+        }
+      }
+    `
+
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response.data.homePage)
+
+        return response.data.tedPage
+      })
+      .catch(console.error);
+    
+    return page;
   }
 };

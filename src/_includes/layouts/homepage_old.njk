@@ -1,34 +1,15 @@
 {# Uncomment for logging page fields avaliable #}
 {# {{ d | log }} #}
 
-{% block head %}
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />    
-{% endblock %}
+{% include "header.njk" %}
 
-<div>
-    <section id="intro-wrapper" class="mb-32">
+<div data-scroll-container>
 
-        <div id="bands-wrapper" class="overflow-hidden absolute z-10 pb-20 pt-28 w-screen">
-            <div class="direction-block-item -one" id="band-one">
-                <span>
-                    la prima edizione di tedxcuneo
-                </span>
-            </div>
-            <div class="direction-block-item -two" id="band-two">
-                <span>
-                    15 maggio 2020 - evento in streaming
-                </span>
-            </div>
-            <div class="direction-block-item -three" id="band-three">
-                <span>
-                    festinalente - ad ognuno il suo tempo
-                </span>
-            </div>
-        </div>
+    <section data-scroll-section id="scroll-direction" class="relative">
 
-        <div id="intro-text" class="container sticky">
+        <div data-scroll data-scroll-sticky data-scroll-target="#scroll-direction" class="container pt-32">
 
-            <svg class="w-96 m-auto mb-8 max-w-full" viewBox="0 0 429 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-96 m-auto mb-8" viewBox="0 0 429 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M109.366 92.2275C112.224 92.2275 113.833 90.7653 114.475 89.4619H114.61V91.8421H117.896V80.281C117.896 75.2146 113.935 74.2058 111.189 74.2058C108.061 74.2058 105.18 75.4753 104.055 78.6489L107.217 79.3743C107.712 78.1388 108.972 76.9487 111.234 76.9487C113.406 76.9487 114.52 78.0935 114.52 80.0657V80.145C114.52 81.3805 113.26 81.3578 110.154 81.7205C106.879 82.1059 103.526 82.9673 103.526 86.923C103.526 90.346 106.08 92.2275 109.366 92.2275ZM110.098 89.5072C108.196 89.5072 106.823 88.6458 106.823 86.9683C106.823 85.1548 108.421 84.5088 110.368 84.2481C111.459 84.1007 114.047 83.806 114.531 83.3187V85.5629C114.531 87.6257 112.899 89.5072 110.098 89.5072Z" fill="white"/>
                 <path d="M136.271 92.1935C141.144 92.1935 144.328 88.6005 144.328 83.2166C144.328 77.7988 141.144 74.2058 136.271 74.2058C131.399 74.2058 128.215 77.7988 128.215 83.2166C128.215 88.6005 131.399 92.1935 136.271 92.1935ZM136.283 89.3485C133.098 89.3485 131.613 86.549 131.613 83.2053C131.613 79.873 133.098 77.0394 136.283 77.0394C139.444 77.0394 140.93 79.873 140.93 83.2053C140.93 86.549 139.444 89.3485 136.283 89.3485Z" fill="white"/>
                 <path d="M154.063 98.7334C158.462 98.7334 161.861 96.7046 161.861 92.2275V74.4325H158.564V77.2548H158.316C157.72 76.178 156.527 74.2058 153.309 74.2058C149.134 74.2058 146.062 77.5268 146.062 83.0693C146.062 88.6231 149.202 91.5814 153.286 91.5814C156.459 91.5814 157.686 89.7793 158.294 88.6685H158.507V92.0915C158.507 94.8231 156.651 96.0018 154.096 96.0018C151.295 96.0018 150.203 94.585 149.607 93.5876L146.715 94.7891C147.626 96.9199 149.933 98.7334 154.063 98.7334ZM154.029 88.7705C151.025 88.7705 149.46 86.4469 149.46 83.024C149.46 79.6803 150.991 77.0847 154.029 77.0847C156.966 77.0847 158.541 79.499 158.541 83.024C158.541 86.617 156.932 88.7705 154.029 88.7705Z" fill="white"/>
@@ -62,162 +43,61 @@
 
             <h2 class="text-center mb-6">15.05.2021 - @VARCO (evento online)</h2>
 
-            <h3 class="text-center pb-10"><a href="httpS://eventbrite.com" target="_blank" rel="noopener noreferrer">Ottieni il biglietto →</a></h3>
-        
+            <h3 class="text-center"><a href="http://eventbrite.com" target="_blank" rel="noopener noreferrer">Ottieni il biglietto →</a></h3>
+
+            <div class="h-20 md:h-36"></div>
         </div>
 
-        
+        <div id="direction" class="absolute left-0 right-0">
+            <div class="direction-block-item -one">
+                <span data-scroll data-scroll-direction="horizontal" data-scroll-speed="30" data-scroll-target="#direction" data-scroll-position="left">
+                    {# TEDxCuneo #}
+                </span>
+            </div>
+            <div class="direction-block-item -two">
+                <span data-scroll data-scroll-direction="horizontal" data-scroll-speed="-30" data-scroll-target="#direction" data-scroll-position="left">
+                    {# La prima edizione #}
+                </span>
+            </div>
+            <div class="direction-block-item -three">
+                <span data-scroll data-scroll-direction="horizontal" data-scroll-speed="30" data-scroll-target="#direction" data-scroll-position="left">
+                    {# festinalente #}
+                </span>
+            </div>
+        </div>
 
     </section>
 
-    <div class=" overflow-x-hidden">
-        <div class="container relative landing-map-new">
+    <section data-scroll-section>
 
-        <section class="grid grid-cols-1 mb-32 gap-y-24 md:mb-44 lg:grid-cols-2 lg:gap-x-32">
-            <h1 class="max-w-615">{{ d.introText }}</h1>
-            <div class="max-w-400">
-                {% documentToHtmlString d.initialDescription.text.json %}
-            </div>
-        </section>
+        <div class="container">
+            {% set form=d.newsletterForm %}
+            {% set class="mb-52" %}
+            {% include "newsletter.njk" %}
 
-        {% set form=d.newsletterForm %}
-        {% set class="mb-32 md:mb-44" %}
-        {% include "newsletter.njk" %}
-
-        <section class="mb-32 md:mb-44">
-            <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
-                <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
-                <a class="underline text-decoration-tedRed" href="#"><h2>Scopri tutti →</h2></a>
-            </div>
-            
-            <div x-data="{swiper: null, index: 0}"
-                x-init="swiper = initSwiper($refs)"
-                class="relative w-full mx-auto flex flex-col"
-                >
-
-                <div class="swiper-container w-full mb-12" x-ref="container">
-                    <div class="swiper-wrapper">
-                        {% for speaker in d.speakersCollection.items %}
-                            <div class="swiper-slide">
-                                <div class="flex flex-col shadow overflow-hidden">
-                                <div class="flex-shrink-0 mb-6">
-                                    <img class="h-48 w-full object-cover" src="{{ speaker.image.url }}?w=310&h=240&fit=thumb&q=60&fm=jpg" alt="{{ speaker.image.title }}">
-                                </div>
-                                <h3 class="mb-2">{{ speaker.name }}<br/>{{ speaker.surname }}</h3>
-                                <p> {{ speaker.job }}</p>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        
-                    </div>
-                </div>
-
-                <div class="flex justify-center items-center">
-                    <div class="flex items-center">
-                        <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
-                            <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
-                            </svg>
-                        </button>
-                    </div>
-                    {# <span :class="{ 'border-b-2 font-bold': swiper.activeIndex < 2 }" class="border-tedRed mr-2 ml-6 cursor-pointer" @click="{ swiper.slideTo(0); index=0; }">1</span>
-                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 2 }" class="border-tedRed mx-2 md:ml-2 md:mr-6 cursor-pointer" @click="{ swiper.slideTo(2); index=2; }">2</span>
-                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 4 }" class="border-tedRed mx-2 cursor-pointer md:hidden" @click="{ swiper.slideTo(4); index=4; }">3</span>
-                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 6 }" class="border-tedRed ml-2 mr-6 cursor-pointer md:hidden" @click="{ swiper.slideTo(6); index=6; }">4</span> #}
-                    <div class="flex items-center">
-                        <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
-                                class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
-                            <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
-                            </svg>
-
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background-color: #1C1C1C;" class="mb-32 md:mb-44">
-            <h2 class="text-center max-w-615 mx-auto mb-16 pt-12 md:mb-20">Accreditati per festinalente, la prima edizione di TEDxCuneo</h2>
-            <a href="#" class="block text-center underline text-decoration-tedRed pb-12">
-                <h1>Vai ai biglietti →</h1>
-            </a>
-        </section>
-
-        <section class="grid grid-cols-1 gap-y-12 mb-32 md:mb-36 md:grid-cols-2 md:gap-x-10">
-            <picture>
-                <source type="image/webp" media="(min-width: 700px)" srcset="">
-                <source type="image/webp" media="(max-width: 699px)" srcset="">
-                <source type="image/jpeg" media="(min-width: 700px)" srcset="">
-                <source type="image/jpeg" media="(max-width: 699px)" srcset="">
-                <img class="object-cover" src="https://images.ctfassets.net/p8a2od4guo5n/5fgjKpzFsG85Q5IqYHmdGM/4e62558fca063b26082f9eb1988ae0d3/pexels-mentatdgt-1138903.jpg?w=1200&q=60&fm=jpg" alt="alt"/>
-            </picture>
-
-            <div class="flex flex-col" style="max-width: 440px;">
-
-                <h1 class="mb-8">TED & TEDx</h1>
-                <p class="mb-8">Nello spirito di “Ideas Worth Spreading” nasce TEDx, una serie di eventi locali organizzati  in modo indipendente sotto licenza concessa da TED. Tali eventi permettono di diffondere e promuovere l’esperienza TED in tutto il mondo, tra culture e comunità diverse.</p>
-                <p><a class="underline text-decoration-tedRed" href="#">Scopri di più →</a></p>
-            </div>
+            <div class="h-20 md:h-36"></div>
         
-        </section>
+        </div>
 
-    </div>
-    
-    </div>
-</div>
+        {% include "footer.njk" %}
 
-{% block bottom %}
-    <script src="/assets/js/swiper.min.js"></script>
+    </section>
+	
+
+    <script src="/assets/js/locomotive.min.js"></script>
     <script>
-        // speakers slider
-        function initSwiper(refs){
-            swiper = new Swiper(refs.container, {
-                loop: false,
-                slidesPerView: 2,
-                spaceBetween: 40,
-            
-                breakpoints: {
-                    1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 60,
-                    },
-                },
-            });
-            swiper.on('transitionEnd', function() {
-                index=swiper.realIndex;
-            });
+    window.onload = function () {
+        var scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: false,
+            smartphone: {
+                smooth: false
+            },
+            tablet: {
+                smooth: false
+            }
+        });
+    };
+</script>
 
-            return swiper;
-        }
-
-        //intro animation
-        var duration = 100;
-        
-        (function() {
-            var wrapper = document.getElementById("intro-wrapper");
-            var bandsWrapper = document.getElementById("bands-wrapper");
-            var introText = document.getElementById("intro-text");
-            var bandOne = document.getElementById("band-one");
-            var bandTwo = document.getElementById("band-two");
-            var bandThree = document.getElementById("band-three");
-            var height = window.innerHeight + duration;
-            wrapper.style.height = height + "px";
-            introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
-            bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2 ) + "px";
-
-            window.addEventListener('resize', function() {
-                height = window.innerHeight + duration;
-                wrapper.style.height = height + "px";
-                introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
-                bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2 ) + "px";
-            });
-            window.addEventListener('scroll', function() {
-                var progress =  window.scrollY  / (wrapper.offsetHeight);
-                bandOne.style.left =  progress * window.innerWidth + "px";
-                bandTwo.style.left =  "-" + progress * window.innerWidth + "px";
-                bandThree.style.left =  progress * window.innerWidth + "px";
-            });
-        })();
-    </script>
-{% endblock %}
+</div>

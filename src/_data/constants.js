@@ -42,10 +42,19 @@ module.exports = {
       }
     }`,
   "HOME_PAGE_FIELDS": `
+    subtitle
+    vimeoUrl
     introText
     initialDescription{
       text{
         json
+      }
+    }
+    textBlocksCollection{
+      items{
+        text{
+          json
+        }
       }
     }
     newsletterForm{
@@ -66,9 +75,41 @@ module.exports = {
           title
         }
       }
+    }
+    tedBlock{
+      image{
+        url
+        title
+      }
+      text{
+        json
+      }
     }`,
   "TED_PAGE_FIELDS": `
-    title`,
+    pageName
+    title
+    textBlocksCollection{
+      items{
+        image{
+          url
+          title
+        }
+        text{
+          json
+        }
+      }
+    }`,
+  "EVENT_PAGE_FIELDS": `
+    pageName
+    title
+    vimeoUrl
+    textBlocksCollection{
+      items{
+        text{
+          json
+        }
+      }
+    }`,
   "CONTACTS_PAGE_FIELDS": `
     title`,
   "PARTNERSHIP_PAGE_FIELDS": `

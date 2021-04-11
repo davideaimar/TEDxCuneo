@@ -1,5 +1,5 @@
-<header class="header w-full fixed top-0 z-50 bg-tedBlack">
-    <div class="container flex py-4 justify-between" x-data="{ isOpen: false }">
+<header class="header w-full fixed top-0 bg-tedBlack" x-data="{ isOpen: false }" :class="{ 'z-50': isOpen, 'z-30': ! isOpen }">
+    <div class="container flex py-4 justify-between" >
         <div class="flex-0 w-52 lg:mr-4">
             <a href="/">
                 <img src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
@@ -17,7 +17,7 @@
                 <a target="_blank" href="{{ settings.facebook }}">Facebook↗</a>
             </p>
         </div> #}
-        <nav class="bg-tedBlack flex flex-col justify-end z-40 fixed top-16 right-0 left-0 bottom-0 p-2 lg:block lg:p-0 lg:flex-1 lg:relative lg:top-auto lg:self-end"
+        <nav class="bg-tedBlack flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 lg:block lg:p-0 lg:flex-1 lg:relative lg:top-auto lg:self-end"
              :class="{ 'block': isOpen, 'hidden lg:block': !isOpen }"
         >
             <ul class="flex flex-col px-2 mb-8 md:px-12 lg:flex-row lg:justify-end lg:px-0 lg:mb-0"

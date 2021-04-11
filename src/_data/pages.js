@@ -32,10 +32,15 @@ const pages_query = `query {
             }
           }
           ...on TedPage{
-            ${constants.TED_PAGE_FIELDS}
+            sys{
+              id
+            }
           }
           ...on ContactsPage{
             ${constants.CONTACTS_PAGE_FIELDS}
+          }
+          ...on EventPage{
+            ${constants.EVENT_PAGE_FIELDS}
           }
         }
       }
@@ -65,13 +70,17 @@ module.exports = async function() {
           break;
         case "HomePage":
           page.content = await api.fetchHomepage(page.content.sys.id);
-          page.layout = "layouts/homepage_new.njk"
+          page.layout = "layouts/homepage.njk"
           break;
         case "TedPage":
+          page.content = await api.fetchTedPage(page.content.sys.id);
           page.layout = "layouts/ted.njk"
           break;
         case "ContactsPage":
           page.layout = "layouts/contacts.njk"
+          break;
+        case "EventPage":
+          page.layout = "layouts/event.njk"
           break;
         default:
           page.layout = "base.njk"

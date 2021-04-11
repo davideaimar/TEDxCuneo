@@ -7,13 +7,20 @@
   <body>
 
 
-    {% if page_data.layout=="layouts/homepage.njk" %}
-      {{ content | safe }} 
+    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/homepage_new.njk"  %}
+      <div class="relative">
+        <div class="flex flex-col justify-between min-h-screen pt-24">
+          <main class="flex-1 flex-grow">
+            {{ content | safe }} 
+          </main>
+          {% include "footer.njk" %}
+        </div>
+      </div>
     {% else %}
 
-      <div>
+      <div class="relative">
         {% include "header.njk" %}
-        <div class="flex flex-col justify-between min-h-screen mt-24">
+        <div class="flex flex-col justify-between min-h-screen pt-24">
           <main class="flex-1 flex-grow">
             {{ content | safe }} 
           </main>

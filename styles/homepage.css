@@ -1,9 +1,6 @@
 #intro-wrapper{
   min-height: 100vh;
 }
-#bands-wrapper{
-  left: -20px;
-}
 
 .landing-map-new::before {
   content: " ";
@@ -20,38 +17,32 @@
 }
 
 .direction-block-item{
-  @apply relative block bg-tedRed;
+  @apply relative block bg-tedRed text-center whitespace-nowrap overflow-x-hidden;
+  padding: 16px;
   font-size: 46px;
-  white-space: nowrap;
-  line-height: 68px;
-  overflow-x: hidden;
-  & span{
-    @apply block bg-tedRed whitespace-nowrap p-4 text-center;
-    min-height: 100px;
-    width: 110vw;
-    box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
-    z-index: 60;
-  }
+  width: 110vw;
+  box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
+  z-index: 40;
+  overflow-y: hidden;
 }
 
 .-one {
+  left: -10px;
   transform: rotate(7.03deg);
 }
 .-two {
+  top: -2vw;
+  left: -10px;
   transform: rotate(-9.54deg);
 }
 .-three {
+  left: -10px;
   transform: rotate(3.5deg);
 }
 
 @screen md{
   .direction-block-item{
-    font-size: 64px;
-    line-height: 68px;
-    & span{
-      min-height: 120px;
-      width: 110vw;
-    }
+    padding: 24px 0;
   }
 
   .landing-map-new::before {

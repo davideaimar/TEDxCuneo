@@ -2,5 +2,24 @@
 {# {{ d | log }} #}
 
 <div class="container">
-	<h1 class=" mt-9 mb-20 max-w-615 md:mb-28 md:mt-16">{{ d.title }}</h1>
+	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
+	<h1 class=" mb-20 max-w-615 md:mb-28 ">{{ d.title }}</h1>
+
+	<section>
+		{% for item in d.textBlocksCollection.items %}
+			<div class="grid grid-cols-1 mb-28 md:grid-cols-2 md:gap-x-16 lg:gap-x-32">
+
+				<picture>
+					<source type="image/webp" media="(min-width: 700px)" srcset="">
+					<source type="image/webp" media="(max-width: 699px)" srcset="">
+					<source type="image/jpeg" media="(min-width: 700px)" srcset="">
+					<source type="image/jpeg" media="(max-width: 699px)" srcset="">
+					<img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ item.image.url }}?w=1200&q=60&fm=jpg" alt="alt"/>
+				</picture>
+
+				<div class="faq-block {{ 'md:order-first' if loop.index%2!=0 }} ">{% documentToHtmlString item.text.json %}</div>
+
+			</div>
+		{% endfor %}
+	</section>
 </div>
