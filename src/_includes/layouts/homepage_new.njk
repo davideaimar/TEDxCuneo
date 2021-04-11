@@ -70,9 +70,10 @@
 
     </section>
 
-    <div class="container">
+    <div class=" overflow-x-hidden">
+        <div class="container relative landing-map-new">
 
-        <section class="grid grid-cols-1 mb-32 gap-y-24 md:mb-60 lg:grid-cols-2 lg:gap-x-32">
+        <section class="grid grid-cols-1 mb-32 gap-y-24 md:mb-44 lg:grid-cols-2 lg:gap-x-32">
             <h1 class="max-w-615">{{ d.introText }}</h1>
             <div class="max-w-400">
                 {% documentToHtmlString d.initialDescription.text.json %}
@@ -80,34 +81,24 @@
         </section>
 
         {% set form=d.newsletterForm %}
-        {% set class="mb-32 md:mb-60" %}
+        {% set class="mb-32 md:mb-44" %}
         {% include "newsletter.njk" %}
 
-        <section class="mb-32 md:mb-60">
-            <h1 class="mb-8 md:mb-16">Speakers</h1>
+        <section class="mb-32 md:mb-44">
+            <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
+                <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
+                <a class="underline text-decoration-tedRed" href="#"><h2>Scopri tutti →</h2></a>
+            </div>
+            
             <div x-data="{swiper: null, index: 0}"
-                x-init="swiper = new Swiper($refs.container, {
-                            loop: false,
-                            slidesPerView: 2,
-                            spaceBetween: 0,
-                        
-                            breakpoints: {
-                                1024: {
-                                slidesPerView: 4,
-                                spaceBetween: 0,
-                                },
-                            },
-                        });
-                        swiper.on('transitionEnd', function() {
-                            index=swiper.realIndex;
-                        });"
+                x-init="swiper = initSwiper($refs)"
                 class="relative w-full mx-auto flex flex-col"
                 >
 
-                <div class="swiper-container w-full mb-16" x-ref="container">
+                <div class="swiper-container w-full mb-12" x-ref="container">
                     <div class="swiper-wrapper">
                         {% for speaker in d.speakersCollection.items %}
-                            <div class="swiper-slide pr-16">
+                            <div class="swiper-slide">
                                 <div class="flex flex-col shadow overflow-hidden">
                                 <div class="flex-shrink-0 mb-6">
                                     <img class="h-48 w-full object-cover" src="{{ speaker.image.url }}?w=310&h=240&fit=thumb&q=60&fm=jpg" alt="{{ speaker.image.title }}">
@@ -123,18 +114,18 @@
 
                 <div class="flex justify-center items-center">
                     <div class="flex items-center">
-                        <button @click="{ swiper.slideTo(0); index=0; }" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                        <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
                             <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
                             </svg>
                         </button>
                     </div>
-                    <span :class="{ 'border-b-2 font-bold': swiper.activeIndex < 2 }" class="border-tedRed mr-2 ml-6 cursor-pointer" @click="{ swiper.slideTo(0); index=0; }">1</span>
+                    {# <span :class="{ 'border-b-2 font-bold': swiper.activeIndex < 2 }" class="border-tedRed mr-2 ml-6 cursor-pointer" @click="{ swiper.slideTo(0); index=0; }">1</span>
                     <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 2 }" class="border-tedRed mx-2 md:ml-2 md:mr-6 cursor-pointer" @click="{ swiper.slideTo(2); index=2; }">2</span>
                     <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 4 }" class="border-tedRed mx-2 cursor-pointer md:hidden" @click="{ swiper.slideTo(4); index=4; }">3</span>
-                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 6 }" class="border-tedRed ml-2 mr-6 cursor-pointer md:hidden" @click="{ swiper.slideTo(6); index=6; }">4</span>
+                    <span  :class="{ 'border-b-2 font-bold': swiper.activeIndex >= 6 }" class="border-tedRed ml-2 mr-6 cursor-pointer md:hidden" @click="{ swiper.slideTo(6); index=6; }">4</span> #}
                     <div class="flex items-center">
-                        <button @click="{ swiper.slideTo(index ); index=8; }" 
+                        <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
                                 class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
                             <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
@@ -146,15 +137,61 @@
             </div>
         </section>
 
+        <section style="background-color: #1C1C1C;" class="mb-32 md:mb-44">
+            <h2 class="text-center max-w-615 mx-auto mb-16 pt-12 md:mb-20">Accreditati per festinalente, la prima edizione di TEDxCuneo</h2>
+            <a href="#" class="block text-center underline text-decoration-tedRed pb-12">
+                <h1>Vai ai biglietti →</h1>
+            </a>
+        </section>
 
+        <section class="grid grid-cols-1 gap-y-12 mb-32 md:mb-36 md:grid-cols-2 md:gap-x-10">
+            <picture>
+                <source type="image/webp" media="(min-width: 700px)" srcset="">
+                <source type="image/webp" media="(max-width: 699px)" srcset="">
+                <source type="image/jpeg" media="(min-width: 700px)" srcset="">
+                <source type="image/jpeg" media="(max-width: 699px)" srcset="">
+                <img class="object-cover" src="https://images.ctfassets.net/p8a2od4guo5n/5fgjKpzFsG85Q5IqYHmdGM/4e62558fca063b26082f9eb1988ae0d3/pexels-mentatdgt-1138903.jpg?w=1200&q=60&fm=jpg" alt="alt"/>
+            </picture>
 
+            <div class="flex flex-col" style="max-width: 440px;">
+
+                <h1 class="mb-8">TED & TEDx</h1>
+                <p class="mb-8">Nello spirito di “Ideas Worth Spreading” nasce TEDx, una serie di eventi locali organizzati  in modo indipendente sotto licenza concessa da TED. Tali eventi permettono di diffondere e promuovere l’esperienza TED in tutto il mondo, tra culture e comunità diverse.</p>
+                <p><a class="underline text-decoration-tedRed" href="#">Scopri di più →</a></p>
+            </div>
+        
+        </section>
+
+    </div>
+    
     </div>
 </div>
 
 {% block bottom %}
     <script src="/assets/js/swiper.min.js"></script>
     <script>
+        // speakers slider
+        function initSwiper(refs){
+            swiper = new Swiper(refs.container, {
+                loop: false,
+                slidesPerView: 2,
+                spaceBetween: 40,
+            
+                breakpoints: {
+                    1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 60,
+                    },
+                },
+            });
+            swiper.on('transitionEnd', function() {
+                index=swiper.realIndex;
+            });
 
+            return swiper;
+        }
+
+        //intro animation
         var duration = 100;
         
         (function() {

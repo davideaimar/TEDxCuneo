@@ -1,20 +1,24 @@
 <footer class="container flex-grow-0 py-4 ">
     <div class="border-t border-tedWhite grid grid-cols-1 py-4 gap-y-5 md:gap-x-10 md:grid-cols-2 md:py-7">
-        <div class="">
-            <p class="mb-4 md:mb-6">{{ footer.site_name }}</p>
-            <p> 
-                {# {% if footer.address_url and footer.address_url.length > 0 %}
-                    <a target="_blank" href="{{ footer.address_url }}">{{ footer.address_text | nl2br | safe }}</a>
-                {% else %} #}
-                    {{ footer.address_text | nl2br | safe }}
-                {# {% endif %} #}
-                <br/>
+        <div class="flex flex-col justify-between">
+            <div>
+                <p class="mb-4 md:mb-6">©&nbsp;{{ helpers.currentYear() }}&nbsp;{{ footer.site_name }}</p>
+                <p class="mb-4 md:mb-6" style="max-width: 350px;">This independent TED event is operated under license from TED.</p>                
+            </div>
+            <div>
+                <p class="mb-4 md:mb-6"><a href="{{ setting.instagram }}" target="_blank">Instagram ↗</a></p>
+                <p class="mb-4 md:mb-6"><a href="{{ setting.facebook }}" target="_blank">Facebook ↗</a></p>
+                <p class=""><a href="{{ setting.linkedin }}" target="_blank">Linkedin ↗</a></p>
+            </div>
+        </div>
+        <div class="flex flex-col justify-between">
+            <img class="hidden w-52 mb-4 md:mb-6 md:block" src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
+            <p class="mb-4 md:mb-6"><a class="text-decoration-tedRed font-bold" href="mailto:{{ footer.email }}">{{ footer.email }}</a></p>
+            <p class="mb-4 md:mb-6">  
+                {{ footer.address_text | nl2br | safe }}
                 <br/>
                 {{ footer.cf }}
             </p>
-        </div>
-        <div class="flex flex-col justify-between">
-            <p class="mb-4 md:mb-6"><a href="mailto:{{ footer.email }}">{{ footer.email }}</a></p>
             <div>
                 {% for link in footer.links %}
                     <p> 

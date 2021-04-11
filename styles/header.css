@@ -1,0 +1,8 @@
+/* if backdrop support: very transparent and blurred */
+/* @supports ((-webkit-backdrop-filter: blur(7px);) or (backdrop-filter: blur(7px);) { */
+    /* .header {
+        background-color: rgba(0.054, 0.054, 0.054, 0.7);
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+    } */
+/* } */

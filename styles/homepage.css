@@ -5,6 +5,20 @@
   left: -20px;
 }
 
+.landing-map-new::before {
+  content: " ";
+  width: 719px;
+  height: 834px;
+  position: absolute;
+  z-index: -1;
+  top: 0px !important;
+  right: -200px;
+  background: url("/assets/img/mappa_cuneo_empty.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 .direction-block-item{
   @apply relative block bg-tedRed;
   font-size: 46px;
@@ -38,5 +52,11 @@
       min-height: 120px;
       width: 110vw;
     }
+  }
+
+  .landing-map-new::before {
+    width: 1437px;
+    height: 1668px;
+    right: -500px;
   }
 }
