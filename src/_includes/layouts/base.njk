@@ -3,11 +3,14 @@
   <head>
     {% include "head.njk" %}
     {% block head %}{% endblock %}
+    {% if page_data.layout=="layouts/homepage.njk" %}
+      <link rel="stylesheet" href="/assets/css/swiper.min.css" />  
+    {% endif %}
   </head>
   <body>
 
-
-    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/homepage_new.njk"  %}
+    {# different layout structure for the homepage #}
+    {% if page_data.layout=="layouts/homepage.njk" %}
       <div class="relative">
         <div class="flex flex-col justify-between min-h-screen pt-24">
           <main class="flex-1 flex-grow">
@@ -32,7 +35,8 @@
     
 
     {% block bottom %}{% endblock %}
-    
+    {# Lib for locking scroll in a right way #}
+    <script src="/assets/js/scroll-lock.js"></script>    
     {# <!-- Global site tag (gtag.js) - Google Analytics --> #}
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
     <script>

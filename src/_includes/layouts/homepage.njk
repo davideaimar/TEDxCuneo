@@ -1,10 +1,6 @@
 {# Uncomment for logging page fields avaliable #}
 {# {{ d | log }} #}
 
-{% block head %}
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />    
-{% endblock %}
-
 <div>
     <section id="intro-wrapper" class="mb-32">
 
@@ -75,14 +71,14 @@
         <section class="grid grid-cols-1 mb-32 gap-y-24 md:mb-44 lg:grid-cols-2 lg:gap-x-32">
             <h1 class="max-w-615">{{ d.introText }}</h1>
             <div class="faq-block max-w-400">
-                {% documentToHtmlString d.initialDescription.text.json %}
+                {% documentToHtmlStringWithLinks d.initialDescription.text %}
             </div>
         </section>
 
         <section class="grid grid-cols-1 mb-32 gap-y-24 md:mb-44 lg:grid-cols-2 lg:gap-x-32">
             {% for item in d.textBlocksCollection.items %}
                 <div class="faq-block max-w-sm">
-                    {% documentToHtmlString item.text.json %}
+                    {% documentToHtmlStringWithLinks item.text %}
                 </div>
             {% endfor %}
         </section>
@@ -172,7 +168,7 @@
 
             <div class="faq-block" style="max-width: 440px;">
 
-                {% documentToHtmlString d.tedBlock.text.json %}
+                {% documentToHtmlStringWithLinks d.tedBlock.text %}
 
             </div>
         
@@ -183,60 +179,58 @@
     </div>
 </div>
 
-{% block bottom %}
-    <script src="/assets/js/swiper.min.js"></script>
-    <script>
-        // speakers slider
-        function initSwiper(refs){
-            swiper = new Swiper(refs.container, {
-                loop: false,
-                slidesPerView: 2,
-                spaceBetween: 40,
-            
-                breakpoints: {
-                    1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 60,
-                    },
-                },
-            });
-            swiper.on('transitionEnd', function() {
-                index=swiper.realIndex;
-            });
-
-            return swiper;
-        }
-
-        //intro animation
-        var duration = 100;
+<script src="/assets/js/swiper.min.js"></script>
+<script>
+    // speakers slider
+    function initSwiper(refs){
+        swiper = new Swiper(refs.container, {
+            loop: false,
+            slidesPerView: 2,
+            spaceBetween: 40,
         
-        (function() {
-            var wrapper = document.getElementById("intro-wrapper");
-            var bandsWrapper = document.getElementById("bands-wrapper");
-            var introText = document.getElementById("intro-text");
-            var bandOne = document.getElementById("band-one");
-            var bandTwo = document.getElementById("band-two");
-            var bandThree = document.getElementById("band-three");
-            var height = window.innerHeight + duration;
-            wrapper.style.height = height + "px";
-            introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
-            bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2 ) + "px";
+            breakpoints: {
+                1024: {
+                slidesPerView: 4,
+                spaceBetween: 60,
+                },
+            },
+        });
+        swiper.on('transitionEnd', function() {
+            index=swiper.realIndex;
+        });
 
-            window.addEventListener('resize', function() {
-                // prevent iOS safari bug
-                if(Math.abs(window.innerHeight + duration - height) > 120){
-                    height = window.innerHeight + duration;
-                    wrapper.style.height = height + "px";
-                    introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
-                    bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2  ) + "px";
-                }
-            });
-            window.addEventListener('scroll', function() {
-                var progress =  window.scrollY  / (wrapper.offsetHeight);
-                bandOne.style.left =  progress * window.innerWidth - 10 +"px";
-                bandTwo.style.left =  "-" + progress * window.innerWidth + 10 + "px";
-                bandThree.style.left =  progress * window.innerWidth - 10 + "px";
-            });
-        })();
-    </script>
-{% endblock %}
+        return swiper;
+    }
+
+    //intro animation
+    var duration = 100;
+    
+    (function() {
+        var wrapper = document.getElementById("intro-wrapper");
+        var bandsWrapper = document.getElementById("bands-wrapper");
+        var introText = document.getElementById("intro-text");
+        var bandOne = document.getElementById("band-one");
+        var bandTwo = document.getElementById("band-two");
+        var bandThree = document.getElementById("band-three");
+        var height = window.innerHeight + duration;
+        wrapper.style.height = height + "px";
+        introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
+        bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2 ) + "px";
+
+        window.addEventListener('resize', function() {
+            // prevent iOS safari bug
+            if(Math.abs(window.innerHeight + duration - height) > 120){
+                height = window.innerHeight + duration;
+                wrapper.style.height = height + "px";
+                introText.style.top = (window.innerHeight/2 - introText.offsetHeight/2 ) + "px";
+                bandsWrapper.style.top = (window.innerHeight/2 - bandsWrapper.offsetHeight/2  ) + "px";
+            }
+        });
+        window.addEventListener('scroll', function() {
+            var progress =  window.scrollY  / (wrapper.offsetHeight);
+            bandOne.style.left =  progress * window.innerWidth - 10 +"px";
+            bandTwo.style.left =  "-" + progress * window.innerWidth + 10 + "px";
+            bandThree.style.left =  progress * window.innerWidth - 10 + "px";
+        });
+    })();
+</script>

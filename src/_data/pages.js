@@ -3,7 +3,7 @@ const api = require('./api')
 const constants = require('./constants')
 
 const pages_query = `query {
-    pageCollection{
+    pageCollection(limit: 100){
       items{
         slug
         seo{
@@ -24,7 +24,9 @@ const pages_query = `query {
             ${constants.NEWSLETTER_SUCCESS_PAGE}
           }
           ...on PartnershipPage{
-            ${constants.PARTNERSHIP_PAGE_FIELDS}
+            sys{
+              id
+            }
           }
           ...on HomePage{
             sys{
@@ -40,7 +42,9 @@ const pages_query = `query {
             ${constants.CONTACTS_PAGE_FIELDS}
           }
           ...on EventPage{
-            ${constants.EVENT_PAGE_FIELDS}
+            sys{
+              id
+            }
           }
         }
       }
@@ -66,6 +70,7 @@ module.exports = async function() {
           page.layout = "layouts/newsletterSuccess.njk"
           break;
         case "PartnershipPage":
+          page.content = await api.fetchPartnershipPage(page.content.sys.id);
           page.layout = "layouts/partnership.njk"
           break;
         case "HomePage":
@@ -80,6 +85,7 @@ module.exports = async function() {
           page.layout = "layouts/contacts.njk"
           break;
         case "EventPage":
+          page.content = await api.fetchEventPage(page.content.sys.id);
           page.layout = "layouts/event.njk"
           break;
         default:

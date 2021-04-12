@@ -10,7 +10,7 @@
 	<div class="grid grid-cols-1 gap-y-20 mb-20 md:gap-y-36 md:grid-cols-2 md:gap-x-10">
 		{% for item in d.textBlocksCollection.items %}
 			<div class="faq-block max-w-sm">
-				{% documentToHtmlString item.text.json %}
+				{% documentToHtmlStringWithLinks item.text %}
 			</div>
 		{% endfor %}
 	</div>

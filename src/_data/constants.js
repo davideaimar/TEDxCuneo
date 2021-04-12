@@ -48,12 +48,36 @@ module.exports = {
     initialDescription{
       text{
         json
+        links{
+          entries{
+            hyperlink{
+              ...on Page{
+                sys{
+                  id
+                }
+                slug
+              }
+            }
+          }
+        }
       }
     }
-    textBlocksCollection{
+    textBlocksCollection(limit: 5){
       items{
         text{
           json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -83,12 +107,24 @@ module.exports = {
       }
       text{
         json
+        links{
+          entries{
+            hyperlink{
+              ...on Page{
+                sys{
+                  id
+                }
+                slug
+              }
+            }
+          }
+        }
       }
     }`,
   "TED_PAGE_FIELDS": `
     pageName
     title
-    textBlocksCollection{
+    textBlocksCollection(limit: 4){
       items{
         image{
           url
@@ -96,6 +132,18 @@ module.exports = {
         }
         text{
           json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
         }
       }
     }`,
@@ -103,10 +151,22 @@ module.exports = {
     pageName
     title
     vimeoUrl
-    textBlocksCollection{
+    textBlocksCollection(limit: 10){
       items{
         text{
           json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
         }
       }
     }`,
@@ -122,10 +182,22 @@ module.exports = {
         slug
       }
     }
-    faqsCollection{
+    faqsCollection(limit: 6){
       items{
         text{
           json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
         }
       }
     }`,

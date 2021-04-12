@@ -3,17 +3,17 @@
         <div class="flex flex-col justify-between">
             <div>
                 <p class="mb-4 md:mb-6">©&nbsp;{{ helpers.currentYear() }}&nbsp;{{ footer.site_name }}</p>
-                <p class="mb-4 md:mb-6" style="max-width: 350px;">This independent TED event is operated under license from TED.</p>                
+                <p class="mb-4 md:mb-6">{{ footer.license | nl2br | safe }}</p>                
             </div>
             <div>
-                <p class="mb-4 md:mb-6"><a href="{{ setting.instagram }}" target="_blank">Instagram ↗</a></p>
-                <p class="mb-4 md:mb-6"><a href="{{ setting.facebook }}" target="_blank">Facebook ↗</a></p>
-                <p class=""><a href="{{ setting.linkedin }}" target="_blank">Linkedin ↗</a></p>
+                <p class="mb-4 md:mb-6"><a href="{{ settings.instagram }}" target="_blank">Instagram ↗</a></p>
+                <p class="mb-4 md:mb-6"><a href="{{ settings.facebook }}" target="_blank">Facebook ↗</a></p>
+                <p class=""><a href="{{ settings.linkedin }}" target="_blank">Linkedin ↗</a></p>
             </div>
         </div>
         <div class="flex flex-col justify-between">
             <img class="hidden w-52 mb-4 md:mb-6 md:block" src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
-            <p class="mb-4 md:mb-6"><a class="text-decoration-tedRed font-bold" href="mailto:{{ footer.email }}">{{ footer.email }}</a></p>
+            <p class="mb-4 md:mb-6"><a class="text-decoration-tedRed font-bold" href="mailto:{{ settings.email }}">{{ settings.email }}</a></p>
             <p class="mb-4 md:mb-6">  
                 {{ footer.address_text | nl2br | safe }}
                 <br/>

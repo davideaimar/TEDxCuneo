@@ -4,8 +4,8 @@ backend:
 
 media_folder: "assets/img/uploads"
 
-site_url: https://tedxcuneo.com
-display_url: https://tedxcuneo.com
+site_url: https://www.tedxcuneo.com
+display_url: https://www.tedxcuneo.com
 
 logo_url: https://tedxcuneo.netlify.app/assets/img/logo_white.svg
 
@@ -24,6 +24,9 @@ collections:
         fields:
           - label: 'Url sito'
             name: 'url'
+            widget: 'string'
+          - label: 'Email di contatto'
+            name: 'email'
             widget: 'string'
           - label: 'Url instagram'
             name: 'instagram'
@@ -46,19 +49,19 @@ collections:
         file: 'src/_data/footer.json'
         description: 'Impostazioni del footer di TEDxCuneo.com'
         fields:
-          - label: 'Nome iniziale'
+          - label: 'Nome sito'
             name: 'site_name'
             widget: 'string' 
             default: 'TEDxCuneo'
+          - label: 'Testo licenza TED'
+            name: 'license'
+            widget: 'text'
           - label: 'Indirizzo testuale'
             name: 'address_text'
             widget: 'text'
-          - label: 'URL indirizzo'
-            name: 'address_url'
-            widget: 'string'
-          - label: 'email'
-            name: 'email'
-            widget: 'string'
+          # - label: 'URL indirizzo'
+          #   name: 'address_url'
+          #   widget: 'string'
           - label: 'Links footer'
             name: 'links'
             widget: 'list'

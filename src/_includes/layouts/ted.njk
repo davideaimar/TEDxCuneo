@@ -17,7 +17,7 @@
 					<img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ item.image.url }}?w=1200&q=60&fm=jpg" alt="alt"/>
 				</picture>
 
-				<div class="faq-block {{ 'md:order-first' if loop.index%2!=0 }} ">{% documentToHtmlString item.text.json %}</div>
+				<div class="faq-block {{ 'md:order-first' if loop.index%2!=0 }} ">{% documentToHtmlStringWithLinks item.text %}</div>
 
 			</div>
 		{% endfor %}

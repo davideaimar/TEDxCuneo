@@ -7,6 +7,5 @@
 @import "tailwindcss/utilities";
 @import "./custom-utilities.css";
 
-@import "animation.css";
 @import "homepage.css";
 @import "header.css";

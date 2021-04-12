@@ -47,9 +47,47 @@ module.exports = {
 
     let page = await this.fetchGraphQL(query)
       .then(function(response){
-        // console.log(response.data.homePage)
+        // console.log(response.data.tedPage)
 
         return response.data.tedPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
+  fetchEventPage: async function(content_id){
+    const query = `
+      query{
+        eventPage(id: "${content_id}"){
+          ${constants.EVENT_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.eventPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
+  fetchPartnershipPage: async function(content_id){
+    const query = `
+      query{
+        partnershipPage(id: "${content_id}"){
+          ${constants.PARTNERSHIP_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.partnershipPage
       })
       .catch(console.error);
     
