@@ -1,22 +1,9 @@
-const constants = require("./constants");
-const fetch = require("node-fetch");
-
-async function fetchGraphQL(query) {
-    return fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-        },
-        body: JSON.stringify({ query }),
-      }
-    ).then((response) => response.json())
-  }
+const helpers = require('./helpers')
+const api = require('./api')
+const constants = require('./constants')
 
 const pages_query = `query {
-    pageCollection{
+    pageCollection(limit: 100){
       items{
         slug
         seo{
@@ -37,62 +24,78 @@ const pages_query = `query {
             ${constants.NEWSLETTER_SUCCESS_PAGE}
           }
           ...on PartnershipPage{
-            ${constants.PARTNERSHIP_PAGE_FIELDS}
+            sys{
+              id
+            }
+          }
+          ...on HomePage{
+            sys{
+              id
+            }
+          }
+          ...on TedPage{
+            sys{
+              id
+            }
+          }
+          ...on ContactsPage{
+            ${constants.CONTACTS_PAGE_FIELDS}
+          }
+          ...on EventPage{
+            sys{
+              id
+            }
           }
         }
       }
     }
   }
   
-  ${constants.SEO_FRAGMENT}
-  }`
-
-const normalizeSlug = function(slug){
-  if(!slug.startsWith("/")){
-    slug = "/" + slug;
-  }
-  if(!slug.endsWith("/")){
-    slug = slug + "/";
-  }
-  return slug;
-}
+  ${constants.SEO_FRAGMENT}`;
 
 module.exports = async function() {
 
-    let pages = fetchGraphQL(pages_query)
-    .then(function(response){
-      // console.log(response.data.pageCollection.items)
+    let pages = await api.fetchGraphQL(pages_query);
+    pages = pages.data.pageCollection.items;
+    pages = pages.map(async function(page) {
+      page.slug = helpers.normalizeSlug(page.slug);
+      switch(page.content.__typename){
+        case "PrivacyPolicy":
+          page.layout = "layouts/privacyPolicy.njk"
+          break;
+        case "LandingPage":
+          page.layout = "layouts/landingPage.njk"
+          break;
+        case "NewsletterSuccessPage":
+          page.layout = "layouts/newsletterSuccess.njk"
+          break;
+        case "PartnershipPage":
+          page.content = await api.fetchPartnershipPage(page.content.sys.id);
+          page.layout = "layouts/partnership.njk"
+          break;
+        case "HomePage":
+          page.content = await api.fetchHomepage(page.content.sys.id);
+          page.layout = "layouts/homepage.njk"
+          break;
+        case "TedPage":
+          page.content = await api.fetchTedPage(page.content.sys.id);
+          page.layout = "layouts/ted.njk"
+          break;
+        case "ContactsPage":
+          page.layout = "layouts/contacts.njk"
+          break;
+        case "EventPage":
+          page.content = await api.fetchEventPage(page.content.sys.id);
+          page.layout = "layouts/event.njk"
+          break;
+        default:
+          page.layout = "base.njk"
+      }
+      return page;
+    });
 
-      let pages = response.data.pageCollection.items;
-      pages = pages.map(page => {
-        page.slug = normalizeSlug(page.slug);
+    // pages = await Promise.all(pages)
+    // console.log(pages)
 
-        switch(page.content.__typename){
-          case "PrivacyPolicy":
-            page.layout = "layouts/privacyPolicy.njk"
-            break;
-          case "LandingPage":
-            page.layout = "layouts/landingPage.njk"
-            break;
-          case "NewsletterSuccessPage":
-            page.layout = "layouts/newsletterSuccess.njk"
-            break;
-          case "PartnershipPage":
-            page.layout = "layouts/partnership.njk"
-            break;
-          default:
-            page.layout = "base.njk"
-        }
-
-        
-        // console.log(page)
-        return page;
-      })
-
-      // console.log(pages)
-      return pages;
-    })
-    .catch(console.error);
-
-    return pages;
+    return Promise.all(pages);
   };

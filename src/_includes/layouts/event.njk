@@ -1,0 +1,17 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
+	<h1 class=" mb-20 max-w-660 md:mb-28 ">{{ d.title }}</h1>
+	<div class="w-full mb-20 relative h-0 overflow-hidden" style="padding-bottom: 42.8571%;">
+		<iframe src="{{ d.vimeoUrl }}" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<div class="grid grid-cols-1 gap-y-20 mb-20 md:gap-y-36 md:grid-cols-2 md:gap-x-10">
+		{% for item in d.textBlocksCollection.items %}
+			<div class="faq-block max-w-sm">
+				{% documentToHtmlStringWithLinks item.text %}
+			</div>
+		{% endfor %}
+	</div>
+</div>

@@ -1,0 +1,63 @@
+#intro-wrapper{
+  min-height: 100vh;
+}
+
+.landing-map-new::before {
+  content: " ";
+  width: 719px;
+  height: 834px;
+  position: absolute;
+  z-index: -1;
+  top: 0px !important;
+  right: -200px;
+  background: url("/assets/img/mappa_cuneo_empty.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.direction-block-item{
+  @apply relative block bg-tedRed text-center whitespace-nowrap overflow-x-hidden;
+  padding: 22px ;
+  font-size: 32px;
+  width: 110vw;
+  box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
+  z-index: 40;
+  overflow-y: hidden;
+}
+
+.-one {
+  left: -10px;
+  transform: rotate(12.03deg);
+}
+.-two {
+  top: -2vw;
+  left: -10px;
+  transform: rotate(-13.54deg);
+}
+.-three {
+  left: -10px;
+  transform: rotate(7deg);
+}
+
+@screen md{
+  .-one {
+    transform: rotate(7.03deg);
+  }
+  .-two {
+    transform: rotate(-9.54deg);
+  }
+  .-three {
+    transform: rotate(3.5deg);
+  }
+  .direction-block-item{
+    padding: 40px;
+    font-size: 54px;
+  }
+
+  .landing-map-new::before {
+    width: 1437px;
+    height: 1668px;
+    right: -500px;
+  }
+}

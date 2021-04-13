@@ -32,6 +32,10 @@ module.exports = {
         letterSpacing: '-0.02em',
         lineHeight: '48px',
       }],
+      'd_xl': ['28px', {
+        letterSpacing: '-0.02em',
+        lineHeight: '30px',
+      }],
       'm_base': ['18px', {
         letterSpacing: '-0.02em',
         lineHeight: '23px',
@@ -43,6 +47,10 @@ module.exports = {
       'm_2xl': ['32px', {
         letterSpacing: '-0.02em',
         lineHeight: '36px',
+      }],
+      'm_xl': ['24px', {
+        letterSpacing: '-0.02em',
+        lineHeight: '26px',
       }],
     },
     fontWeight: {

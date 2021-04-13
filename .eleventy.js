@@ -3,6 +3,8 @@ require('dotenv').config()
 const { DateTime } = require("luxon");
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 const { BLOCKS, INLINES } = require('@contentful/rich-text-types');
+const helpers = require('./src/_data/helpers');
+const { normalizeSlug } = require('./src/_data/helpers');
 
 const now = String(Date.now())
 
@@ -15,14 +17,18 @@ const options = {
   }
 };
 
-const normalizeSlug = function(slug){
-  if(!slug.startsWith("/")){
-    slug = "/" + slug;
-  }
-  if(!slug.endsWith("/")){
-    slug = slug + "/";
-  }
-  return slug;
+function optionsWithLinks(links){
+
+  let options_new = options;
+
+  options_new.renderNode[INLINES.ENTRY_HYPERLINK]= (node, next) => {
+    const link = links.entries.hyperlink.find(
+      (h) => h.sys.id === node.data.target.sys.id
+    );
+    return `<a href="${normalizeSlug(link.slug)}">${next(node.content)}</a>`;
+  };
+
+  return options_new
 }
 
 module.exports = function (eleventyConfig) {
@@ -33,7 +39,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('./src/settings/config.yml')
 
   eleventyConfig.addPassthroughCopy({
-    './_tmp/style.css': './style.css',
+    './_tmp': './style',
     './node_modules/alpinejs/dist/alpine.js': './js/alpine.js',
     "./src/settings": '/settings',
     "./src/_redirects": '/_redirects'
@@ -50,11 +56,14 @@ module.exports = function (eleventyConfig) {
   //render from rich text editor
   eleventyConfig.addShortcode('documentToHtmlString', content => documentToHtmlString(content, options));
   
+  //render from rich text editor with links
+  eleventyConfig.addShortcode('documentToHtmlStringWithLinks', text => documentToHtmlString(text.json, optionsWithLinks(text.links)));
+  
   //resize image for og tags {{ page.seo.url | toOgImage }}
   eleventyConfig.addFilter('toOgImage', (url) => (url + '?fm=jpg&q=70&w=1200&h=630&fit=thumb') )
   
   // fix eventually not valid absolute urls
-  eleventyConfig.addFilter('absoluteUrl', (url) => normalizeSlug(url) )
+  eleventyConfig.addFilter('absoluteUrl', (url) => helpers.normalizeSlug(url) )
 
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
