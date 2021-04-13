@@ -61,7 +61,7 @@ collections:
             widget: 'text'
           - label: 'Codice fiscale o piva'
             name: 'cf'
-            widget: 'text'
+            widget: 'string'
           - label: 'Links footer'
             name: 'links'
             widget: 'list'
