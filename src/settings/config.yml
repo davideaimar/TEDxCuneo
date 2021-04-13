@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: dev
+  branch: master
 
 media_folder: "assets/img/uploads"
 
@@ -59,9 +59,9 @@ collections:
           - label: 'Indirizzo testuale'
             name: 'address_text'
             widget: 'text'
-          # - label: 'URL indirizzo'
-          #   name: 'address_url'
-          #   widget: 'string'
+          - label: 'Codice fiscale o piva'
+            name: 'cf'
+            widget: 'text'
           - label: 'Links footer'
             name: 'links'
             widget: 'list'
