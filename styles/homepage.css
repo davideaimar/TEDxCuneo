@@ -18,8 +18,8 @@
 
 .direction-block-item{
   @apply relative block bg-tedRed text-center whitespace-nowrap overflow-x-hidden;
-  padding: 16px;
-  font-size: 46px;
+  padding: 22px ;
+  font-size: 32px;
   width: 110vw;
   box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.34);
   z-index: 40;
@@ -28,21 +28,31 @@
 
 .-one {
   left: -10px;
-  transform: rotate(7.03deg);
+  transform: rotate(12.03deg);
 }
 .-two {
   top: -2vw;
   left: -10px;
-  transform: rotate(-9.54deg);
+  transform: rotate(-13.54deg);
 }
 .-three {
   left: -10px;
-  transform: rotate(3.5deg);
+  transform: rotate(7deg);
 }
 
 @screen md{
+  .-one {
+    transform: rotate(7.03deg);
+  }
+  .-two {
+    transform: rotate(-9.54deg);
+  }
+  .-three {
+    transform: rotate(3.5deg);
+  }
   .direction-block-item{
-    padding: 24px 0;
+    padding: 40px;
+    font-size: 54px;
   }
 
   .landing-map-new::before {
