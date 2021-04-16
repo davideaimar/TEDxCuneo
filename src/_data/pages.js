@@ -3,7 +3,7 @@ const api = require('./api')
 const constants = require('./constants')
 
 const pages_query = `query {
-    pageCollection(limit: 100){
+    pageCollection(limit: 50${ process.env.DEBUG ? "" : ", where: {public: true}"}){
       items{
         slug
         seo{
