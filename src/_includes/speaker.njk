@@ -1,0 +1,15 @@
+<div class="flex flex-col mb-16 lg:justify-between lg:flex-row lg:mb-16">
+    <picture class="w-full mb-6 lg:mb-0 lg:w-4/12">
+        <source type="image/webp" srcset="">
+        <source type="image/jpeg" srcset="">
+        <img src="{{ s.image.url }}?w=800&h=800&fit=thumb&q=60" alt="Speaker {{ s.name }} {{ s.surname }}">
+    </picture>
+    <div class="w-full lg:w-6/12">
+        <h1 class="mb-4 lg:mb-7">{{ s.name }}<br/>{{ s.surname }}</h1>
+        <p class="mb-4 lg:mb-7">{{ s.job }}</p>
+        <div>
+            {% documentToHtmlString s.description.json %}
+        </div>
+    </div>
+    <div class="hidden lg:block w-1/12"></div>
+</div>

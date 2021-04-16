@@ -1,0 +1,11 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
+	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
+	<p class="mb-28 w-full md:w-1/2 md:mb-36">{{ d.introText }}</p>
+	{% for dep in d.departmentsCollection.items %}
+		{% include "department.njk" %}
+	{% endfor %}
+</div>

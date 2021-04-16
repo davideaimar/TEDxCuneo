@@ -1,0 +1,11 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
+	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
+	<p class="mb-10 w-full md:w-1/2 md:mb-14">{{ d.introText }}</p>
+	{% set form=d.newsletterForm %}
+	{% set class="mb-52" %}
+	{% include "newsletter.njk" %}
+</div>

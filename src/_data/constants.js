@@ -18,6 +18,9 @@ module.exports = {
         title
         url
       }
+      description{
+        json
+      }
     }`,
   "LANDING_PAGE_FIELDS": `
     introText
@@ -199,6 +202,86 @@ module.exports = {
             }
           }
         }
+      }
+    }`,
+  "TICKETS_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    newsletterForm{
+      title
+      buttonText
+      privacyPage{
+        slug
+      }
+    }`,
+  "SPEAKERS_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    speakersTitle
+    speakersCollection(limit: 30){
+      items{
+        name
+        surname
+        job
+        image{
+          title
+          url
+        }
+        description{
+          json
+        }
+      }
+    }`,
+  "TEAM_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    departmentsCollection(limit: 20){
+      items{
+        title
+        membersCollection(limit: 20){
+          items{
+            name
+            surname
+            image{
+              title
+              url
+            }
+            role
+            siteName
+            url
+          }
+        }
+      }
+    }`,
+  "PARTNER_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    officialPartnersTitle
+    officialPartnersCollection(limit: 20){
+      items{
+        name
+        logo{
+          url
+          title
+          height
+          width
+        }
+        url
+      }
+    }
+    techPartnersTitle
+    techPartnersCollection(limit: 20){
+      items{
+        name
+        logo{
+          url
+          title
+        }
+        url
       }
     }`,
   "PRIVACY_POLICY_FIELDS": `
