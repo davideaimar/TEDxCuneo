@@ -186,6 +186,13 @@ module.exports = {
           }
         }
       }
+    }
+    ctaTickets{
+      initialText
+      buttonText
+      ticketsPage{
+        slug
+      }
     }`,
   "CONTACTS_PAGE_FIELDS": `
     title`,
