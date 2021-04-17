@@ -62,7 +62,9 @@ const pages_query = `query {
             }
           }
           ...on TicketsPage{
-            ${constants.TICKETS_PAGE_FIELDS}
+            sys{
+              id
+            }
           }
         }
       }
@@ -107,7 +109,7 @@ module.exports = async function() {
           page.layout = "layouts/event.njk"
           break;
         case "TicketsPage":
-          // page.content = await api.fetchTicketsPage(page.content.sys.id);
+          page.content = await api.fetchTicketsPage(page.content.sys.id);
           page.layout = "layouts/tickets.njk"
           break;
         case "SpeakersPage":

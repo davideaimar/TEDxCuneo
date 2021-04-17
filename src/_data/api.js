@@ -149,5 +149,24 @@ module.exports = {
       .catch(console.error);
     
     return page;
+  },
+
+  fetchTicketsPage: async function(content_id){
+    const query = `
+      query{
+        ticketsPage(id: "${content_id}"){
+          ${constants.TICKETS_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.ticketsPage
+      })
+      .catch(console.error);
+    
+    return page;
   }
 };

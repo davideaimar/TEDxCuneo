@@ -103,6 +103,13 @@ module.exports = {
         }
       }
     }
+    ctaTickets{
+      initialText
+      buttonText
+      ticketsPage{
+        slug
+      }
+    }
     tedBlock{
       image{
         url
@@ -148,6 +155,13 @@ module.exports = {
             }
           }
         }
+      }
+    }
+    ctaTickets{
+      initialText
+      buttonText
+      ticketsPage{
+        slug
       }
     }`,
   "EVENT_PAGE_FIELDS": `
@@ -213,6 +227,23 @@ module.exports = {
       buttonText
       privacyPage{
         slug
+      }
+    }
+    ctaEvent{
+      text{
+        json
+        links{
+          entries{
+            hyperlink{
+              ...on Page{
+                sys{
+                  id
+                }
+                slug
+              }
+            }
+          }
+        }
       }
     }`,
   "SPEAKERS_PAGE_FIELDS": `
