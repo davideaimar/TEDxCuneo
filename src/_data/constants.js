@@ -293,6 +293,10 @@ module.exports = {
           }
         }
       }
+    }
+    thanksTitle
+    thanks{
+      json
     }`,
   "PARTNER_PAGE_FIELDS": `
     pageName
@@ -312,7 +316,18 @@ module.exports = {
       }
     }
     techPartnersTitle
-    techPartnersCollection(limit: 20){
+    techPartnersCollection(limit: 30){
+      items{
+        name
+        logo{
+          url
+          title
+        }
+        url
+      }
+    }
+    mediaPartnersTitle
+    mediaPartnersCollection(limit: 20){
       items{
         name
         logo{

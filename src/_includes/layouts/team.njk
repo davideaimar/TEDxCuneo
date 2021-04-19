@@ -5,7 +5,21 @@
 	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
 	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
 	<p class="mb-28 w-full md:w-1/2 md:mb-36">{{ d.introText }}</p>
-	{% for dep in d.departmentsCollection.items %}
-		{% include "department.njk" %}
-	{% endfor %}
+
+	<section class="mb-40">
+		{% for dep in d.departmentsCollection.items %}
+			{% include "department.njk" %}
+		{% endfor %}
+	</section>
+	
+
+	{% if d.thanks and d.thanksTitle %}
+		<section class="mb-28">
+			<h1 class=" mb-6 md:mb-8">{{ d.thanksTitle }}</h1>
+			<div class="faq-block w-full md:max-w-660">
+				{% documentToHtmlString d.thanks.json %}
+			</div>
+		</section>
+	{% endif %}
+
 </div>
