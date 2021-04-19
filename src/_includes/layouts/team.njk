@@ -15,7 +15,7 @@
 
 	{% if d.thanks and d.thanksTitle %}
 		<section class="mb-28">
-			<h1 class=" mb-6 md:mb-8">{{ d.thanksTitle }}</h1>
+			<h2 class=" mb-6 md:mb-8">{{ d.thanksTitle }}</h2>
 			<div class="faq-block w-full md:max-w-660">
 				{% documentToHtmlString d.thanks.json %}
 			</div>
