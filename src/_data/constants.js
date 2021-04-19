@@ -92,6 +92,9 @@ module.exports = {
       }
     }
     speakersTitle
+    speakersPage{
+      slug
+    }
     speakersCollection{
       items{
         name
