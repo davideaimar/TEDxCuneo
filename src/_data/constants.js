@@ -107,6 +107,7 @@ module.exports = {
       }
     }
     ctaTickets{
+      show
       initialText
       buttonText
       ticketsPage{
@@ -161,6 +162,7 @@ module.exports = {
       }
     }
     ctaTickets{
+      show
       initialText
       buttonText
       ticketsPage{
@@ -191,6 +193,7 @@ module.exports = {
       }
     }
     ctaTickets{
+      show
       initialText
       buttonText
       ticketsPage{

@@ -1,13 +1,14 @@
 
+{% if cta.show %}
+    <section style="background-color: #1C1C1C;" class="{{ class }} flex flex-col justify-center relative overflow-hidden p-2">
+        <span class="hidden absolute left-28 px-3 whitespace-nowrap bg-tedRed xl:block" style="writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(190deg); top: -20px; bottom: -20px; font-size: 32px;">
+            ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket 
+        </span>
 
-<section style="background-color: #1C1C1C;" class="{{ class }} flex flex-col justify-center relative overflow-hidden p-2">
-    <span class="hidden absolute left-28 px-3 whitespace-nowrap bg-tedRed xl:block" style="writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(190deg); top: -20px; bottom: -20px; font-size: 32px;">
-        ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket ticket 
-    </span>
 
-
-    <h2 class="text-center max-w-615 mx-auto mt-10 mb-16">{{ cta.initialText }}</h2>
-    <a href="{{ cta.ticketsPage.slug | absoluteUrl }}" class="text-center underline text-decoration-tedRed mx-auto mb-10">
-        <h1>{{ cta.buttonText }}</h1>
-    </a>
-</section>
+        <h2 class="text-center max-w-615 mx-auto mt-10 mb-16">{{ cta.initialText }}</h2>
+        <a href="{{ cta.ticketsPage.slug | absoluteUrl }}" class="text-center underline text-decoration-tedRed mx-auto mb-10">
+            <h1>{{ cta.buttonText }}</h1>
+        </a>
+    </section>
+{% endif %}
