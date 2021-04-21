@@ -46,6 +46,26 @@ const pages_query = `query {
               id
             }
           }
+          ...on SpeakersPage{
+            sys{
+              id
+            }
+          }
+          ...on TeamPage{
+            sys{
+              id
+            }
+          }
+          ...on PartnersPage{
+            sys{
+              id
+            }
+          }
+          ...on TicketsPage{
+            sys{
+              id
+            }
+          }
         }
       }
     }
@@ -87,6 +107,22 @@ module.exports = async function() {
         case "EventPage":
           page.content = await api.fetchEventPage(page.content.sys.id);
           page.layout = "layouts/event.njk"
+          break;
+        case "TicketsPage":
+          page.content = await api.fetchTicketsPage(page.content.sys.id);
+          page.layout = "layouts/tickets.njk"
+          break;
+        case "SpeakersPage":
+          page.content = await api.fetchSpeakersPage(page.content.sys.id);
+          page.layout = "layouts/speakers.njk"
+          break;
+        case "TeamPage":
+          page.content = await api.fetchTeamPage(page.content.sys.id);
+          page.layout = "layouts/team.njk"
+          break;
+        case "PartnersPage":
+          page.content = await api.fetchPartnerPage(page.content.sys.id);
+          page.layout = "layouts/partner.njk"
           break;
         default:
           page.layout = "base.njk"

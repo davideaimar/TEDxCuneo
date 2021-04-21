@@ -18,6 +18,9 @@ module.exports = {
         title
         url
       }
+      description{
+        json
+      }
     }`,
   "LANDING_PAGE_FIELDS": `
     introText
@@ -89,6 +92,9 @@ module.exports = {
       }
     }
     speakersTitle
+    speakersPage{
+      slug
+    }
     speakersCollection{
       items{
         name
@@ -98,6 +104,14 @@ module.exports = {
           url
           title
         }
+      }
+    }
+    ctaTickets{
+      show
+      initialText
+      buttonText
+      ticketsPage{
+        slug
       }
     }
     tedBlock{
@@ -146,6 +160,14 @@ module.exports = {
           }
         }
       }
+    }
+    ctaTickets{
+      show
+      initialText
+      buttonText
+      ticketsPage{
+        slug
+      }
     }`,
   "EVENT_PAGE_FIELDS": `
     pageName
@@ -168,6 +190,14 @@ module.exports = {
             }
           }
         }
+      }
+    }
+    ctaTickets{
+      show
+      initialText
+      buttonText
+      ticketsPage{
+        slug
       }
     }`,
   "CONTACTS_PAGE_FIELDS": `
@@ -199,6 +229,118 @@ module.exports = {
             }
           }
         }
+      }
+    }`,
+  "TICKETS_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    newsletterForm{
+      title
+      buttonText
+      privacyPage{
+        slug
+      }
+    }
+    ctaEvent{
+      text{
+        json
+        links{
+          entries{
+            hyperlink{
+              ...on Page{
+                sys{
+                  id
+                }
+                slug
+              }
+            }
+          }
+        }
+      }
+    }`,
+  "SPEAKERS_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    speakersTitle
+    speakersCollection(limit: 30){
+      items{
+        name
+        surname
+        job
+        image{
+          title
+          url
+        }
+        description{
+          json
+        }
+      }
+    }`,
+  "TEAM_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    departmentsCollection(limit: 20){
+      items{
+        title
+        membersCollection(limit: 20){
+          items{
+            name
+            surname
+            image{
+              title
+              url
+            }
+            role
+            siteName
+            url
+          }
+        }
+      }
+    }
+    thanksTitle
+    thanks{
+      json
+    }`,
+  "PARTNER_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    officialPartnersTitle
+    officialPartnersCollection(limit: 20){
+      items{
+        name
+        logo{
+          url
+          title
+          height
+          width
+        }
+        url
+      }
+    }
+    techPartnersTitle
+    techPartnersCollection(limit: 30){
+      items{
+        name
+        logo{
+          url
+          title
+        }
+        url
+      }
+    }
+    mediaPartnersTitle
+    mediaPartnersCollection(limit: 20){
+      items{
+        name
+        logo{
+          url
+          title
+        }
+        url
       }
     }`,
   "PRIVACY_POLICY_FIELDS": `

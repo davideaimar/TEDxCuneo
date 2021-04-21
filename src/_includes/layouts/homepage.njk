@@ -100,10 +100,10 @@
 
         
 
-        {# <section class="mb-32 md:mb-44">
+        <section class="mb-32 md:mb-44">
             <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
                 <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
-                <a class="underline text-decoration-tedRed" href="#"><h2>Scopri tutti →</h2></a>
+                <h2><a class="underline text-decoration-tedRed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scopri tutti →</a></h2>
             </div>
             
             <div x-data="{swiper: null, index: 0}"
@@ -117,7 +117,11 @@
                             <div class="swiper-slide">
                                 <div class="flex flex-col shadow overflow-hidden">
                                 <div class="flex-shrink-0 mb-6">
-                                    <img class="h-48 w-full object-cover" src="{{ speaker.image.url }}?w=310&h=240&fit=thumb&q=60&fm=jpg" alt="{{ speaker.image.title }}">
+                                    <picture>
+                                        <source type="image/webp" srcset="{{ speaker.image.url }}?w=500&h=500&fit=thumb&fm=webp">
+                                        <source type="image/jpeg" srcset="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
+                                        <img class="w-full" src="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+                                    </picture>
                                 </div>
                                 <h3 class="mb-2">{{ speaker.name }}<br/>{{ speaker.surname }}</h3>
                                 <p> {{ speaker.job }}</p>
@@ -128,45 +132,45 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center items-center">
-                    <div class="flex items-center">
-                        <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
-                            <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex items-center">
-                        <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
-                                class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
-                            <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
-                            </svg>
+                {% if d.speakersCollection.items.length > 2 %}
+                    <div class="flex justify-center items-center {% if d.speakersCollection.items.length < 5 %}lg:hidden{% endif %}">
+                        <div class="flex items-center">
+                            <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex items-center">
+                            <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
+                                    class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
+                                </svg>
 
-                        </button>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
+                
+
             </div>
-        </section> #}
+        </section>
 
-        {# <section style="background-color: #1C1C1C;" class="mb-32 md:mb-44">
-            <h2 class="text-center max-w-615 mx-auto mb-16 pt-12 md:mb-20">Accreditati per festinalente, la prima edizione di TEDxCuneo</h2>
-            <a href="#" class="block text-center underline text-decoration-tedRed pb-12">
-                <h1>Vai ai biglietti →</h1>
-            </a>
-        </section> #}
-
-
-        <section class="grid grid-cols-1 mb-28 md:grid-cols-2 md:gap-x-16 lg:gap-x-32">
-            <picture>
-                <source type="image/webp" media="(min-width: 700px)" srcset="">
-                <source type="image/webp" media="(max-width: 699px)" srcset="">
-                <source type="image/jpeg" media="(min-width: 700px)" srcset="">
-                <source type="image/jpeg" media="(max-width: 699px)" srcset="">
-                <img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ d.tedBlock.image.url }}?w=1200&q=60&fm=jpg" alt="alt"/>
+        {% if d.ctaTickets %}
+            {% set class="mb-32 md:mb-44" %}
+            {% set cta=d.ctaTickets %}
+            {% include "ctaTickets.njk" %}
+        {% endif %}
+        
+        <section class="grid grid-cols-1 mb-28 md:grid-cols-12 md:gap-x-6">
+            <picture class="mb-12 md:mb-0 md:col-span-6">
+                <source type="image/webp" srcset="{{ d.tedBlock.image.url }}?w=700&fm=webp 1x, {{ d.tedBlock.image.url }}?w=1400&fm=webp 2x">
+                <source type="image/jpeg" srcset="{{ d.tedBlock.image.url }}?w=700&q=60&fm=jpg 1x, {{ d.tedBlock.image.url }}?w=1400&q=60&fm=jpg 2x">
+                <img class="object-cover w-full" src="{{ d.tedBlock.image.url }}?w=700&q=60&fm=jpg" alt="TED & TEDx"/>
             </picture>
 
-            <div class="faq-block" style="max-width: 440px;">
+            <div class="faq-block max-w-615 md:col-span-4 md:col-start-8">
 
                 {% documentToHtmlStringWithLinks d.tedBlock.text %}
 

@@ -14,4 +14,9 @@
 			</div>
 		{% endfor %}
 	</div>
+	{% if d.ctaTickets %}
+		{% set class="mb-32 md:mb-44" %}
+		{% set cta=d.ctaTickets %}
+		{% include "ctaTickets.njk" %}
+	{% endif %}
 </div>

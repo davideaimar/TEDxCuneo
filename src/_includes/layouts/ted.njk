@@ -10,11 +10,9 @@
 			<div class="grid grid-cols-1 mb-28 md:grid-cols-2 md:gap-x-16 lg:gap-x-32">
 
 				<picture>
-					<source type="image/webp" media="(min-width: 700px)" srcset="">
-					<source type="image/webp" media="(max-width: 699px)" srcset="">
-					<source type="image/jpeg" media="(min-width: 700px)" srcset="">
-					<source type="image/jpeg" media="(max-width: 699px)" srcset="">
-					<img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ item.image.url }}?w=1200&q=60&fm=jpg" alt="alt"/>
+					<source type="image/webp" srcset="{{ item.image.url }}?w=700&fm=webp 1x, {{ item.image.url }}?w=1400&fm=webp 2x">
+					<source type="image/jpeg" srcset="{{ item.image.url }}?w=700&q=60&fm=jpg 1x, {{ item.image.url }}?w=1400&q=60&fm=jpg 2x">
+					<img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ item.image.url }}?w=700&q=60&fm=jpg" alt="alt"/>
 				</picture>
 
 				<div class="faq-block {{ 'md:order-first' if loop.index%2!=0 }} ">{% documentToHtmlStringWithLinks item.text %}</div>
@@ -22,4 +20,12 @@
 			</div>
 		{% endfor %}
 	</section>
+
+	{% if d.ctaTickets %}
+		{% set class="mb-32 md:mb-44" %}
+		{% set cta=d.ctaTickets %}
+		{% include "ctaTickets.njk" %}
+	{% endif %}
+
+
 </div>

@@ -92,5 +92,81 @@ module.exports = {
       .catch(console.error);
     
     return page;
+  },
+
+  fetchSpeakersPage: async function(content_id){
+    const query = `
+      query{
+        speakersPage(id: "${content_id}"){
+          ${constants.SPEAKERS_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.speakersPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
+  fetchTeamPage: async function(content_id){
+    const query = `
+      query{
+        teamPage(id: "${content_id}"){
+          ${constants.TEAM_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.teamPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
+  fetchPartnerPage: async function(content_id){
+    const query = `
+      query{
+        partnersPage(id: "${content_id}"){
+          ${constants.PARTNER_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.partnersPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
+  fetchTicketsPage: async function(content_id){
+    const query = `
+      query{
+        ticketsPage(id: "${content_id}"){
+          ${constants.TICKETS_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.ticketsPage
+      })
+      .catch(console.error);
+    
+    return page;
   }
 };

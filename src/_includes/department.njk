@@ -1,0 +1,19 @@
+<div class="mb-32">
+    <h2 class="mb-6">{{ dep.title }}</h2>
+    <div class="grid grid-cols-2 gap-x-4 gap-y-7 md:grid-cols-3 lg:grid-cols-5 lg:gap-y-10">
+        {% for p in dep.membersCollection.items %}
+            <div>
+                <picture>
+                    <source type="image/webp" srcset="{{ p.image.url }}?w=300&h=300&fit=thumb&fm=webp">
+                    <source type="image/jpeg" srcset="{{ p.image.url }}?w=300&h=300&fit=thumb&fm=jpg&q=60">
+                    <img class="mb-2" src="{{ p.image.url }}?w=300&h=300&fit=thumb&q=60" alt="{{ p.name }} {{ p.surname }}"/>
+                </picture>
+                <h3 class="mb-2">{{ p.name }}<br/>{{ p.surname }}</h3>
+                <p class="mb-2">{{ p.role }}</p>
+                {% if p.siteName and p.url %}
+                    <a href="{{ p.url }}" target="_blank">{{ p.siteName }}↗</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

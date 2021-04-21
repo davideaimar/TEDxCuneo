@@ -1,0 +1,14 @@
+<div class="grid grid-cols-1 mb-16 md:grid-cols-12 md:gap-x-4 md:mb-24">
+    <picture class="w-full mb-6 md:mb-0 md:col-span-4">
+        <source type="image/webp" srcset="">
+        <source type="image/jpeg" srcset="">
+        <img class="w-full" src="{{ s.image.url }}?w=800&h=800&fit=thumb&q=60" alt="Speaker {{ s.name }} {{ s.surname }}">
+    </picture>
+    <div class="w-full md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-6">
+        <h1 class="mb-4 md:mb-7">{{ s.name }}<br/>{{ s.surname }}</h1>
+        <p class="mb-4 md:mb-7">{{ s.job }}</p>
+        <div>
+            {% documentToHtmlString s.description.json %}
+        </div>
+    </div>
+</div>

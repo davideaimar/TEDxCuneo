@@ -1,0 +1,82 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
+	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
+	<p class="mb-28 w-full md:w-1/2 md:mb-36">{{ d.introText }}</p>
+
+	{# Official partners section #}
+	<section>
+		<h2 class="mb-6">{{ d.officialPartnersTitle }}</h2>
+		<div class="grid mb-12 gap-y-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4">
+			{% for p in d.officialPartnersCollection.items %}
+				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+					style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+					class="block w-full relative rounded">
+					{% if (p.logo.width / p.logo.height) > 1.2 %}
+						{# HORIZONTAL #}
+						{% set style="max-width: 80%; max-height: 80%;" %}
+					{% else %}
+						{# VERTICAL #}
+						{% set style="max-height: 80%;" %}
+					{% endif %}
+					<img src="{{ p.logo.url }}"
+						alt="{{p.name}} logo"
+						style="{{style}}"
+						class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+
+	{# Technical partners section #}
+	<section>
+		<h2 class="mb-6">{{ d.techPartnersTitle }}</h2>
+		<div class="grid mb-32 gap-y-4 grid-cols-2 gap-x-4 md:grid-cols-3 lg:grid-cols-4">
+			{% for p in d.techPartnersCollection.items %}
+				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+					style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+					class="block w-full relative rounded">
+					{% if (p.logo.width / p.logo.height) > 1.2 %}
+						{# HORIZONTAL #}
+						{% set style="max-width: 80%; max-height: 55%;" %}
+					{% else %}
+						{# VERTICAL #}
+						{% set style="max-height: 85%;" %}
+					{% endif %}
+					<img src="{{ p.logo.url }}"
+						alt="{{p.name}} logo"
+						style="{{style}}"
+						class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+
+	{# Media partners section #}
+	{# <section>
+		<h2 class="mb-6">{{ d.mediaPartnersTitle }}</h2>
+		<div class="grid mb-32 gap-y-4 grid-cols-2 gap-x-4 md:grid-cols-3 lg:grid-cols-4">
+			{% for p in d.mediaPartnersCollection.items %}
+				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+					style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+					class="block w-full relative rounded">
+					{% if (p.logo.width / p.logo.height) > 1.2 %}
+						HORIZONTAL
+						{% set style="max-width: 80%; max-height: 55%;" %}
+					{% else %}
+						VERTICAL
+						{% set style="max-height: 85%;" %}
+					{% endif %}
+					<img src="{{ p.logo.url }}"
+						alt="{{p.name}} logo"
+						style="{{style}}"
+						class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+				</a>
+			{% endfor %}
+		</div>
+	</section> #}
+
+
+</div>
