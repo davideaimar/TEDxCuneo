@@ -1,4 +1,4 @@
-# TEDxCuneo website repository
+# TEDxCuneo website
 
 Based on [this starter](https://github.com/gregwolanski/eleventy-tailwindcss-alpinejs-starter), uses Eleventy + TailwindCSS + Alpine.js.
 
