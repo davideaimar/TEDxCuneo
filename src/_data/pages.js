@@ -95,6 +95,7 @@ module.exports = async function() {
           break;
         case "HomePage":
           page.content = await api.fetchHomepage(page.content.sys.id);
+          page.content.speakersCollection.items = page.content.speakersCollection.items.filter(s=>s!=null)
           page.layout = "layouts/homepage.njk"
           break;
         case "TedPage":
@@ -115,6 +116,7 @@ module.exports = async function() {
         case "SpeakersPage":
           page.content = await api.fetchSpeakersPage(page.content.sys.id);
           page.layout = "layouts/speakers.njk"
+          page.content.speakersCollection.items = page.content.speakersCollection.items.filter(s=>s!=null)
           break;
         case "TeamPage":
           page.content = await api.fetchTeamPage(page.content.sys.id);
