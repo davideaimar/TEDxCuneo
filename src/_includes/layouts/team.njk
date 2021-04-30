@@ -13,9 +13,11 @@
 	</section>
 	
 
-	{% if d.thanks and d.thanksTitle %}
+	{% if d.thanks %}
 		<section class="mb-28">
-			<h2 class=" mb-6 md:mb-8">{{ d.thanksTitle }}</h2>
+			{% if d.thanksTitle %}
+				<h2 class=" mb-6 md:mb-8">{{ d.thanksTitle }}</h2>
+			{% endif %}
 			<div class="faq-block w-full md:max-w-660">
 				{% documentToHtmlString d.thanks.json %}
 			</div>
