@@ -42,8 +42,8 @@ npm run build
 npm run dev
 ```
 
-You can easily deploy it on a fre tier of Netlify or similar platform, making it 100% free (apart from the domain).\
+You can easily deploy it on a fre tier of Netlify or similar platform, making it 100% free (apart from the domain).
 
 ## License
 
-This project is licensed under the terms of the Apache 2.0 license.\
+This project is licensed under the terms of the Apache 2.0 license.
