@@ -235,6 +235,23 @@ module.exports = {
     pageName
     title
     introText
+    text{
+      json
+      links{
+        entries{
+          hyperlink{
+            ...on Page{
+              sys{
+                id
+              }
+              slug
+            }
+          }
+        }
+      }
+    }
+    buttonText
+    urlTickets
     newsletterForm{
       title
       buttonText
