@@ -18,16 +18,16 @@
 			{% endif %}
 		</div>
 	{% endif %}
-	
-	{% if d.ctaEvent %}
-		<div class="faq-block max-w-400 mb-36 md:w-4/12">
-			{% documentToHtmlStringWithLinks d.ctaEvent.text %}
-		</div>
-	{% endif %}
 
 	{% if d.newsletterForm %}
 		{% set form=d.newsletterForm %}
 		{% set class="mb-28 lg:w-5/12" %}
 		{% include "newsletter.njk" %}
+	{% endif %}
+	
+	{% if d.ctaEvent %}
+		<div class="faq-block max-w-400 mb-36 md:w-4/12">
+			{% documentToHtmlStringWithLinks d.ctaEvent.text %}
+		</div>
 	{% endif %}
 </div>
