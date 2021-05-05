@@ -339,7 +339,7 @@ module.exports = {
       }
     }
     techPartnersTitle
-    techPartnersCollection(limit: 30){
+    techPartnersCollection(limit: 40){
       items{
         name
         logo{
@@ -351,6 +351,17 @@ module.exports = {
     }
     mediaPartnersTitle
     mediaPartnersCollection(limit: 20){
+      items{
+        name
+        logo{
+          url
+          title
+        }
+        url
+      }
+    }
+    supportersTitle
+    supportersCollection(limit: 20){
       items{
         name
         logo{
