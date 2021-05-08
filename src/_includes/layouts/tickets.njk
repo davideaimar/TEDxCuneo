@@ -1,33 +1,35 @@
 {# Uncomment for logging page fields avaliable #}
 {# {{ d | log }} #}
 
-<div class="container">
-	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
-	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
-	<p class="mb-10 w-full lg:w-5/12 lg:mb-14">{{ d.introText }}</p>
+<div class="overflow-hidden">
+	<div class="container relative landing-map landing-map-tickets">
+		<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
+		<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
+		<p class="mb-10 w-full lg:w-5/12 lg:mb-14">{{ d.introText }}</p>
 
-	{% if d.text %}
-		<div class="mb-36 ">
-			<div class="faq-block mb-8">
-				{% documentToHtmlStringWithLinks d.text %}
-			</div>
-			{% if d.buttonText %}
-				<div class="block">
-					<a href="{{ d.urlTickets }}" target="_blank" class="cursor-pointer font-bold text-small uppercase text-tedWhite bg-tedRed py-3 px-4 rounded-none no-underline">{{ d.buttonText }}</a>
+		{% if d.text %}
+			<div class="mb-36 ">
+				<div class="faq-block mb-8">
+					{% documentToHtmlStringWithLinks d.text %}
 				</div>
-			{% endif %}
-		</div>
-	{% endif %}
+				{% if d.buttonText %}
+					<div class="block">
+						<a href="{{ d.urlTickets }}" target="_blank" class="cursor-pointer font-bold text-small uppercase text-tedWhite bg-tedRed py-3 px-4 rounded-none no-underline">{{ d.buttonText }}</a>
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
 
-	{% if d.newsletterForm %}
-		{% set form=d.newsletterForm %}
-		{% set class="mb-28 lg:w-5/12" %}
-		{% include "newsletter.njk" %}
-	{% endif %}
-	
-	{% if d.ctaEvent %}
-		<div class="faq-block max-w-400 mb-36 md:w-4/12">
-			{% documentToHtmlStringWithLinks d.ctaEvent.text %}
-		</div>
-	{% endif %}
+		{% if d.newsletterForm %}
+			{% set form=d.newsletterForm %}
+			{% set class="mb-28 lg:w-5/12" %}
+			{% include "newsletter.njk" %}
+		{% endif %}
+		
+		{% if d.ctaEvent %}
+			<div class="faq-block max-w-400 mb-36 md:w-4/12">
+				{% documentToHtmlStringWithLinks d.ctaEvent.text %}
+			</div>
+		{% endif %}
+	</div>
 </div>

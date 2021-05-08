@@ -4,14 +4,14 @@
   }
   .landing-map::before {
     content: " ";
-    width: 1437px;
-    height: 1668px;
     position: absolute;
     z-index: -1;
-    top: -1000px;
-    right: -500px;
+    top: 0px !important;
+    right: -200px;
     background: url("/assets/img/mappa_cuneo_empty.png");
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
   .markdown p,
   .markdown ul,
@@ -59,10 +59,6 @@
     .faq-block > p,
     .markdown > p {
       min-height: theme("fontSize.d_base.1.lineHeight");
-    }
-    .landing-map::before {
-      top: -380px;
-      right: -480px;
     }
     .markdown ul,
     .markdown ol {
