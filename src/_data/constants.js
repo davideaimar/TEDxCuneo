@@ -325,6 +325,19 @@ module.exports = {
     pageName
     title
     introText
+    patrociniTitle
+    patrociniCollection(limit: 20){
+      items{
+        name
+        logo{
+          url
+          title
+          height
+          width
+        }
+        url
+      }
+    }
     officialPartnersTitle
     officialPartnersCollection(limit: 20){
       items{
