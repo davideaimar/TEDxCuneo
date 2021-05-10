@@ -384,6 +384,11 @@ module.exports = {
         url
       }
     }`,
+  "LIVE_PAGE_FIELDS": `
+    telegramTitle
+    videoTitle
+    chatUrl
+  `,
   "PRIVACY_POLICY_FIELDS": `
     title
     text{

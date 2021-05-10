@@ -41,6 +41,9 @@ const pages_query = `query {
           ...on ContactsPage{
             ${constants.CONTACTS_PAGE_FIELDS}
           }
+          ...on LivePage{
+            ${constants.LIVE_PAGE_FIELDS}
+          }
           ...on EventPage{
             sys{
               id
@@ -125,6 +128,9 @@ module.exports = async function() {
         case "PartnersPage":
           page.content = await api.fetchPartnerPage(page.content.sys.id);
           page.layout = "layouts/partner.njk"
+          break;
+        case "LivePage":
+          page.layout = "layouts/live.njk"
           break;
         default:
           page.layout = "base.njk"

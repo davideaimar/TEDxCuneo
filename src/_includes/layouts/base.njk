@@ -19,6 +19,10 @@
           {% include "footer.njk" %}
         </div>
       </div>
+    {% elif page_data.layout=="layouts/live.njk" %}
+        <main>
+          {{ content | safe }} 
+        </main>
     {% else %}
 
       <div class="relative">
