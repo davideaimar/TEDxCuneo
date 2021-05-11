@@ -10,7 +10,10 @@
 	<div class="mt-24 mb-44 flex flex-col lg:flex-row lg:justify-between">
         <div class="w-full lg:w-9/12 lg:pr-4 mb-8">
             <p class="mb-4">{{ d.videoTitle }}</p>
-            <div class="w-full" style="background-color: #888888; padding-top: 56.25%;"></div>
+            <div class="w-full relative h-0 overflow-hidden" style="padding-bottom: 56.25%;">
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://live.top-ix.org/play/beelab/live?instancename=grandaled" allowfullscreen scrolling="no"></iframe>
+            </div>
+            {# <div class="w-full" style="background-color: #888888; padding-top: 56.25%;"></div> #}
         </div>
         <div class="flex-1">
             <p class="mb-4 hidden md:block">{{ d.telegramTitle }}</p>
