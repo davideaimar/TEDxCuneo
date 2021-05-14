@@ -46,6 +46,11 @@ module.exports = {
     }`,
   "HOME_PAGE_FIELDS": `
     subtitle
+    showLive
+    liveText
+    livePage{
+      slug
+    }
     vimeoUrl
     introText
     initialDescription{
@@ -111,6 +116,14 @@ module.exports = {
       initialText
       buttonText
       ticketsPage{
+        slug
+      }
+    }
+    ctaLive{
+      show
+      initialText
+      buttonText
+      livePage{
         slug
       }
     }
