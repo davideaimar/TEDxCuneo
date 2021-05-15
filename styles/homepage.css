@@ -31,6 +31,60 @@
   transform: rotate(7deg);
 }
 
+.blinking {
+  -webkit-animation: 1s blink ease infinite;
+  -moz-animation: 1s blink ease infinite;
+  -ms-animation: 1s blink ease infinite;
+  -o-animation: 1s blink ease infinite;
+  animation: 1s blink ease infinite;
+  
+}
+
+@keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @screen md{
   .-one {
     transform: rotate(7.03deg);
