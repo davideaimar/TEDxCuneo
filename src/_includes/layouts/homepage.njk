@@ -54,6 +54,9 @@
             </svg>
             {% if d.showLive %}
                 <h3 class="text-center pb-10">
+                    <svg height="22" width="20" class="blinking inline-block">
+                        <circle cx="10" cy="11" r="7" fill="#FF2B06" />
+                    </svg> 
                     <a class="underline text-decoration-tedRed" href="{{ settings.url }}/{{ d.livePage.slug }}" target="_blank" rel="noopener noreferrer">{{ d.liveText }}</a>
                 </h3>
             {% endif %}
