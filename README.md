@@ -8,7 +8,7 @@ You can use this repository for building the website of your TEDx event or just 
 
 ### 0. (optional) Create your own Contentful space 
 
-If you want to recreate the exact Contentful structure that we use, you can use export file `contentful_schema.json` and follow the [Contentful guide](https://www.contentful.com/developers/docs/tutorials/cli/import-and-export/) on how to import it in your space.\
+If you want to recreate the exact Contentful structure that we use, you can use export file `contentful-schema.json` and follow the [Contentful guide](https://www.contentful.com/developers/docs/tutorials/cli/import-and-export/) on how to import it in your space.\
 A free tier shoud be enough in most cases.
 
 ### 1. Install the dependencies
