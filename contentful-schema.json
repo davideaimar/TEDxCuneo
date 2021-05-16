@@ -12,7 +12,7 @@
         "id": "page",
         "type": "ContentType",
         "createdAt": "2021-04-07T08:53:15.297Z",
-        "updatedAt": "2021-04-16T14:38:11.618Z",
+        "updatedAt": "2021-05-10T19:07:02.838Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -20,8 +20,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 19,
-        "publishedAt": "2021-04-16T14:38:11.618Z",
+        "publishedVersion": 21,
+        "publishedAt": "2021-05-10T19:07:02.838Z",
         "firstPublishedAt": "2021-04-07T08:53:22.428Z",
         "createdBy": {
           "sys": {
@@ -37,8 +37,8 @@
             "id": "6krpat7VFUspp3909jRjPB"
           }
         },
-        "publishedCounter": 10,
-        "version": 20,
+        "publishedCounter": 11,
+        "version": 22,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -158,6 +158,7 @@
                 "tickets_page",
                 "contacts_page",
                 "event_page",
+                "live_page",
                 "partners_page",
                 "partnership_page",
                 "speakers_page",
@@ -956,7 +957,7 @@
         "id": "homePage",
         "type": "ContentType",
         "createdAt": "2021-04-07T09:10:34.503Z",
-        "updatedAt": "2021-04-19T11:48:05.894Z",
+        "updatedAt": "2021-05-14T16:26:13.800Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -964,8 +965,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 19,
-        "publishedAt": "2021-04-19T11:48:05.894Z",
+        "publishedVersion": 29,
+        "publishedAt": "2021-05-14T16:26:13.800Z",
         "firstPublishedAt": "2021-04-07T09:10:35.175Z",
         "createdBy": {
           "sys": {
@@ -981,8 +982,8 @@
             "id": "6krpat7VFUspp3909jRjPB"
           }
         },
-        "publishedCounter": 10,
-        "version": 20,
+        "publishedCounter": 15,
+        "version": 30,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1016,6 +1017,45 @@
           ],
           "disabled": false,
           "omitted": false
+        },
+        {
+          "id": "show_live",
+          "name": "Mostra link live",
+          "type": "Boolean",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "live_text",
+          "name": "Testo CTA live",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "live_page",
+          "name": "Pagina live",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkContentType": [
+                "page"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
         },
         {
           "id": "Vimeo_url",
@@ -1149,6 +1189,23 @@
             ],
             "linkType": "Entry"
           }
+        },
+        {
+          "id": "cta_live",
+          "name": "CTA live",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkContentType": [
+                "cta_live"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
         },
         {
           "id": "cta_tickets",
@@ -1791,7 +1848,7 @@
         "id": "tickets_page",
         "type": "ContentType",
         "createdAt": "2021-04-16T12:58:18.383Z",
-        "updatedAt": "2021-04-17T09:09:04.981Z",
+        "updatedAt": "2021-05-04T12:45:21.244Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1799,8 +1856,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 9,
-        "publishedAt": "2021-04-17T09:09:04.981Z",
+        "publishedVersion": 21,
+        "publishedAt": "2021-05-04T12:45:21.244Z",
         "firstPublishedAt": "2021-04-16T12:58:18.879Z",
         "createdBy": {
           "sys": {
@@ -1816,8 +1873,8 @@
             "id": "6krpat7VFUspp3909jRjPB"
           }
         },
-        "publishedCounter": 5,
-        "version": 10,
+        "publishedCounter": 11,
+        "version": 22,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1875,11 +1932,66 @@
           "omitted": false
         },
         {
+          "id": "text",
+          "name": "Testo",
+          "type": "RichText",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "enabledMarks": [
+                "bold"
+              ],
+              "message": "Only bold marks are allowed"
+            },
+            {
+              "enabledNodeTypes": [
+                "heading-3"
+              ],
+              "message": "Only heading 3 nodes are allowed"
+            },
+            {
+              "nodes": {
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "button_text",
+          "name": "Testo bottone biglietti",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "urlTickets",
+          "name": "URL biglietti",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "regexp": {
+                "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-/]))?$",
+                "flags": null
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
           "id": "newsletter_form",
           "name": "Newsletter form",
           "type": "Link",
           "localized": false,
-          "required": true,
+          "required": false,
           "validations": [
             {
               "linkContentType": [
@@ -2426,7 +2538,7 @@
         "id": "partners_page",
         "type": "ContentType",
         "createdAt": "2021-04-16T14:33:07.020Z",
-        "updatedAt": "2021-04-19T09:38:20.960Z",
+        "updatedAt": "2021-05-10T10:23:40.775Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2434,8 +2546,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 11,
-        "publishedAt": "2021-04-19T09:38:20.960Z",
+        "publishedVersion": 17,
+        "publishedAt": "2021-05-10T10:23:40.775Z",
         "firstPublishedAt": "2021-04-16T14:33:07.566Z",
         "createdBy": {
           "sys": {
@@ -2451,8 +2563,8 @@
             "id": "6krpat7VFUspp3909jRjPB"
           }
         },
-        "publishedCounter": 6,
-        "version": 12,
+        "publishedCounter": 9,
+        "version": 18,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2508,6 +2620,39 @@
           ],
           "disabled": false,
           "omitted": false
+        },
+        {
+          "id": "patrocini_title",
+          "name": "Titolo patrocini",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "patrocini",
+          "name": "Patrocini",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "partner"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
         },
         {
           "id": "official_partners_title",
@@ -2589,6 +2734,39 @@
         {
           "id": "media_partners",
           "name": "Media partners",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "partner"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
+        },
+        {
+          "id": "supporters_title",
+          "name": "Titolo sezione supporters",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "supporters",
+          "name": "supporters",
           "type": "Array",
           "localized": false,
           "required": false,
@@ -2822,6 +3000,217 @@
           "linkType": "Entry"
         }
       ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "p8a2od4guo5n"
+          }
+        },
+        "id": "live_page",
+        "type": "ContentType",
+        "createdAt": "2021-05-10T19:06:43.282Z",
+        "updatedAt": "2021-05-10T20:16:01.147Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 7,
+        "publishedAt": "2021-05-10T20:16:01.147Z",
+        "firstPublishedAt": "2021-05-10T19:06:43.699Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6krpat7VFUspp3909jRjPB"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6krpat7VFUspp3909jRjPB"
+          }
+        },
+        "publishedCounter": 4,
+        "version": 8,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6krpat7VFUspp3909jRjPB"
+          }
+        }
+      },
+      "displayField": "internal_title",
+      "name": "Pagina live",
+      "description": "",
+      "fields": [
+        {
+          "id": "internal_title",
+          "name": "Titolo interno",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "video_title",
+          "name": "Titolo player video",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "telegram_title",
+          "name": "Titolo commenti Telegram",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "chat_url",
+          "name": "URL post Telegram chat",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "p8a2od4guo5n"
+          }
+        },
+        "id": "cta_live",
+        "type": "ContentType",
+        "createdAt": "2021-05-14T16:23:54.326Z",
+        "updatedAt": "2021-05-14T16:32:00.441Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2021-05-14T16:32:00.441Z",
+        "firstPublishedAt": "2021-05-14T16:23:54.769Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6krpat7VFUspp3909jRjPB"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6krpat7VFUspp3909jRjPB"
+          }
+        },
+        "publishedCounter": 3,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6krpat7VFUspp3909jRjPB"
+          }
+        }
+      },
+      "displayField": "internal_title",
+      "name": "CTA live",
+      "description": "",
+      "fields": [
+        {
+          "id": "show",
+          "name": "Mostra sul sito",
+          "type": "Boolean",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "internal_title",
+          "name": "Titolo interno",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "initial_text",
+          "name": "Testo iniziale",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "button_text",
+          "name": "Testo bottone",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "live_page",
+          "name": "Pagina live",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkContentType": [
+                "page"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        }
+      ]
     }
   ],
   "tags": [
@@ -2838,7 +3227,7 @@
             "linkType": "Space"
           }
         },
-        "version": 21,
+        "version": 23,
         "createdAt": "2021-04-07T08:53:22.540Z",
         "createdBy": {
           "sys": {
@@ -2847,7 +3236,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-04-16T14:38:12.230Z",
+        "updatedAt": "2021-05-10T19:07:03.467Z",
         "updatedBy": {
           "sys": {
             "id": "6krpat7VFUspp3909jRjPB",
@@ -3634,7 +4023,7 @@
             "linkType": "Space"
           }
         },
-        "version": 21,
+        "version": 31,
         "createdAt": "2021-04-07T09:10:35.300Z",
         "createdBy": {
           "sys": {
@@ -3643,7 +4032,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-04-19T11:48:06.897Z",
+        "updatedAt": "2021-05-14T16:26:14.817Z",
         "updatedBy": {
           "sys": {
             "id": "6krpat7VFUspp3909jRjPB",
@@ -3708,6 +4097,25 @@
           "widgetNamespace": "builtin"
         },
         {
+          "fieldId": "show_live",
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "live_text",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "live_page",
+          "settings": {
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": false
+          },
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
           "fieldId": "Vimeo_url",
           "widgetId": "singleLine",
           "widgetNamespace": "builtin"
@@ -3750,6 +4158,11 @@
         {
           "fieldId": "speakers",
           "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "cta_live",
+          "widgetId": "entryLinkEditor",
           "widgetNamespace": "builtin"
         },
         {
@@ -4268,7 +4681,7 @@
             "linkType": "Space"
           }
         },
-        "version": 10,
+        "version": 22,
         "createdAt": "2021-04-16T12:58:19.033Z",
         "createdBy": {
           "sys": {
@@ -4277,7 +4690,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-04-17T09:09:05.746Z",
+        "updatedAt": "2021-05-04T12:45:22.017Z",
         "updatedBy": {
           "sys": {
             "id": "6krpat7VFUspp3909jRjPB",
@@ -4349,6 +4762,21 @@
         {
           "fieldId": "intro_text",
           "widgetId": "multipleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "text",
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "button_text",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "urlTickets",
+          "widgetId": "singleLine",
           "widgetNamespace": "builtin"
         },
         {
@@ -4783,7 +5211,7 @@
             "linkType": "Space"
           }
         },
-        "version": 12,
+        "version": 18,
         "createdAt": "2021-04-16T14:33:07.640Z",
         "createdBy": {
           "sys": {
@@ -4792,7 +5220,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-04-19T09:38:21.776Z",
+        "updatedAt": "2021-05-10T10:23:41.413Z",
         "updatedBy": {
           "sys": {
             "id": "6krpat7VFUspp3909jRjPB",
@@ -4867,6 +5295,16 @@
           "widgetNamespace": "builtin"
         },
         {
+          "fieldId": "patrocini_title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "patrocini",
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
           "fieldId": "official_partners_title",
           "widgetId": "singleLine",
           "widgetNamespace": "builtin"
@@ -4893,6 +5331,16 @@
         },
         {
           "fieldId": "media_partners",
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "supporters_title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "supporters",
           "widgetId": "entryLinksEditor",
           "widgetNamespace": "builtin"
         }
@@ -5059,6 +5507,154 @@
         },
         {
           "fieldId": "tickets_page",
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "p8a2od4guo5n",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 8,
+        "createdAt": "2021-05-10T19:06:43.862Z",
+        "createdBy": {
+          "sys": {
+            "id": "6krpat7VFUspp3909jRjPB",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2021-05-10T20:16:03.264Z",
+        "updatedBy": {
+          "sys": {
+            "id": "6krpat7VFUspp3909jRjPB",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "live_page",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "internal_title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "video_title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "telegram_title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "chat_url",
+          "settings": {
+            "helpText": "Nella forma: 'nomechat/<idmessaggio>'"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "p8a2od4guo5n",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 6,
+        "createdAt": "2021-05-14T16:23:54.870Z",
+        "createdBy": {
+          "sys": {
+            "id": "6krpat7VFUspp3909jRjPB",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2021-05-14T16:32:01.553Z",
+        "updatedBy": {
+          "sys": {
+            "id": "6krpat7VFUspp3909jRjPB",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "cta_live",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "show",
+          "settings": {
+            "trueLabel": "Si",
+            "falseLabel": "No"
+          },
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "internal_title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "initial_text",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "button_text",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "live_page",
+          "settings": {
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": false
+          },
           "widgetId": "entryLinkEditor",
           "widgetNamespace": "builtin"
         }

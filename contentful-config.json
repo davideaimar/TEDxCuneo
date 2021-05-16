@@ -1,0 +1,11 @@
+{
+  "saveFile": true,
+  "contentFile": "contentful-schema.json",
+  "skipContentModel": false,
+  "skipContent": true,
+  "skipRoles": true,
+  "skipWebhooks": true,
+  "downloadAssets": false,
+  "errorLogFile": "contentful_error.log",
+  "useVerboseRenderer": true
+}
