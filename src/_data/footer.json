@@ -5,6 +5,10 @@
   "cf": "CF 96100380045",
   "links": [
     {
+      "label": "Repository sito web",
+      "url": "https://github.com/davideaimar/TEDxCuneo"
+    },
+    {
       "label": "Informativa per il trattamento dei dati personali",
       "url": "/informativa-trattamento-dei-dati/"
     }
