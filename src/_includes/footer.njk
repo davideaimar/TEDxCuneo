@@ -21,7 +21,6 @@
             </p>
             <div>
                 {% for link in footer.links %}
-                {{ footer.links.length | log }}
                     <p class="{% if loop.index < footer.links.length %}mb-1{% endif %}"> 
                         <a href="{{ link.url }}" target="_blank">{{ link.label }}</a>
                     </p>
