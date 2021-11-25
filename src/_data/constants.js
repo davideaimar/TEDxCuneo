@@ -14,6 +14,7 @@ module.exports = {
       name
       surname
       job
+      videoUrl
       image{
         title
         url
@@ -299,6 +300,7 @@ module.exports = {
         name
         surname
         job
+        videoUrl
         image{
           title
           url
