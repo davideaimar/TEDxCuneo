@@ -1,24 +1,29 @@
 <footer class="container flex-grow-0 py-4 ">
-    <div class="border-t border-tedWhite grid grid-cols-1 py-4 gap-y-5 md:gap-x-10 md:grid-cols-2 md:py-7">
-        <div class="flex flex-col justify-between">
+    <div class="md:min-h-280 border-t border-tedWhite grid grid-cols-1 py-4 gap-y-5 md:gap-x-10 md:grid-cols-3 md:py-7">
+
+        <div class="h-full flex flex-col justify-between">
+            <img class="hidden w-44 mb-4 md:mb-6 md:block" src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
             <div>
-                <p class="mb-4 md:mb-6">©&nbsp;{{ helpers.currentYear() }}&nbsp;{{ footer.site_name }}</p>
-                <p class="mb-4 md:mb-6">{{ footer.license | nl2br | safe }}</p>                
-            </div>
-            <div>
-                <p class="mb-4 md:mb-6"><a href="{{ settings.instagram }}" target="_blank">Instagram ↗</a></p>
-                <p class="mb-4 md:mb-6"><a href="{{ settings.facebook }}" target="_blank">Facebook ↗</a></p>
-                <p class=""><a href="{{ settings.linkedin }}" target="_blank">Linkedin ↗</a></p>
+                <p class="">©&nbsp;{{ helpers.currentYear() }}&nbsp;{{ footer.site_name }} - {{ footer.license | nl2br | safe }}</p>             
             </div>
         </div>
+
         <div class="flex flex-col justify-between">
-            <img class="hidden w-52 mb-4 md:mb-6 md:block" src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
-            <p class="mb-4 md:mb-6"><a class="text-decoration-tedRed font-bold" href="mailto:{{ settings.email }}">{{ settings.email }}</a></p>
-            <p class="mb-4 md:mb-6">  
+            <div class="mb-4 md:mb-6">
+                <a class="mr-3" href="{{ settings.instagram }}" target="_blank">Instagram ↗</a>
+                <a class="mr-3" href="{{ settings.facebook }}" target="_blank">Facebook ↗</a>
+                <a href="{{ settings.linkedin }}" target="_blank">Linkedin ↗</a>
+            </div>
+
+            <p class="">  
                 {{ footer.address_text | nl2br | safe }}
                 <br/>
                 {{ footer.cf }}
             </p>
+        </div>
+
+        <div class="flex flex-col justify-between">
+            <div></div>
             <div>
                 {% for link in footer.links %}
                     <p class="{% if loop.index < footer.links.length %}mb-1{% endif %}"> 
