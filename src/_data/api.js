@@ -75,6 +75,25 @@ module.exports = {
     return page;
   },
 
+  fetchEventsPage: async function(content_id){
+    const query = `
+      query{
+        eventPage(id: "${content_id}"){
+          ${constants.EVENTS_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.eventsPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
   fetchPartnershipPage: async function(content_id){
     const query = `
       query{

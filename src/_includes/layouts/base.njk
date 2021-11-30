@@ -9,17 +9,8 @@
   </head>
   <body>
 
-    {# different layout structure for the homepage #}
-    {% if page_data.layout=="layouts/homepage.njk" %}
-      <div class="relative">
-        <div class="flex flex-col justify-between min-h-screen pt-24">
-          <main class="flex-1 flex-grow">
-            {{ content | safe }} 
-          </main>
-          {% include "footer.njk" %}
-        </div>
-      </div>
-    {% elif page_data.layout=="layouts/live.njk" %}
+    {# different layout structure for the live page #}
+    {% if page_data.layout=="layouts/live.njk" %}
         <main>
           {{ content | safe }} 
         </main>

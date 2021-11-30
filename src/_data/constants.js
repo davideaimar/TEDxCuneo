@@ -47,13 +47,8 @@ module.exports = {
     }`,
   "HOME_PAGE_FIELDS": `
     subtitle
-    showLive
-    liveText
-    livePage{
-      slug
-    }
-    vimeoUrl
     introText
+    initialText
     initialDescription{
       text{
         json
@@ -101,11 +96,11 @@ module.exports = {
     speakersPage{
       slug
     }
-    speakersCollection{
+    speakersCollection(limit: 20){
       items{
         name
         surname
-        job
+        talkTitle
         image{
           url
           title
@@ -214,6 +209,17 @@ module.exports = {
         slug
       }
     }`,
+  "EVENTS_PAGE_FIELDS": `
+    pageName
+    title
+    eventsCollection(limit: 10){
+      items{
+        slug
+        title
+
+      }
+    }
+    `,
   "CONTACTS_PAGE_FIELDS": `
     title`,
   "PARTNERSHIP_PAGE_FIELDS": `
