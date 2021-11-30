@@ -78,7 +78,7 @@ module.exports = {
   fetchEventsPage: async function(content_id){
     const query = `
       query{
-        eventPage(id: "${content_id}"){
+        eventsPage(id: "${content_id}"){
           ${constants.EVENTS_PAGE_FIELDS}
         }
       }
@@ -86,6 +86,8 @@ module.exports = {
     let page = await this.fetchGraphQL(query)
       .then(function(response){
         // console.log(response)
+
+        response.data.eventsPage.events = response.data.eventsPage.eventsPagesCollection.items;
 
         return response.data.eventsPage
       })

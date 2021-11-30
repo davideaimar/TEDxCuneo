@@ -115,12 +115,10 @@ module.exports = async function() {
           break;
         case "EventPage":
           page.content = await api.fetchEventPage(page.content.sys.id);
-          page.slug = '/events' + page.slug
           page.layout = "layouts/event.njk"
           break;
         case "EventsPage":
           page.content = await api.fetchEventsPage(page.content.sys.id);
-          page.slug = '/events' + page.slug
           page.layout = "layouts/events.njk"
           break;
         case "TicketsPage":

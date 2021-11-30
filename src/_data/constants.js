@@ -182,6 +182,8 @@ module.exports = {
     pageName
     title
     vimeoUrl
+    date
+
     textBlocksCollection(limit: 10){
       items{
         text{
@@ -208,15 +210,77 @@ module.exports = {
       ticketsPage{
         slug
       }
+    }
+    speakersTitle
+    talksCollection(limit: 20){
+      items{
+        name
+        surname
+        talkTitle
+        image{
+          url
+          title
+        }
+        videoUrl
+      }
+    }
+    partnersCollection(limit: 10){
+      items{
+        name
+        big
+        partnersCollection(limit: 30){
+          items{
+            name
+            logo{
+              url
+              title
+              height
+              width
+            }
+            url
+          }
+        }
+      }
     }`,
   "EVENTS_PAGE_FIELDS": `
     pageName
     title
-    eventsCollection(limit: 10){
+    introText
+    eventsPagesCollection(limit: 10){
       items{
         slug
-        title
-
+        content{
+          ...on EventPage{
+            pageName
+            title
+            date
+            summaryImage{
+              title
+              url
+            }
+            summary
+            previewButtonText
+          }
+        }
+      }
+    }
+    finalTextCollection(limit: 10){
+      items{
+        text{
+          json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
+        }
       }
     }
     `,
