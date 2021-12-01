@@ -4,7 +4,7 @@
 <div class="container">
 	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
 	<h1 class=" mb-20 max-w-660 md:mb-28 ">{{ d.title }}</h1>
-	<div  class="mb-16 md:mb-20">
+	<section  class="mb-16 md:mb-20">
 		{% for e in d.events %}
 			<div class="w-full grid grid-cols-1 mb-20 md:mb-16 md:grid-cols-12">
 				<div class="mb-6 md:mb-8 md:col-span-5">
@@ -22,5 +22,12 @@
 				</div>
 			</div>
 		{% endfor %}
-	</div>
+	</section>
+	<section class="grid grid-cols-1 mb-20 gap-y-24 md:mb-26 lg:grid-cols-2 lg:gap-x-32">
+		{% for item in d.finalTextCollection.items %}
+			<div class="faq-block max-w-sm">
+				{% documentToHtmlStringWithLinks item.text %}
+			</div>
+		{% endfor %}
+	</section>
 </div>

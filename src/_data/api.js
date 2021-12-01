@@ -134,6 +134,25 @@ module.exports = {
     return page;
   },
 
+  fetchSpeakerPage: async function(content_id){
+    const query = `
+      query{
+        speakerPage(id: "${content_id}"){
+          ${constants.SPEAKER_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.speakerPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
   fetchTeamPage: async function(content_id){
     const query = `
       query{

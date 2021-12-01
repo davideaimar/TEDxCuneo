@@ -27,8 +27,9 @@
 
                 <div class="swiper-container w-full mb-12" x-ref="container">
                     <div class="swiper-wrapper">
-                        {% for speaker in d.speakersCollection.items %}
-                            <div class="swiper-slide">
+                        {% for speaker_page in d.speakersCollection.items %}
+                            {% set speaker = speaker_page.content.speaker %}
+                            <a href="/{{ speaker_page.slug }}" class="swiper-slide no-underline">
                                 <div class="flex flex-col shadow overflow-hidden">
                                 <div class="flex-shrink-0 mb-6">
                                     <picture>
@@ -40,7 +41,7 @@
                                 <p class="mb-2">{{ speaker.name }}&nbsp;{{ speaker.surname }}</p>
                                 <h3> {{ speaker.talkTitle }}</h3>
                                 </div>
-                            </div>
+                            </a>
                         {% endfor %}
                         
                     </div>

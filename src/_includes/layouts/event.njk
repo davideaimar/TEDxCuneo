@@ -26,8 +26,9 @@
 	<section class="mb-20 ">
 		<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
 		<div class="grid gap-x-8 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-16 lg:gap-y-16">
-			{% for talk in d.talksCollection.items %}
-				<div>
+			{% for speaker_page in d.talksCollection.items %}
+				{% set talk=speaker_page.content.speaker %}
+				<a href="/{{ speaker_page.slug }}" class="no-underline">
 					<div class="flex flex-col shadow overflow-hidden">
 						<div class="flex-shrink-0 mb-6">
 							<picture>
@@ -39,7 +40,7 @@
 						<p class="mb-2">{{ talk.name }}&nbsp;{{ talk.surname }}</p>
 						<h3> {{ talk.talkTitle }}</h3>
 					</div>
-				</div>
+				</a>
 			{% endfor %}
 		</div>
 	</section>

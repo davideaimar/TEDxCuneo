@@ -14,7 +14,7 @@ module.exports = {
       name
       surname
       job
-      videoUrl
+      youtubeId
       image{
         title
         url
@@ -98,12 +98,19 @@ module.exports = {
     }
     speakersCollection(limit: 20){
       items{
-        name
-        surname
-        talkTitle
-        image{
-          url
-          title
+        slug
+        content{
+          ...on SpeakerPage {
+            speaker{
+              name
+              surname
+              talkTitle
+              image{
+                url
+                title
+              }
+            }
+          }
         }
       }
     }
@@ -203,25 +210,24 @@ module.exports = {
         }
       }
     }
-    ctaTickets{
-      show
-      initialText
-      buttonText
-      ticketsPage{
-        slug
-      }
-    }
     speakersTitle
     talksCollection(limit: 20){
       items{
-        name
-        surname
-        talkTitle
-        image{
-          url
-          title
+        slug
+        content{
+          ...on SpeakerPage{
+            speaker{
+              name
+              surname
+              talkTitle
+              image{
+                url
+                title
+              }
+              youtubeId
+            }
+          }
         }
-        videoUrl
       }
     }
     partnersCollection(limit: 10){
@@ -370,7 +376,7 @@ module.exports = {
         name
         surname
         job
-        videoUrl
+        youtubeId
         image{
           title
           url
@@ -378,6 +384,24 @@ module.exports = {
         description{
           json
         }
+      }
+    }`,
+  "SPEAKER_PAGE_FIELDS": `
+    edition{
+      slug
+    }
+    speaker{
+      name
+      surname
+      talkTitle
+      job
+      youtubeId
+      image{
+        title
+        url
+      }
+      description{
+        json
       }
     }`,
   "TEAM_PAGE_FIELDS": `

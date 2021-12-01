@@ -59,6 +59,11 @@ const pages_query = `query {
               id
             }
           }
+          ...on SpeakerPage{
+            sys{
+              id
+            }
+          }
           ...on TeamPage{
             sys{
               id
@@ -129,6 +134,10 @@ module.exports = async function() {
           page.content = await api.fetchSpeakersPage(page.content.sys.id);
           page.layout = "layouts/speakers.njk"
           page.content.speakersCollection.items = page.content.speakersCollection.items.filter(s=>s!=null)
+          break;
+        case "SpeakerPage":
+          page.content = await api.fetchSpeakerPage(page.content.sys.id);
+          page.layout = "layouts/speaker.njk"
           break;
         case "TeamPage":
           page.content = await api.fetchTeamPage(page.content.sys.id);
