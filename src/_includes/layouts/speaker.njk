@@ -4,12 +4,14 @@
 <div class="container">
 	<section class="mb-9">
 		<p class="mt-9 mb-6 uppercase md:mt-10"><a class="text-decoration-tedRed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
-		<h1 class="mb-4 max-w-660 md:mb-5 ">{{ d.speaker.talkTitle }}</h1>
+		<h1 class="mb-4 max-w-800 md:mb-5 ">{{ d.speaker.talkTitle }}</h1>
 		<h2>{{ d.speaker.name }}&nbsp;{{ d.speaker.surname }}</h2>
 	</section>
 	<section class="mb-20">
-		<div class="w-full relative h-0 overflow-hidden md:w-8/12 md:m-auto" style="padding-bottom: 42.8571%;" >
-			<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/{{ d.speaker.youtubeId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<div class="w-full lg:w-8/12 lg:m-auto">
+			<div class="relative h-0 overflow-hidden w-full" style="padding-bottom:  56.25%;">
+				<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/{{ d.speaker.youtubeId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
 		</div>
 	</section>
 	<section class="mb-20">
