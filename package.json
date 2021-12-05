@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "dev": "eleventy --serve & postcss styles/main.css --o _tmp/main.css --watch",
-    "build": "ELEVENTY_PRODUCTION=true eleventy && NODE_ENV=production postcss styles/main.css --o _site/style/main.css && cleancss _site/style/main.css -o _site/style/main.css"
+    "dev": "ELEVENTY_ENV=development eleventy --serve & postcss styles/main.css --o _tmp/main.css --watch",
+    "build": "ELEVENTY_ENV=production eleventy && NODE_ENV=production postcss styles/main.css --o _site/style/main.css && cleancss _site/style/main.css -o _site/style/main.css"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
-    "alpinejs": "^2.8.0",
+    "@11ty/eleventy": "^0.12.1",
+    "alpinejs": "^2.8.2",
     "autoprefixer": "^10.2.5",
     "clean-css-cli": "^4.3.0",
     "html-minifier": "^4.0.0",

@@ -2,11 +2,13 @@
 {# {{ d | log }} #}
 
 <div class="container">
-	<p class="mt-9 mb-6 uppercase md:mt-16">{{ d.pageName }}</p>
-	<h1 class=" mb-20 max-w-660 md:mb-28 ">{{ d.title }}</h1>
+	<p class="mt-9 mb-6 uppercase md:mt-14">{{ d.pageName }}</p>
+	<h1 class=" mb-6 max-w-660 md:mb-12 ">{{ d.title }}</h1>
+	<h2 class=" mb-20 md:mb-28">{{ d.date }}</h2>
 	<div class="w-full mb-20 relative h-0 overflow-hidden" style="padding-bottom: 42.8571%;">
 		<iframe src="{{ d.vimeoUrl }}" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 	</div>
+
 	<div class="grid grid-cols-1 gap-y-20 mb-20 md:gap-y-36 md:grid-cols-2 md:gap-x-10">
 		{% for item in d.textBlocksCollection.items %}
 			<div class="faq-block max-w-sm">
@@ -14,9 +16,60 @@
 			</div>
 		{% endfor %}
 	</div>
+
 	{% if d.ctaTickets %}
 		{% set class="mb-32 md:mb-44" %}
 		{% set cta=d.ctaTickets %}
 		{% include "ctaTickets.njk" %}
-	{% endif %}
+	{% endif %}	
+
+	<section class="mb-20 ">
+		<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
+		<div class="grid gap-x-8 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-16 lg:gap-y-16">
+			{% for speaker_page in d.talksCollection.items %}
+				{% set talk=speaker_page.content.speaker %}
+				<a href="/{{ speaker_page.slug }}" class="no-underline">
+					<div class="flex flex-col shadow overflow-hidden">
+						<div class="flex-shrink-0 mb-6">
+							<picture>
+								<source type="image/webp" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&fm=webp">
+								<source type="image/jpeg" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
+								<img class="w-full" src="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+							</picture>
+						</div>
+						<p class="mb-2">{{ talk.name }}&nbsp;{{ talk.surname }}</p>
+						<h3> {{ talk.talkTitle }}</h3>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+	{% for group in d.partnersCollection.items %}
+		<section>
+			<h2 class="mb-6">{{ group.name }}</h2>
+			{% if group.big %}
+				<div class="grid mb-12 md:mb-20 gap-y-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4">
+			{% else %}
+				<div class="grid mb-12 md:mb-20 gap-y-4 grid-cols-2 gap-x-4 md:grid-cols-3 lg:grid-cols-4">
+			{% endif %}
+				{% for p in group.partnersCollection.items %}
+					<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+						class="block w-full relative rounded">
+						{% if (p.logo.width / p.logo.height) > 1.2 %}
+							{# HORIZONTAL #}
+							{% set style="max-width: 80%; max-height: 80%;" %}
+						{% else %}
+							{# VERTICAL #}
+							{% set style="max-height: 80%;" %}
+						{% endif %}
+						<img src="{{ p.logo.url }}"
+							alt="{{p.name}} logo"
+							style="{{style}}"
+							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endfor %}
 </div>

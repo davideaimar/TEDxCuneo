@@ -75,6 +75,27 @@ module.exports = {
     return page;
   },
 
+  fetchEventsPage: async function(content_id){
+    const query = `
+      query{
+        eventsPage(id: "${content_id}"){
+          ${constants.EVENTS_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        response.data.eventsPage.events = response.data.eventsPage.eventsPagesCollection.items;
+
+        return response.data.eventsPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
   fetchPartnershipPage: async function(content_id){
     const query = `
       query{
@@ -107,6 +128,25 @@ module.exports = {
         // console.log(response)
 
         return response.data.speakersPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
+  fetchSpeakerPage: async function(content_id){
+    const query = `
+      query{
+        speakerPage(id: "${content_id}"){
+          ${constants.SPEAKER_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.speakerPage
       })
       .catch(console.error);
     

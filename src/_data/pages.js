@@ -49,7 +49,17 @@ const pages_query = `query {
               id
             }
           }
+          ...on EventsPage{
+            sys{
+              id
+            }
+          }
           ...on SpeakersPage{
+            sys{
+              id
+            }
+          }
+          ...on SpeakerPage{
             sys{
               id
             }
@@ -112,6 +122,10 @@ module.exports = async function() {
           page.content = await api.fetchEventPage(page.content.sys.id);
           page.layout = "layouts/event.njk"
           break;
+        case "EventsPage":
+          page.content = await api.fetchEventsPage(page.content.sys.id);
+          page.layout = "layouts/events.njk"
+          break;
         case "TicketsPage":
           page.content = await api.fetchTicketsPage(page.content.sys.id);
           page.layout = "layouts/tickets.njk"
@@ -120,6 +134,10 @@ module.exports = async function() {
           page.content = await api.fetchSpeakersPage(page.content.sys.id);
           page.layout = "layouts/speakers.njk"
           page.content.speakersCollection.items = page.content.speakersCollection.items.filter(s=>s!=null)
+          break;
+        case "SpeakerPage":
+          page.content = await api.fetchSpeakerPage(page.content.sys.id);
+          page.layout = "layouts/speaker.njk"
           break;
         case "TeamPage":
           page.content = await api.fetchTeamPage(page.content.sys.id);

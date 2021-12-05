@@ -14,7 +14,7 @@ module.exports = {
       name
       surname
       job
-      videoUrl
+      youtubeId
       image{
         title
         url
@@ -47,13 +47,8 @@ module.exports = {
     }`,
   "HOME_PAGE_FIELDS": `
     subtitle
-    showLive
-    liveText
-    livePage{
-      slug
-    }
-    vimeoUrl
     introText
+    initialText
     initialDescription{
       text{
         json
@@ -101,14 +96,21 @@ module.exports = {
     speakersPage{
       slug
     }
-    speakersCollection{
+    speakersCollection(limit: 20){
       items{
-        name
-        surname
-        job
-        image{
-          url
-          title
+        slug
+        content{
+          ...on SpeakerPage {
+            speaker{
+              name
+              surname
+              talkTitle
+              image{
+                url
+                title
+              }
+            }
+          }
         }
       }
     }
@@ -187,6 +189,8 @@ module.exports = {
     pageName
     title
     vimeoUrl
+    date
+
     textBlocksCollection(limit: 10){
       items{
         text{
@@ -206,14 +210,86 @@ module.exports = {
         }
       }
     }
-    ctaTickets{
-      show
-      initialText
-      buttonText
-      ticketsPage{
+    speakersTitle
+    talksCollection(limit: 20){
+      items{
         slug
+        content{
+          ...on SpeakerPage{
+            speaker{
+              name
+              surname
+              talkTitle
+              image{
+                url
+                title
+              }
+              youtubeId
+            }
+          }
+        }
+      }
+    }
+    partnersCollection(limit: 10){
+      items{
+        name
+        big
+        partnersCollection(limit: 30){
+          items{
+            name
+            logo{
+              url
+              title
+              height
+              width
+            }
+            url
+          }
+        }
       }
     }`,
+  "EVENTS_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    eventsPagesCollection(limit: 10){
+      items{
+        slug
+        content{
+          ...on EventPage{
+            pageName
+            title
+            date
+            summaryImage{
+              title
+              url
+            }
+            summary
+            previewButtonText
+          }
+        }
+      }
+    }
+    finalTextCollection(limit: 10){
+      items{
+        text{
+          json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    `,
   "CONTACTS_PAGE_FIELDS": `
     title`,
   "PARTNERSHIP_PAGE_FIELDS": `
@@ -300,7 +376,7 @@ module.exports = {
         name
         surname
         job
-        videoUrl
+        youtubeId
         image{
           title
           url
@@ -308,6 +384,24 @@ module.exports = {
         description{
           json
         }
+      }
+    }`,
+  "SPEAKER_PAGE_FIELDS": `
+    edition{
+      slug
+    }
+    speaker{
+      name
+      surname
+      talkTitle
+      job
+      youtubeId
+      image{
+        title
+        url
+      }
+      description{
+        json
       }
     }`,
   "TEAM_PAGE_FIELDS": `
