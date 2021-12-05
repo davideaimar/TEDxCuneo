@@ -321,6 +321,22 @@ module.exports = {
         }
       }
     }`,
+  "JOINUS_PAGE_FIELDS": `
+    introText
+    introTitle
+    ctaText
+    urlGoogleForm
+    openedPositionsCollection(limit: 30){
+      items{
+        name
+        positionsCollection(limit: 10){
+          items{
+            title
+            description
+          }
+        }
+      }
+  }`,
   "TICKETS_PAGE_FIELDS": `
     pageName
     title

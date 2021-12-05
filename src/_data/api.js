@@ -191,6 +191,25 @@ module.exports = {
     return page;
   },
 
+  fetchJoinTeamPage: async function(content_id){
+    const query = `
+      query{
+        jointTeamPage(id: "${content_id}"){
+          ${constants.JOINUS_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.jointTeamPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
   fetchTicketsPage: async function(content_id){
     const query = `
       query{

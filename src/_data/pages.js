@@ -74,6 +74,11 @@ const pages_query = `query {
               id
             }
           }
+          ...on JointTeamPage{
+            sys{
+              id
+            }
+          }
           ...on TicketsPage{
             sys{
               id
@@ -105,6 +110,10 @@ module.exports = async function() {
         case "PartnershipPage":
           page.content = await api.fetchPartnershipPage(page.content.sys.id);
           page.layout = "layouts/partnership.njk"
+          break;
+        case "JointTeamPage":
+          page.content = await api.fetchJoinTeamPage(page.content.sys.id);
+          page.layout = "layouts/joinTeam.njk"
           break;
         case "HomePage":
           page.content = await api.fetchHomepage(page.content.sys.id);
