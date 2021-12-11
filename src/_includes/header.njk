@@ -1,16 +1,28 @@
-<header class="header w-full fixed top-0 bg-tedBlack pointer-events-auto" 
-        x-data="{ isOpen: false }" 
-        :class="{ 'z-50': isOpen, 'z-30': ! isOpen }" 
+<header class="header w-full fixed top-0 pointer-events-auto transition-all" 
+        x-data="{ 
+            isOpen: false, 
+            hasScrolled: false, 
+            ignoreScroll: {% if page_data.layout=='layouts/partnership.njk' or page_data.layout=='layouts/joinTeam.njk'%}false{% else %}true{% endif %},
+            reactOnScroll() {
+                if (this.$el.getBoundingClientRect().top < 100 && window.scrollY > 100) {
+                    this.hasScrolled = true;
+                } else {
+                    this.hasScrolled = false;
+                }
+            } 
+        }"
+        :class="{ 'z-50': isOpen, 'z-30': ! isOpen, 'bg-tedBlack': (ignoreScroll || hasScrolled || isOpen) }" 
         @resize.window="isOpen = (window.innerWidth >= 1280) ? false : isOpen"  
-        x-init="$watch('isOpen', () => { isOpen ? bodyScrollLock.disableBodyScroll($refs.navbar) : bodyScrollLock.enableBodyScroll($refs.navbar)  })">
+        x-init="$watch('isOpen', () => { isOpen ? bodyScrollLock.disableBodyScroll($refs.navbar) : bodyScrollLock.enableBodyScroll($refs.navbar)  }); reactOnScroll();"
+        @scroll.window="reactOnScroll()">
     <div class="container flex py-4 justify-between" >
         <div class="flex-0 w-52 xl:mr-4">
             <a href="/">
                 <img src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
             </a>
         </div>
-        <nav class="bg-tedBlack flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 xl:block xl:p-0 xl:flex-1 xl:relative xl:top-auto xl:self-end"
-             :class="{ 'block': isOpen, 'hidden xl:block': !isOpen }"
+        <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 xl:block xl:p-0 xl:flex-1 xl:relative xl:top-auto xl:self-end"
+             :class="{ 'block': isOpen, 'hidden xl:block': !isOpen, 'bg-tedBlack': isOpen }"
         >
             <ul class="flex flex-col px-2 mb-8 md:px-12 xl:flex-row xl:justify-end xl:px-0 xl:mb-0"
                 :class="{ 'hidden xl:flex': !isOpen }"
@@ -42,3 +54,7 @@
         </button>
     </div>
 </header>
+
+{% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/joinTeam.njk"%}
+
+{% endif %} 
