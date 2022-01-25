@@ -2,6 +2,10 @@
   min-height: 100vh;
 }
 
+.swiper-slide {
+  height: auto !important;
+}
+
 .landing-map-home::before {
   width: 719px;
   height: 834px;

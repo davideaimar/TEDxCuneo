@@ -6,12 +6,12 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "alpinejs": "^2.8.2",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.4.2",
     "clean-css-cli": "^4.3.0",
     "html-minifier": "^4.0.0",
-    "postcss": "^8.2.1",
+    "postcss": "^8.4.5",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.16"
+    "tailwindcss": "^3.0.16"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.2",

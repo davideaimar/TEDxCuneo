@@ -1,13 +1,12 @@
 module.exports = {
-  purge: {
-    content: ['_site/**/*.html'],
-    options: {
-      safelist: [],
-    },
-  },
+  content: [
+    '_site/**/*.html'
+  ],
   theme: {
     colors: {
       tedBlack: '#0E0E0E',
+      tedGray: '#212121',
+      tedDarkWhite: '#B3B3B3',
       tedWhite: '#fff',
       tedRed: '#FF2B06',
       transparent: 'transparent',
@@ -85,6 +84,5 @@ module.exports = {
     }
   },
   
-  variants: {},
   plugins: [],
 }
