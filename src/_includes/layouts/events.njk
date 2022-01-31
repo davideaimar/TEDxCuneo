@@ -4,25 +4,31 @@
 <div class="container">
 	<p class="mt-9 mb-6 uppercase text-tedDarkWhite md:mt-16">{{ d.pageName }}</p>
 	<h1 class=" mb-20 max-w-660 md:mb-28 ">{{ d.title }}</h1>
+
 	<section  class="mb-16 md:mb-20">
 		{% for e in d.events %}
-			<div class="cursor-pointer w-full grid grid-cols-1 mb-20 md:mb-16 md:grid-cols-12" onclick="location.href='/{{ e.slug }}';" >
-				<div class="mb-6 md:mb-8 md:col-span-5">
+			<div class="event-preview cursor-pointer bg-tedGray rounded-lg p-4 w-full grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-x-8" onclick="location.href='/{{ e.slug }}';" >
+				<div class="md:col-span-6">
 					<picture>
 						<source type="image/webp" srcset="{{ e.content.summaryImage.url }}?w=700&fm=webp 1x, {{ e.content.summaryImage.url }}?w=1400&fm=webp 2x">
 						<source type="image/jpeg" srcset="{{ e.content.summaryImage.url }}?w=700&q=60&fm=jpg 1x, {{ e.content.summaryImage.url }}?w=1400&q=60&fm=jpg 2x">
 						<img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ e.content.summaryImage.url }}?w=700&q=60&fm=jpg" alt="alt"/>
 					</picture>
 				</div>
-				<div class="md:col-span-5 md:col-start-7">
-					<h2 class="mb-4 md:mb-6">{{ e.content.title }}</h2>
-					<h3 class="mb-4 md:mb-6">{{ e.content.date }}</h3>
-					<p class="mb-6 md:mb-8">{{ e.content.summary | nl2br | safe }}</p>
-					<a href="/{{ e.slug }}" class="text-decoration-tedRed">{{ e.content.previewButtonText }} →</a>
+				<div class="md:col-span-6 flex flex-col justify-between">
+					<div>
+						<h2 class="mb-4 md:mb-6">{{ e.content.title }}</h2>
+						<h3 class="mb-4 md:mb-6">{{ e.content.date }}</h3>
+						<p class="mb-6 md:mb-8">{{ e.content.summary | nl2br | safe }}</p>
+					</div>
+					<div class="w-full text-right">
+						<a href="/{{ e.slug }}" class="event-preview-action text-decoration-tedRed md:no-underline">{{ e.content.previewButtonText }} →</a>
+					</div>
 				</div>
 			</div>
 		{% endfor %}
 	</section>
+
 	<section class="grid grid-cols-1 mb-20 gap-y-24 md:mb-26 lg:grid-cols-2 lg:gap-x-32">
 		{% for item in d.finalTextCollection.items %}
 			<div class="faq-block max-w-sm">

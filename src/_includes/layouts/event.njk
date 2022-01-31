@@ -5,7 +5,7 @@
 	<p class="mt-9 mb-6 uppercase text-tedDarkWhite md:mt-14">{{ d.pageName }}</p>
 	<h1 class=" mb-6 max-w-660 md:mb-12 ">{{ d.title }}</h1>
 	<h3 class=" mb-20 text-tedDarkWhite md:mb-16">{{ d.date }}</h3>
-	<div class="w-full mb-20 lg:w-8/12 lg:mx-auto">
+	<div class="w-full mb-20 lg:mx-auto">
 		<div class="relative h-0 overflow-hidden" style="padding-bottom: 56.25%;">
 			<iframe src="{{ d.vimeoUrl }}" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 		</div>
@@ -60,7 +60,7 @@
 				{% for p in group.partnersCollection.items %}
 					<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
 						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
-						class="block w-full relative rounded">
+						class="block w-full relative rounded transition ease-in-out delay-300 duration-200 select-none md:hover:scale-105">
 						{% if (p.logo.width / p.logo.height) > 1.2 %}
 							{# HORIZONTAL #}
 							{% set style="max-width: 80%; max-height: 80%;" %}

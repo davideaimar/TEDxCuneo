@@ -16,7 +16,7 @@
         x-init="$watch('isOpen', () => { isOpen ? bodyScrollLock.disableBodyScroll($refs.navbar) : bodyScrollLock.enableBodyScroll($refs.navbar)  }); reactOnScroll();"
         @scroll.window="reactOnScroll()">
     <div class="container flex py-4 justify-between" >
-        <div class="flex-0 w-52 xl:mr-4">
+        <div class="flex-0 w-40 md:w-52 xl:mr-4">
             <a href="/">
                 <img src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
             </a>
@@ -29,7 +29,7 @@
                 x-ref="navbar"
             >
                 {% for item in header %}
-                    <li class="py-3 xl:px-4"><a href="{{item.slug}}" class="text-m_xl font-bold xl:font-normal xl:text-d_base {{ 'underline' if page_data.slug == item.slug else 'no-underline'}}">{{item.headerTitle}}</a></li>
+                    <li class="py-3 xl:px-4"><a href="{{item.slug}}" class="text-m_xl font-bold xl:font-normal xl:text-d_base link-underline no-underline {{ 'link-underline-fixed' if page_data.slug == item.slug }}">{{item.headerTitle}}</a></li>
                 {% endfor %}
             </ul>
         </nav>

@@ -1,8 +1,14 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     '_site/**/*.html'
   ],
   theme: {
+    screens: {
+      'xsm': '400px',
+      ...defaultTheme.screens,
+    },
     colors: {
       tedBlack: '#0E0E0E',
       tedGray: '#212121',

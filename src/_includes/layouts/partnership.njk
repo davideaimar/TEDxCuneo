@@ -2,31 +2,234 @@
 {# {{ d | log }} #}
 
 <div 
-	style="background-image: url('/assets/img/tedxcuneo_partnership.jpg')" 
+	style="background-image: url('{{ d.bgImage.url }}?fit=fill&w=1440&h=600&q=70')" 
 	alt="TEDxCuneo partnership"
 	class="absolute top-0 w-full h-600 -z-1 bg-center bg-no-repeat bg-cover sm:h-600 md:h-800">
 </div>
 
 <div class="container">
+
+	<div class="mb-40 xsm:mb-64 md:mb-56 lg:mb-56">
+
+		<h1 class=" mt-9 mb-12 max-w-660 md:mb-28 md:mt-16">{{ d.introText }}</h1>
+
+		<svg class="h-12" viewBox="0 0 13 24" xmlns="http://www.w3.org/2000/svg">
+			<path fill="white" d="M2.03383e-07 17.1647L6.5 24L13 17.1647L11.8973 15.9898L7.29799 20.8264L7.29799 -2.49243e-07L5.70201 -3.19005e-07L5.70201 20.8264L1.11719 15.9898L2.03383e-07 17.1647Z" />
+		</svg>
+	
+	</div>
  
-	<h1 class=" mt-9 mb-12 max-w-660 md:mb-28 md:mt-16">{{ d.introText }}</h1>
 
-	<a href="#form" class="block w-40 text-center box-content uppercase no-underline font-bold text-small p-3 border-tedWhite border mb-4 md:p-4 md:text-d_base md:mb-5">{{ d.ctaText }}</a>
+	<div class="flex flex-col mb-16 md:flex-row md:items-center">
+		<h3 class="mb-4 md:mb-0">Perchè diventare partner</h3>
+		<a href="#form" class="md:ml-8    block w-40 text-center box-content uppercase no-underline font-bold text-small p-2 py-3 bg-tedWhite text-tedBlack md:text-small md:hover:bg-tedRed transition delay-100 duration-200">{{ d.ctaText }}</a>
+	</div>
 
-	<svg class="h-6 mb-4 md:mb-10" viewBox="0 0 13 24" xmlns="http://www.w3.org/2000/svg">
-		<path fill="white" d="M2.03383e-07 17.1647L6.5 24L13 17.1647L11.8973 15.9898L7.29799 20.8264L7.29799 -2.49243e-07L5.70201 -3.19005e-07L5.70201 20.8264L1.11719 15.9898L2.03383e-07 17.1647Z" />
-	</svg>
+	{# Initial text blocks (grid of 3 blocks) #}
+	{% if d.initialTextBlocksCollection.items and d.initialTextBlocksCollection.items.length > 0 %}
+		<div class="grid grid-cols-1 gap-y-20 mb-16 md:grid-cols-3 md:gap-x-10">
+			{% for tb in d.initialTextBlocksCollection.items %}					
+				<div class="faq-block">
+					{% documentToHtmlStringWithLinks tb.text %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
 
+	{# Images slider #}
+	{% if d.imagesCollection.items and d.imagesCollection.items.length > 0 %}
+		<div class="flex flex-row justify-between items-center mb-4">
+			<h2>Edizione 2021</h2>
+			{% if d.imagesCollection.items.length > 2 %}
+				<div class="justify-center items-center hidden md:flex" x-data={}>
+					<div class="flex items-center">
+						<button @click="{ swiper.slideTo(swiper.activeIndex-1);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+							<svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
+							</svg>
+						</button>
+					</div>
+					<div class="flex items-center">
+						<button @click="{ swiper.slideTo(swiper.activeIndex+1); }" 
+								class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+							<svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
+							</svg>
+
+						</button>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		<div x-data="{swiper: null, index: 0}"
+			 x-init="swiper = initSwiper($refs)">
+			<div class="swiper-container w-full mb-12 h-auto" x-ref="container">
+				<div class="swiper-wrapper">
+					{% for img in d.imagesCollection.items %}
+						<div class="swiper-slide">
+							<picture>
+								<source type="image/webp" srcset="{{ img.url }}?w=700&fm=webp">
+								<source type="image/jpeg" srcset="{{ img.url }}?w=700&fm=jpg">
+								<img class="w-full" src="{{ img.url }}?w=500&fm=jpg" alt="{{ img.title }}">
+							</picture>
+						</div>
+					{% endfor %}
+					
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+	{# some numbers about 2021 TED #}
+	<div class="grid grid-cols-1 gap-y-6 md:grid-cols-3 md:gap-x-10 lg:grid-cols-4 mb-24">
+		<div class="">
+			<h1 class="mb-4">75/100</h1>
+			<h3>Score medio feedback TED</h3>
+		</div>
+		<div >
+			<h1 class="mb-4">520</h1>
+			<h3>registrazioni su eventbrite</h3>
+		</div>
+		<div class="lg:col-span-2 lg:w-1/2">
+			<h1 class="mb-4">350</h1>
+			<h3>spettatori collegati in media via streaming</h3>
+		</div>
+	</div>
+
+	{# old partners #}
+	<div class="grid grid-cols-1 gap-y-8 lg:grid-cols-12 md:gap-x-4 ">
+		<div class="lg:col-span-2 ">
+			<p class="uppercase mb-4">{{ d.oldPartnersCollection.items[0].name }}</p>
+			{% set p=d.oldPartnersCollection.items[0].partnersCollection.items[0] %}
+			<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+						class="block w-full relative rounded">
+						{% if (p.logo.width / p.logo.height) > 1.2 %}
+							{# HORIZONTAL #}
+							{% set style="max-width: 80%; max-height: 80%;" %}
+						{% else %}
+							{# VERTICAL #}
+							{% set style="max-height: 80%;" %}
+						{% endif %}
+						<img src="{{ p.logo.url }}"
+							alt="{{p.name}} logo"
+							style="{{style}}"
+							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+		</div>
+		<div class="hidden lg:block md:col-span-1 "></div>
+		<div class="lg:col-span-6 ">
+			<p class="uppercase mb-4">{{ d.oldPartnersCollection.items[1].name }}</p>
+			<div class="w-full grid grid-cols-3 gap-x-4">
+				{% set p=d.oldPartnersCollection.items[1].partnersCollection.items[0] %}
+				<a  {% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+						class="block w-full relative rounded">
+						{% if (p.logo.width / p.logo.height) > 1.2 %}
+							{# HORIZONTAL #}
+							{% set style="max-width: 80%; max-height: 80%;" %}
+						{% else %}
+							{# VERTICAL #}
+							{% set style="max-height: 80%;" %}
+						{% endif %}
+						<img src="{{ p.logo.url }}"
+							alt="{{p.name}} logo"
+							style="{{style}}"
+							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+				{% set p=d.oldPartnersCollection.items[1].partnersCollection.items[1] %}
+				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+						class="block w-full relative rounded">
+						{% if (p.logo.width / p.logo.height) > 1.2 %}
+							{# HORIZONTAL #}
+							{% set style="max-width: 80%; max-height: 80%;" %}
+						{% else %}
+							{# VERTICAL #}
+							{% set style="max-height: 80%;" %}
+						{% endif %}
+						<img src="{{ p.logo.url }}"
+							alt="{{p.name}} logo"
+							style="{{style}}"
+							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+				{% set p=d.oldPartnersCollection.items[1].partnersCollection.items[2] %}
+				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+						class="block w-full relative rounded">
+						{% if (p.logo.width / p.logo.height) > 1.2 %}
+							{# HORIZONTAL #}
+							{% set style="max-width: 80%; max-height: 80%;" %}
+						{% else %}
+							{# VERTICAL #}
+							{% set style="max-height: 80%;" %}
+						{% endif %}
+						<img src="{{ p.logo.url }}"
+							alt="{{p.name}} logo"
+							style="{{style}}"
+							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+			</div>
+		</div>
+		<div class="hidden lg:block md:col-span-3 "></div>
+
+		<div class="lg:col-span-12 ">
+			<p class="uppercase mb-4">{{ d.oldPartnersCollection.items[2].name }}</p>
+			<div class="flex flex-col items-center md:flex-row">
+				<div class="w-full md:w-1/3 grid grid-cols-2 gap-x-4">
+					{% set p=d.oldPartnersCollection.items[2].partnersCollection.items[0] %}
+					<a  {% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+							style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+							class="block w-full relative rounded">
+							{% if (p.logo.width / p.logo.height) > 1.2 %}
+								{# HORIZONTAL #}
+								{% set style="max-width: 80%; max-height: 80%;" %}
+							{% else %}
+								{# VERTICAL #}
+								{% set style="max-height: 80%;" %}
+							{% endif %}
+							<img src="{{ p.logo.url }}"
+								alt="{{p.name}} logo"
+								style="{{style}}"
+								class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+					{% set p=d.oldPartnersCollection.items[2].partnersCollection.items[4] %}
+					<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
+							style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
+							class="block w-full relative rounded">
+							{% if (p.logo.width / p.logo.height) > 1.2 %}
+								{# HORIZONTAL #}
+								{% set style="max-width: 80%; max-height: 80%;" %}
+							{% else %}
+								{# VERTICAL #}
+								{% set style="max-height: 80%;" %}
+							{% endif %}
+							<img src="{{ p.logo.url }}"
+								alt="{{p.name}} logo"
+								style="{{style}}"
+								class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
+					</a>
+				</div>
+				<p class="mt-8 text-center md:text-left md:mt-0 md:ml-4">
+					e oltre 30 partner tecnici <br/>
+					<a class="underline text-decoration-tedRed" href="/eventi/festinalente/">scoprili tutti</a>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	{# Partner form #}
 	{% set form=d.form %}
-	{% set class="mb-36 pt-32 md:mt-0 md:pt-52" %}
+	{% set class="mb-36 pt-24 md:mt-0" %}
 	{% set anchor="form" %}
 	{% include "partner-form.njk" %}
 
-	{% if d.faqsCollection.items and d.faqsCollection.items.length > 0 %}
+
+	{% if d.bottomTextBlocksCollection.items and d.bottomTextBlocksCollection.items.length > 0 %}
 		<div class="grid grid-cols-1 gap-y-20 md:gap-y-44 md:grid-cols-2 md:gap-x-10">
-			{% for faq in d.faqsCollection.items %}
+			{% for tb in d.bottomTextBlocksCollection.items %}
 				<div class="faq-block max-w-sm">
-					{% documentToHtmlStringWithLinks faq.text %}
+					{% documentToHtmlStringWithLinks tb.text %}
 				</div>
 			{% endfor %}
 		</div>
@@ -37,6 +240,32 @@
 </div>
 
 {% block bottom %}
+<script src="/assets/js/swiper.min.js"></script>
+<script>
+    // speakers slider
+    function initSwiper(refs){
+        swiper = new Swiper(refs.container, {
+            loop: false,
+            slidesPerView: 1.2,
+            spaceBetween: 10,
+        
+            breakpoints: {
+                540: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 10,
+                },
+                1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 10,
+                },
+            },
+        });
+        swiper.on('transitionEnd', function() {
+            index=swiper.realIndex;
+        });
+        return swiper;
+    }
+</script>
 
 <!-- Facebook Pixel Code -->
 <script>

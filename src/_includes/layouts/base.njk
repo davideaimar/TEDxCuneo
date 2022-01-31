@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="scroll-smooth">
   <head>
     {% include "head.njk" %}
     {% block head %}{% endblock %}
-    {% if page_data.layout=="layouts/homepage.njk" %}
+    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/partnership.njk" %}
       <link rel="stylesheet" href="/assets/css/swiper.min.css" />  
+    {% endif %}
+    {% if page.url=="/form-partner-ricevuta/" %}
+      <!-- Event snippet for Website traffic conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-10798185441/ixpMCOO_xpQDEOH3_Jwo'}); </script>
     {% endif %}
   </head>
   <body>
@@ -17,7 +20,11 @@
     {% else %}
 
       <div class="relative">
-        {% include "header.njk" %}
+        {% if page_data.slug=="/diventa-partner/" %}
+          {% include "header-basic.njk" %}
+        {% else %}
+          {% include "header.njk" %}
+        {% endif %}
         <div class="flex flex-col justify-between min-h-screen pt-24">
           <main class="flex-1 flex-grow">
             {{ content | safe }} 

@@ -302,7 +302,54 @@ module.exports = {
         slug
       }
     }
-    faqsCollection(limit: 6){
+    bgImage{
+      url
+      title
+    }
+    imagesCollection(limit: 10){
+      items{
+        url
+        title
+      }
+    }
+    oldPartnersCollection(limit: 10){
+      items{
+        name
+        big
+        partnersCollection(limit: 30){
+          items{
+            name
+            logo{
+              url
+              title
+              height
+              width
+            }
+            url
+          }
+        }
+      }
+    }
+    initialTextBlocksCollection(limit: 3){
+      items{
+        text{
+          json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    bottomTextBlocksCollection(limit: 2){
       items{
         text{
           json
