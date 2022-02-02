@@ -240,9 +240,12 @@
 </div>
 
 {% block bottom %}
+	{% if page.url=="/diventa-partner/" %}
+		<!-- Event snippet for Website traffic conversion page --> 
+		<script> gtag('event', 'conversion', {'send_to': 'AW-10798185441/ixpMCOO_xpQDEOH3_Jwo'}); </script>
+	{% endif %}
 <script src="/assets/js/swiper.min.js"></script>
 <script>
-    // speakers slider
     function initSwiper(refs){
         swiper = new Swiper(refs.container, {
             loop: false,
