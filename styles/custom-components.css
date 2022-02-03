@@ -13,6 +13,27 @@
     background-position: center;
     background-size: contain;
   }
+
+  .link-underline {
+    border-bottom-width: 0;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .3s ease-in-out;
+    background-image: linear-gradient(transparent, transparent), linear-gradient(#FF2B06, #FF2B06)
+  }
+
+  h2 .link-underline {
+      background-position: 0 88%;
+  }
+  h1 .link-underline {
+      background-position: 0 87%;
+  }
+
+  .link-underline:hover, .link-underline-fixed {
+    background-size: 100% 3px;
+  }
   .markdown p,
   .markdown ul,
   .markdown ol,

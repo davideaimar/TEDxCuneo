@@ -12,7 +12,7 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace(/\n/g, '<br/>')}</p>`,
     [INLINES.HYPERLINK]: (node, next) => {
-      return `<a href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') || node.data.uri.startsWith('/') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
+      return `<a class="no-underline link-underline link-underline-fixed " href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') || node.data.uri.startsWith('/') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
     }
   }
 };
@@ -25,7 +25,7 @@ function optionsWithLinks(links){
     const link = links.entries.hyperlink.find(
       (h) => h.sys.id === node.data.target.sys.id
     );
-    return `<a href="${normalizeSlug(link.slug)}">${next(node.content)}</a>`;
+    return `<a class="no-underline link-underline link-underline-fixed " href="${normalizeSlug(link.slug)}">${next(node.content)}</a>`;
   };
 
   return options_new

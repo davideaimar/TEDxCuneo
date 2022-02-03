@@ -8,11 +8,13 @@
                     <source type="image/jpeg" srcset="{{ p.image.url }}?w=300&h=300&fit=thumb&fm=jpg&q=60">
                     <img class="mb-2" src="{{ p.image.url }}?w=300&h=300&fit=thumb&q=60" alt="{{ p.name }} {{ p.surname }}"/>
                 </picture>
-                <h3 class="mb-2">{{ p.name }}<br/>{{ p.surname }}</h3>
-                <p class="mb-2">{{ p.role }}</p>
-                {% if p.siteName and p.url %}
-                    <a href="{{ p.url }}" target="_blank">{{ p.siteName }}↗</a>
-                {% endif %}
+                <div>
+                    <h3 class="mb-2">{{ p.name }}<br/>{{ p.surname }}</h3>
+                    <p class="mb-2">{{ p.role }}</p>
+                    {% if p.siteName and p.url %}
+                        <a href="{{ p.url }}" target="_blank">{{ p.siteName }}↗</a>
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
     </div>

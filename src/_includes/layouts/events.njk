@@ -5,24 +5,24 @@
 	<p class="mt-9 mb-6 uppercase text-tedDarkWhite md:mt-16">{{ d.pageName }}</p>
 	<h1 class=" mb-20 max-w-660 md:mb-28 ">{{ d.title }}</h1>
 
-	<section  class="mb-16 md:mb-20">
+	<section  class="mb-16 -mx-4 px-4 bg-tedGray md:bg-tedBlack md:px-0 md:mx-0 md:mb-20">
 		{% for e in d.events %}
-			<div class="event-preview cursor-pointer bg-tedGray rounded-lg p-4 w-full grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-x-8" onclick="location.href='/{{ e.slug }}';" >
-				<div class="md:col-span-6">
+			<div class="event-preview cursor-pointer py-8 bg-tedGray md:rounded-lg md:p-8 w-full grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-x-8" onclick="location.href='/{{ e.slug }}';" >
+				<div class="md:col-span-6 md:col-start-7">
 					<picture>
-						<source type="image/webp" srcset="{{ e.content.summaryImage.url }}?w=700&fm=webp 1x, {{ e.content.summaryImage.url }}?w=1400&fm=webp 2x">
-						<source type="image/jpeg" srcset="{{ e.content.summaryImage.url }}?w=700&q=60&fm=jpg 1x, {{ e.content.summaryImage.url }}?w=1400&q=60&fm=jpg 2x">
-						<img class="object-cover w-full h-full mb-12 md:mb-0" src="{{ e.content.summaryImage.url }}?w=700&q=60&fm=jpg" alt="alt"/>
+						<source type="image/webp" srcset="{{ e.content.summaryImage.url }}?w=700&h=350&fit=fill&fm=webp 1x, {{ e.content.summaryImage.url }}?w=1400&h=650&fit=fill&fm=webp 2x">
+						<source type="image/jpeg" srcset="{{ e.content.summaryImage.url }}?w=700&h=350&fit=fill&q=60&fm=jpg 1x, {{ e.content.summaryImage.url }}?w=1400&h=650&fit=fill&q=60&fm=jpg 2x">
+						<img class="object-cover w-full rounded-lg h-full mb-12 md:mb-0" src="{{ e.content.summaryImage.url }}?w=700&h=350&fit=fill&q=60&fm=jpg" alt="alt"/>
 					</picture>
 				</div>
-				<div class="md:col-span-6 flex flex-col justify-between">
+				<div class="md:col-span-6 md:row-start-1 md:col-start-1 flex flex-col justify-between">
 					<div>
+						<p class="mb-4 md:mb-6 text-tedDarkWhite">{{ e.content.date }}</p>
 						<h2 class="mb-4 md:mb-6">{{ e.content.title }}</h2>
-						<h3 class="mb-4 md:mb-6">{{ e.content.date }}</h3>
 						<p class="mb-6 md:mb-8">{{ e.content.summary | nl2br | safe }}</p>
 					</div>
 					<div class="w-full text-right">
-						<a href="/{{ e.slug }}" class="event-preview-action text-decoration-tedRed md:no-underline">{{ e.content.previewButtonText }} →</a>
+						<a href="/{{ e.slug }}" class="event-preview-action link-underline link-underline-fixed no-underline">{{ e.content.previewButtonText }} →</a>
 					</div>
 				</div>
 			</div>
