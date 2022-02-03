@@ -1,6 +1,9 @@
 <header class="header w-full fixed top-0 pointer-events-auto transition-all" 
         x-data="{ 
-            isOpen: false, 
+            open: false,
+            openButton: false,
+            transitioning: false,
+            closing: false,
             hasScrolled: false, 
             ignoreScroll: {% if page_data.layout=='layouts/partnership.njk' or page_data.layout=='layouts/joinTeam.njk'%}false{% else %}true{% endif %},
             reactOnScroll() {
@@ -9,11 +12,26 @@
                 } else {
                     this.hasScrolled = false;
                 }
-            } 
+            },
+            toggleMenu(navbar) {
+                if (this.transitioning) return;
+                this.closing = this.open;
+                if (!this.closing)
+                    this.open = true;
+                this.openButton = !this.openButton;
+                navbar.style.opacity = this.closing ? 0 : 1;
+                this.transitioning = true;
+                setTimeout(() => {
+                    this.transitioning = false;
+                    if (this.closing)
+                        this.open = false;
+                    this.closing = false;
+                }, 200);
+            }
         }"
-        :class="{ 'z-50': isOpen, 'z-30': ! isOpen, 'bg-tedBlack': (ignoreScroll || hasScrolled || isOpen) }" 
-        @resize.window="isOpen = (window.innerWidth >= 1280) ? false : isOpen"  
-        x-init="$watch('isOpen', () => { isOpen ? bodyScrollLock.disableBodyScroll($refs.navbar) : bodyScrollLock.enableBodyScroll($refs.navbar)  }); reactOnScroll();"
+        :class="{ 'z-50': open, 'z-30': ! open, 'bg-tedBlack': (ignoreScroll || hasScrolled || open) }" 
+        @resize.window="open = (window.innerWidth >= 1280) ? false : open"  
+        x-init="$watch('open', () => { open ? bodyScrollLock.disableBodyScroll($refs.navbar) : bodyScrollLock.enableBodyScroll($refs.navbar)  }); reactOnScroll();"
         @scroll.window="reactOnScroll()">
     <div class="container flex py-4 justify-between" >
         <div class="flex-0 w-40 md:w-52 xl:mr-4">
@@ -21,11 +39,11 @@
                 <img src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
             </a>
         </div>
-        <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 xl:block xl:p-0 xl:flex-1 xl:relative xl:top-auto xl:self-end"
-             :class="{ 'block': isOpen, 'hidden xl:block': !isOpen, 'bg-tedBlack': isOpen }"
-        >
+        <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 xl:block xl:p-0 xl:flex-1 xl:relative xl:top-auto xl:self-end transition-opacity duration-200 "
+             :class="{ 'visible z-50': open, 'invisible -z-50 xl:z-50 xl:visible': !open, 'bg-tedBlack': open }"
+             x-ref="navbar_wrapper">
             <ul class="flex flex-col px-2 mb-8 md:px-12 xl:flex-row xl:justify-end xl:px-0 xl:mb-0"
-                :class="{ 'hidden xl:flex': !isOpen }"
+                :class="{ 'hidden xl:flex': !open }"
                 x-ref="navbar"
             >
                 {% for item in header %}
@@ -34,23 +52,15 @@
             </ul>
         </nav>
         <button
-            @click="isOpen = !isOpen; "
+            @click=" toggleMenu($refs.navbar_wrapper); "
             type="button"
-            class="block flex-0 text-tedWhite focus:outline-none self-start xl:hidden"
+            class="block flex-0 p-4 -m-4 text-tedWhite focus:outline-none self-center xl:hidden"
         >
-            <svg class="h-6 w-6 fill-tedWhite" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
-            <path
-                x-show="isOpen"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-            />
-            <path
-                x-show="!isOpen"
-                fill-rule="evenodd"
-                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-            />
-            </svg>
+            <div class="relative transform box-content" style="width: 23px; height: 9px; padding-top: 7px;">
+                <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'rotate-45': openButton,' -translate-y-1.5': !openButton }"></span>
+                <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'opacity-0': openButton } "></span>
+                <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'-rotate-45': openButton, ' translate-y-1.5': !openButton}"></span>
+            </div>
         </button>
     </div>
 </header>
