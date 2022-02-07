@@ -35,7 +35,7 @@
                                         <picture>
                                             <source type="image/webp" srcset="{{ speaker.image.url }}?w=700&h=700&fit=thumb&fm=webp">
                                             <source type="image/jpeg" srcset="{{ speaker.image.url }}?w=700&h=700&fit=thumb&q=70&fm=jpg">
-                                            <img class="w-full" src="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+                                            <img class="w-full" loading="lazy" src="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
                                         </picture>
                                     </div>
                                     <div class="px-4 pb-4">
@@ -116,7 +116,7 @@
             <picture class="mb-12 md:mb-0 md:col-span-6">
                 <source type="image/webp" srcset="{{ d.tedBlock.image.url }}?w=700&fm=webp 1x, {{ d.tedBlock.image.url }}?w=1400&fm=webp 2x">
                 <source type="image/jpeg" srcset="{{ d.tedBlock.image.url }}?w=700&q=60&fm=jpg 1x, {{ d.tedBlock.image.url }}?w=1400&q=60&fm=jpg 2x">
-                <img class="object-cover w-full" src="{{ d.tedBlock.image.url }}?w=700&q=60&fm=jpg" alt="TED & TEDx"/>
+                <img class="object-cover w-full" loading="lazy" src="{{ d.tedBlock.image.url }}?w=700&q=60&fm=jpg" alt="TED & TEDx"/>
             </picture>
 
             <div class="faq-block max-w-615 md:col-span-4 md:col-start-8">
