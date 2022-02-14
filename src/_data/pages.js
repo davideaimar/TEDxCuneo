@@ -15,72 +15,98 @@ const pages_query = `query {
         content{
           __typename
           ...on LandingPage{
+            sys{
+              publishedAt
+            }
             ${constants.LANDING_PAGE_FIELDS}
           }
           ...on PrivacyPolicy{
+            sys{
+              publishedAt
+            }
             ${constants.PRIVACY_POLICY_FIELDS}
           }
           ...on NewsletterSuccessPage{
+            sys{
+              publishedAt
+            }
             ${constants.NEWSLETTER_SUCCESS_PAGE}
           }
           ...on PartnershipPage{
             sys{
               id
+              publishedAt
             }
           }
           ...on HomePage{
             sys{
+              publishedAt
               id
             }
           }
           ...on TedPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on ContactsPage{
+            sys{
+              publishedAt
+            }
             ${constants.CONTACTS_PAGE_FIELDS}
           }
           ...on LivePage{
+            sys{
+              publishedAt
+            }
             ${constants.LIVE_PAGE_FIELDS}
           }
           ...on EventPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on EventsPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on SpeakersPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on SpeakerPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on TeamPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on PartnersPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on JointTeamPage{
             sys{
+              publishedAt
               id
             }
           }
           ...on TicketsPage{
             sys{
+              publishedAt
               id
             }
           }
@@ -97,6 +123,7 @@ module.exports = async function() {
     pages = pages.data.pageCollection.items;
     pages = pages.map(async function(page) {
       page.slug = helpers.normalizeSlug(page.slug);
+      page.publishedAt = page.content.sys.publishedAt;
       switch(page.content.__typename){
         case "PrivacyPolicy":
           page.layout = "layouts/privacyPolicy.njk"

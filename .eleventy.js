@@ -66,7 +66,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('absoluteUrl', (url) => helpers.normalizeSlug(url) )
 
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+    if (typeof dateObj === 'string')
+      dateObj = new Date(dateObj);
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd:HH:mm:ss');
   })
 
   eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
