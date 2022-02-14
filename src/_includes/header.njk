@@ -30,7 +30,12 @@
             }
         }"
         :class="{ 'z-50': open, 'z-30': ! open, 'bg-tedBlack': (ignoreScroll || hasScrolled || open) }" 
-        @resize.window="open = (window.innerWidth >= 1280) ? false : open"  
+        @resize.window="
+            if (window.innerWidth >= 1280) {
+                this.open = false;
+                this.openButton = false;
+                $refs.navbar_wrapper.style.opacity = 1;
+            }"  
         x-init="$watch('open', () => { open ? bodyScrollLock.disableBodyScroll($refs.navbar) : bodyScrollLock.enableBodyScroll($refs.navbar)  }); reactOnScroll();"
         @scroll.window="reactOnScroll()">
     <div class="container flex py-4 justify-between" >
@@ -42,7 +47,7 @@
         <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 xl:block xl:p-0 xl:flex-1 xl:relative xl:top-auto xl:self-end transition-opacity duration-200 "
              :class="{ 'visible z-50': open, 'invisible -z-50 xl:z-50 xl:visible': !open, 'bg-tedBlack': open }"
              x-ref="navbar_wrapper">
-            <ul class="flex flex-col px-2 mb-8 md:px-12 xl:flex-row xl:justify-end xl:px-0 xl:mb-0"
+            <ul class="flex flex-col px-2 mb-8 overflow-y-auto md:px-12 xl:flex-row xl:justify-end xl:px-0 xl:mb-0"
                 :class="{ 'hidden xl:flex': !open }"
                 x-ref="navbar"
             >
@@ -64,7 +69,3 @@
         </button>
     </div>
 </header>
-
-{% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/joinTeam.njk"%}
-
-{% endif %} 

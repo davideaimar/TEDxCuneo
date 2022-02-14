@@ -27,7 +27,7 @@
             <div>
                 {% for link in footer.links %}
                     <p class="{% if loop.index < footer.links.length %}mb-1{% endif %}"> 
-                        <a href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+                        <a href="{{ link.url }}" {% if link.target == "_blank" %} target="_blank" {% endif %}>{{ link.label }}</a>
                     </p>
                 {% endfor %}
             </div>
