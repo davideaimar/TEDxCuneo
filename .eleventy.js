@@ -68,7 +68,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     if (typeof dateObj === 'string')
       dateObj = new Date(dateObj);
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd:HH:mm:ss');
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+  })
+
+  eleventyConfig.addFilter('htmlDateToIsoString', (dateObj) => {
+    if (typeof dateObj === 'string')
+      dateObj = new Date(dateObj);
+    return dateObj.toISOString();
   })
 
   eleventyConfig.addTransform('htmlmin', function (content, outputPath) {

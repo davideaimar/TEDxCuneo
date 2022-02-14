@@ -5,7 +5,11 @@
   "cf": "CF 96100380045",
   "links": [
 
-    
+    {
+      "label": "Press",
+      "url": "/press/",
+      "target": "local"
+    },
     {
       "label": "Informativa per il trattamento dei dati personali",
       "url": "/informativa-trattamento-dei-dati/",
