@@ -89,7 +89,44 @@
   }
 }
 
+/* 2022 page */
+/*      |         | */
+/*      ----------|---------- */
+/* -----|---------|------ */
+.home-banner-2022 {
+  background-image: url('../assets/img/home/heart.svg');
+  background-position: center 85%;
+  background-repeat: no-repeat;
+  background-size: 300px;
+}
+.home-writing{
+  height: 50px;
+  margin-bottom: 50px;
+  width: 999999px;
+  transform: translateX(-200vw);
+  background-repeat: repeat-x;
+  background-position-x: left;
+  background-size: contain;
+  transition: 10ms linear;
+  -webkit-transition: 10ms linear;
+  will-change: transform; 
+}
+.home-top-writing{
+  background-image: url('../assets/img/home/top_write.svg');
+}
+.home-bottom-writing{
+  background-image: url('../assets/img/home/bottom_write.svg');
+}
+
 @screen md{
+  .home-writing{
+    height: 100px;
+    margin-bottom: 60px;
+  }
+  .home-banner-2022{
+    background-position: 90%;
+    background-size: 500px;
+  }
   .-one {
     transform: rotate(7.03deg);
   }
