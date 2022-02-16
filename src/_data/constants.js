@@ -49,6 +49,19 @@ module.exports = {
     subtitle
     introText
     initialText
+    ctaEvent{
+      image{
+        title
+        url
+      }
+      topText
+      title
+      description
+      buttonText
+      page{
+        slug
+      }
+    }
     initialDescription{
       text{
         json
@@ -188,6 +201,7 @@ module.exports = {
   "EVENT_PAGE_FIELDS": `
     pageName
     title
+    layout
     vimeoUrl
     date
 
@@ -252,21 +266,18 @@ module.exports = {
     pageName
     title
     introText
-    eventsPagesCollection(limit: 10){
+    ctaEventsCollection(limit: 50){ 
       items{
-        slug
-        content{
-          ...on EventPage{
-            pageName
-            title
-            date
-            summaryImage{
-              title
-              url
-            }
-            summary
-            previewButtonText
-          }
+        image{
+          title
+          url
+        }
+        topText
+        title
+        description
+        buttonText
+        page{
+          slug
         }
       }
     }

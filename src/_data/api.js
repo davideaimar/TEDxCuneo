@@ -87,7 +87,7 @@ module.exports = {
       .then(function(response){
         // console.log(response)
 
-        response.data.eventsPage.events = response.data.eventsPage.eventsPagesCollection.items;
+        response.data.eventsPage.events = response.data.eventsPage.ctaEventsCollection.items;
 
         return response.data.eventsPage
       })
