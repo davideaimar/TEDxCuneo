@@ -21,7 +21,7 @@
         </div>
 
 	    <div class="mb-16 -mx-4 px-4 bg-tedGray md:bg-tedBlack md:px-0 md:mx-0 md:mb-20">
-            <div class="cursor-pointer py-8 bg-tedGray md:rounded-lg md:p-8 w-full grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-x-8" onclick="location.href='/#';">
+            <div class="cursor-pointer py-8 bg-tedGray md:rounded-lg md:p-8 w-full grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-x-8" onclick="location.href='/{{ d.ctaEvent.page.slug }}';">
                 <div class="md:col-span-5">
 					<picture>
 						<source type="image/webp" srcset="{{ d.ctaEvent.image.url }}?w=700&h=350&fit=fill&fm=webp 1x, {{ d.ctaEvent.image.url }}?w=1400&h=650&fit=fill&fm=webp 2x">
@@ -36,7 +36,7 @@
                         <p class="mb-6 md:mb-8">{{ d.ctaEvent.description }}</p>
                     </div>
                     <div class="">
-                        <a href="/#" class="event-preview-action link-underline link-underline-fixed no-underline">{{ d.ctaEvent.buttonText }} →</a>
+                        <a href="/{{ d.ctaEvent.page.slug }}" class="event-preview-action link-underline link-underline-fixed no-underline">{{ d.ctaEvent.buttonText }} →</a>
                     </div>
                 </div>
             </div>
