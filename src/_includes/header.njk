@@ -44,23 +44,33 @@
                 <img src="/assets/img/tedxcuneo_logo.svg" alt="Logo TEDxCuneo svg">
             </a>
         </div>
-        <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 xl:block xl:p-0 xl:flex-1 xl:relative xl:top-auto xl:self-end transition-opacity duration-200 "
-             :class="{ 'visible z-50': open, 'invisible -z-50 xl:z-50 xl:visible': !open, 'bg-tedBlack': open }"
+        {# desktop links #}
+        <nav class="hidden xl:block xl:pr-4 xl:flex-1 xl:relative xl:top-auto xl:self-end ">
+            <ul class="flex overflow-y-auto flex-row justify-end">
+                {% for item in header %}
+                    {% if not item.showInHamburger %}
+                        <li class="px-4"><a href="{{item.slug}}" class="font-normal text-d_base link-underline no-underline {{ 'link-underline-fixed' if page_data.slug == item.slug }}">{{item.headerTitle}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+        {# hamburger links #}
+        <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 transition-opacity duration-200 "
+             :class="{ 'visible z-50': open, 'invisible -z-50': !open, 'bg-tedBlack': open }"
              x-ref="navbar_wrapper">
-            <ul class="flex flex-col px-2 mb-8 overflow-y-auto md:px-12 xl:flex-row xl:justify-end xl:px-0 xl:mb-0"
+            <ul class="container flex flex-col px-2 mb-8 overflow-y-auto md:px-12"
                 :class="{ 'hidden xl:flex': !open }"
                 x-ref="navbar"
             >
                 {% for item in header %}
-                    <li class="py-3 xl:px-4"><a href="{{item.slug}}" class="text-m_xl font-bold xl:font-normal xl:text-d_base link-underline no-underline {{ 'link-underline-fixed' if page_data.slug == item.slug }}">{{item.headerTitle}}</a></li>
+                    <li class="py-3"><a href="{{item.slug}}" class="text-m_xl font-bold link-underline no-underline {{ 'link-underline-fixed' if page_data.slug == item.slug }}">{{item.headerTitle}}</a></li>
                 {% endfor %}
             </ul>
         </nav>
         <button
             @click=" toggleMenu($refs.navbar_wrapper); "
             type="button"
-            class="block flex-0 p-4 -m-4 text-tedWhite focus:outline-none self-center xl:hidden"
-        >
+            class="block flex-0 p-4 -m-4 text-tedWhite focus:outline-none self-center xl:self-end xl:pb-5">
             <div class="relative transform box-content" style="width: 23px; height: 9px; padding-top: 7px;">
                 <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'rotate-45': openButton, ' -translate-y-1.5': !openButton, 'bg-tedRed': openButton }"></span>
                 <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'opacity-0': openButton } "></span>

@@ -109,20 +109,34 @@ module.exports = {
     speakersPage{
       slug
     }
-    speakersCollection(limit: 20){
+    speakersCollection(limit: 30){
       items{
-        slug
-        content{
-          ...on SpeakerPage {
-            speaker{
-              name
-              surname
-              talkTitle
-              image{
-                url
-                title
+        __typename
+        ...on Page {
+          slug
+          content{
+            ...on SpeakerPage {
+              speaker{
+                name
+                surname
+                talkTitle
+                job
+                image{
+                  url
+                  title
+                }
               }
             }
+          }
+        }
+        ...on Speaker{
+          name
+          surname
+          talkTitle
+          job
+          image{
+            title
+            url
           }
         }
       }
@@ -227,19 +241,32 @@ module.exports = {
     speakersTitle
     talksCollection(limit: 20){
       items{
-        slug
-        content{
-          ...on SpeakerPage{
-            speaker{
-              name
-              surname
-              talkTitle
-              image{
-                url
-                title
+        __typename
+        ...on Page {
+          slug
+          content{
+            ...on SpeakerPage {
+              speaker{
+                name
+                surname
+                talkTitle
+                job
+                image{
+                  url
+                  title
+                }
               }
-              youtubeId
             }
+          }
+        }
+        ...on Speaker{
+          name
+          surname
+          talkTitle
+          job
+          image{
+            title
+            url
           }
         }
       }
@@ -508,63 +535,22 @@ module.exports = {
     pageName
     title
     introText
-    patrociniTitle
-    patrociniCollection(limit: 20){
+    partnersCollection(limit: 10){
       items{
         name
-        logo{
-          url
-          title
-          height
-          width
+        big
+        partnersCollection(limit: 30){
+          items{
+            name
+            logo{
+              url
+              title
+              height
+              width
+            }
+            url
+          }
         }
-        url
-      }
-    }
-    officialPartnersTitle
-    officialPartnersCollection(limit: 20){
-      items{
-        name
-        logo{
-          url
-          title
-          height
-          width
-        }
-        url
-      }
-    }
-    techPartnersTitle
-    techPartnersCollection(limit: 40){
-      items{
-        name
-        logo{
-          url
-          title
-        }
-        url
-      }
-    }
-    mediaPartnersTitle
-    mediaPartnersCollection(limit: 20){
-      items{
-        name
-        logo{
-          url
-          title
-        }
-        url
-      }
-    }
-    supportersTitle
-    supportersCollection(limit: 20){
-      items{
-        name
-        logo{
-          url
-          title
-        }
-        url
       }
     }`,
   "LIVE_PAGE_FIELDS": `

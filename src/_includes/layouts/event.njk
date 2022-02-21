@@ -37,33 +37,38 @@
 		{% set cta=d.ctaTickets %}
 		{% include "ctaTickets.njk" %}
 	{% endif %}	
+	
+	{% if d.layout == "ubuntu" %}
 
-	<section class="mb-20 ">
-		<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
-		<div class="grid gap-x-3 gap-y-3 grid-cols-2 md:grid-cols-3 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8">
-			{% for speaker_page in d.talksCollection.items %}
-				{% set talk=speaker_page.content.speaker %}
-				<a href="/{{ speaker_page.slug }}" class="no-underline flex flex-col justify-between shadow overflow-hidden bg-tedGray rounded-lg transition ease-in-out mt-10 delay-100 duration-200 select-none md:hover:scale-110">
-						<div>	
-							<div class="flex-shrink-0 mb-6">
-								<picture>
-									<source type="image/webp" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&fm=webp">
-									<source type="image/jpeg" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
-									<img class="w-full" src="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
-								</picture>
+	{% else %}
+		<section class="mb-20 ">
+			<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
+			<div class="grid gap-x-3 gap-y-3 grid-cols-2 md:grid-cols-3 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8">
+				{% for speaker in d.talksCollection.items %}
+					{% set talk=speaker %}
+					<a href="/{{ talk.slug }}" class="no-underline flex flex-col justify-between shadow overflow-hidden bg-tedGray rounded-lg transition ease-in-out mt-10 delay-100 duration-200 select-none md:hover:scale-110">
+							<div>	
+								<div class="flex-shrink-0 mb-6">
+									<picture>
+										<source type="image/webp" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&fm=webp">
+										<source type="image/jpeg" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
+										<img class="w-full" src="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+									</picture>
+								</div>
+								<div class="px-2 md:px-4">
+									<p class="mb-2 text-tedDarkWhite">{{ talk.name }} {{ talk.surname }}</p>
+									<h3> {{ talk.talkTitle }}</h3>
+								</div>
 							</div>
-							<div class="px-2 md:px-4">
-								<p class="mb-2 text-tedDarkWhite">{{ talk.name }} {{ talk.surname }}</p>
-								<h3> {{ talk.talkTitle }}</h3>
-							</div>
-						</div>
-						<p class="w-full px-2 md:px-4 md:text-center mt-4 pb-4">
-							<span class="link-underline link-underline-fixed">Guarda il talk →</span>
-						</p>				
-					</a>
-			{% endfor %}
-		</div>
-	</section>
+							<p class="w-full px-2 md:px-4 md:text-center mt-4 pb-4">
+								<span class="link-underline link-underline-fixed">Guarda il talk →</span>
+							</p>				
+						</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
 	{% for group in d.partnersCollection.items %}
 		<section>
 			<h2 class="mb-6">{{ group.name }}</h2>
