@@ -3,7 +3,7 @@
 <div class="overflow-x-hidden">
     <div class="container relative">
 
-        <div class="home-banner-2022 p-8 md:p-16 mb-20 bg-tedWhite rounded-lg w-full md:mb-28">
+        <div class="home-banner-2022 p-8 md:p-16 mt-4 mb-20 bg-tedWhite rounded-lg w-full md:mb-28">
             <img width="420px" class="max-w-full mb-10 md:mb-40" src="assets/img/home/logo_ubuntu.svg" alt="logo ubuntu">
             
             <svg class="w-40 md:w-52 max-w-full mb-72 md:mb-0" viewBox="0 0 272 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +110,11 @@
         <section class="mb-32 md:mb-44">
             <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
                 <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
-                {#<h2><a class="underline text-decoration-tedRed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scopri tutti →</a></h2>#}
+                {% if d.speakersPage.slug %}
+                    <h3 class="self-center">
+                        <a class="no-underline link-underline link-underline-fixed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scoprili tutti →</a>
+                    </h3>
+                {% endif %}
             </div>
             
             <div x-data="{swiper: null, index: 0}"

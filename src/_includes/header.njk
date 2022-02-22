@@ -45,7 +45,8 @@
             </a>
         </div>
         {# desktop links #}
-        <nav class="hidden xl:block xl:pr-4 xl:flex-1 xl:relative xl:top-auto xl:self-end ">
+        <nav class="hidden xl:pr-4 xl:flex-1 xl:relative xl:top-auto xl:self-center "
+             :class="{ 'xl:block ': !open }">
             <ul class="flex overflow-y-auto flex-row justify-end">
                 {% for item in header %}
                     {% if not item.showInHamburger %}
@@ -58,7 +59,7 @@
         <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 transition-opacity duration-200 "
              :class="{ 'visible z-50': open, 'invisible -z-50': !open, 'bg-tedBlack': open }"
              x-ref="navbar_wrapper">
-            <ul class="container flex flex-col px-2 mb-8 overflow-y-auto md:px-12"
+            <ul class="container flex flex-col px-2 mb-8 overflow-y-auto md:px-12 xl:text-right"
                 :class="{ 'hidden xl:flex': !open }"
                 x-ref="navbar"
             >
@@ -70,7 +71,7 @@
         <button
             @click=" toggleMenu($refs.navbar_wrapper); "
             type="button"
-            class="block flex-0 p-4 -m-4 text-tedWhite focus:outline-none self-center xl:self-end xl:pb-5">
+            class="block flex-0 p-4 -m-4 text-tedWhite focus:outline-none self-center xl:self-center xl:pb-5">
             <div class="relative transform box-content" style="width: 23px; height: 9px; padding-top: 7px;">
                 <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'rotate-45': openButton, ' -translate-y-1.5': !openButton, 'bg-tedRed': openButton }"></span>
                 <span class="block rounded-sm absolute w-5 bg-tedWhite transform transition duration-500 ease-in-out " style="height: 2px;" :class="{'opacity-0': openButton } "></span>
