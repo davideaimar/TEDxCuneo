@@ -3,7 +3,7 @@
 <div class="overflow-x-hidden">
     <div class="container relative">
 
-        <div class="home-banner-2022 p-8 md:p-16 mb-20 bg-tedWhite rounded-lg w-full md:mb-28">
+        <div class="home-banner-2022 p-8 md:p-16 mt-4 mb-20 bg-tedWhite rounded-lg w-full md:mb-28">
             <img width="420px" class="max-w-full mb-10 md:mb-40" src="assets/img/home/logo_ubuntu.svg" alt="logo ubuntu">
             
             <svg class="w-40 md:w-52 max-w-full mb-72 md:mb-0" viewBox="0 0 272 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,11 +41,12 @@
                 </div>
             </div>
         </div>
-        <!--
+        
+       {# Speaker swiper (with cards and pages) 
         <section class="mb-32 md:mb-44">
             <div class="mb-8 flex flex-col md:flex-row md:justify-between md:items-end">
                 <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
-                {# <h2><a class="underline text-decoration-tedRed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scopri tutti →</a></h2> #}
+                <h2><a class="underline text-decoration-tedRed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scopri tutti →</a></h2>
             </div>
             
             <div x-data="{swiper: null, index: 0}"
@@ -103,9 +104,74 @@
                 {% endif %}
 
             </div>
-        </section>
-        -->
+        </section> #} 
+        
+       {# Speaker swiper (without pages)  #}
+        <section class="mb-32 md:mb-44">
+            <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
+                <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
+                {% if d.speakersPage.slug %}
+                    <h3 class="md:self-center">
+                        <a class="no-underline link-underline link-underline-fixed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scoprili tutti →</a>
+                    </h3>
+                {% endif %}
+            </div>
+            
+            <div x-data="{swiper: null, index: 0}"
+                x-init="swiper = initSwiper($refs)"
+                class="relative w-full mx-auto flex flex-col">
 
+                 <div class="swiper-container w-full mb-12" x-ref="container">
+                     <div class="swiper-wrapper">
+                         {% for speaker in d.speakersCollection.items %}
+                            
+                             <div class="swiper-slide">
+                                {% if speaker.slug %}
+                                    <a href="{{ speaker.slug }}" class="flex flex-col shadow overflow-hidden no-underline">
+                                {% else %}
+                                     <div class="flex flex-col shadow overflow-hidden">
+                                {% endif %}
+                                    <div class="flex-shrink-0 mb-6">
+                                        <picture>
+                                            <source type="image/webp" srcset="{{ speaker.image.url }}?w=500&h=500&fit=thumb&fm=webp">
+                                            <source type="image/jpeg" srcset="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
+                                            <img class="w-full" src="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+                                        </picture>
+                                    </div>
+                                    <h3 class="mb-2">{{ speaker.name }}<br/>{{ speaker.surname }}</h3>
+                                    <p> {{ speaker.job }}</p>
+                                {% if speaker.slug %}
+                                    </a>
+                                {% else %}
+                                     </div>
+                                {% endif %}
+                             </div>
+                         {% endfor %}
+                     </div>
+                </div>
+                {% if d.speakersCollection.items.length > 2 %}
+                    <div class="flex justify-center items-center {% if d.speakersCollection.items.length < 5 %}lg:hidden{% endif %}">
+                        <div class="flex items-center">
+                            <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex items-center">
+                            <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
+                                    class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                 {% endif %}
+            </div>
+        </section>
+
+        
         <section class="grid grid-cols-1 mb-32 md:mb-44 md:grid-cols-12">
 
             {% set form=d.newsletterForm %}
@@ -165,20 +231,16 @@
     function initSwiper(refs){
         swiper = new Swiper(refs.container, {
             loop: false,
-            slidesPerView: 1,
+            slidesPerView: 1.4,
             spaceBetween: 40,
         
             breakpoints: {
-                540: {
-                    slidesPerView: 2,
-                    spaceBetween: 40,
-                },
                 1024: {
-                    slidesPerView: 3,
+                    slidesPerView: 3.5,
                     spaceBetween: 60,
                 },
                 1400: {
-                    slidesPerView: 4,
+                    slidesPerView: 4.5,
                     spaceBetween: 60,
                 },
             },

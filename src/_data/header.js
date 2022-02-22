@@ -6,6 +6,7 @@ const header_query = `query {
     items{
       headerOrder
       headerTitle
+      showInHamburger
       slug
     }
   }

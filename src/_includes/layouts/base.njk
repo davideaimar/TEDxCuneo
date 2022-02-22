@@ -3,7 +3,7 @@
   <head>
     {% include "head.njk" %}
     {% block head %}{% endblock %}
-    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/partnership.njk" %}
+    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/partnership.njk" or page_data.layout=="layouts/event.njk" %}
       <link rel="stylesheet" href="/assets/css/swiper.min.css" />  
     {% endif %}
     {% if page.url=="/form-partner-ricevuta/" %}

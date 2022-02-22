@@ -24,13 +24,108 @@
 		</div>
 	{% endif %}
 
-	<div class="grid grid-cols-1 gap-y-20 mb-20 md:gap-y-36 md:grid-cols-2 md:gap-x-10">
+	<div class="grid grid-cols-1 gap-y-20 mb-32 md:gap-y-20 md:grid-cols-2 md:gap-x-10">
 		{% for item in d.textBlocksCollection.items %}
 			<div class="faq-block max-w-sm">
 				{% documentToHtmlStringWithLinks item.text %}
 			</div>
 		{% endfor %}
 	</div>
+	
+	{% if d.layout == "ubuntu" %}
+       {# Speaker swiper (without pages)  #}
+        <section class="mb-32">
+            <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
+                <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
+                {% if d.speakersPage.slug %}
+                    <h3 class="self-center">
+                        <a class="no-underline link-underline link-underline-fixed" href="{{ d.speakersPage.slug | absoluteUrl }}">Scoprili tutti →</a>
+                    </h3>
+                {% endif %}
+            </div>
+            <div x-data="{swiper: null, index: 0}"
+                x-init="swiper = initSwiper($refs)"
+                class="relative w-full mx-auto flex flex-col">
+
+                 <div class="swiper-container w-full mb-12" x-ref="container">
+                     <div class="swiper-wrapper">
+                         {% for speaker in d.talksCollection.items %}
+                            
+                             <div class="swiper-slide">
+                                {% if speaker.slug %}
+                                    <a href="{{ speaker.slug }}" class="flex flex-col shadow overflow-hidden no-underline">
+                                {% else %}
+                                     <div class="flex flex-col shadow overflow-hidden">
+                                {% endif %}
+                                    <div class="flex-shrink-0 mb-6">
+                                        <picture>
+                                            <source type="image/webp" srcset="{{ speaker.image.url }}?w=500&h=500&fit=thumb&fm=webp">
+                                            <source type="image/jpeg" srcset="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
+                                            <img class="w-full" src="{{ speaker.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+                                        </picture>
+                                    </div>
+                                    <h3 class="mb-2">{{ speaker.name }}<br/>{{ speaker.surname }}</h3>
+                                    <p> {{ speaker.job }}</p>
+                                {% if speaker.slug %}
+                                    </a>
+                                {% else %}
+                                     </div>
+                                {% endif %}
+                             </div>
+                         {% endfor %}
+                     </div>
+                </div>
+                {% if d.speakersCollection.items.length > 2 %}
+                    <div class="flex justify-center items-center {% if d.speakersCollection.items.length < 5 %}lg:hidden{% endif %}">
+                        <div class="flex items-center">
+                            <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex items-center">
+                            <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
+                                    class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                 {% endif %}
+            </div>
+        </section>
+
+	{% else %}
+		<section class="mb-20 ">
+			<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
+			<div class="grid gap-x-3 gap-y-3 grid-cols-2 md:grid-cols-3 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8">
+				{% for speaker in d.talksCollection.items %}
+					{% set talk=speaker %}
+					<a href="/{{ talk.slug }}" class="no-underline flex flex-col justify-between shadow overflow-hidden bg-tedGray rounded-lg transition ease-in-out mt-10 delay-100 duration-200 select-none md:hover:scale-110">
+							<div>	
+								<div class="flex-shrink-0 mb-6">
+									<picture>
+										<source type="image/webp" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&fm=webp">
+										<source type="image/jpeg" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
+										<img class="w-full" src="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
+									</picture>
+								</div>
+								<div class="px-2 md:px-4">
+									<p class="mb-2 text-tedDarkWhite">{{ talk.name }} {{ talk.surname }}</p>
+									<h3> {{ talk.talkTitle }}</h3>
+								</div>
+							</div>
+							<p class="w-full px-2 md:px-4 md:text-center mt-4 pb-4">
+								<span class="link-underline link-underline-fixed">Guarda il talk →</span>
+							</p>				
+						</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
 
 	{% if d.ctaTickets %}
 		{% set class="mb-32 md:mb-44" %}
@@ -38,32 +133,6 @@
 		{% include "ctaTickets.njk" %}
 	{% endif %}	
 
-	<section class="mb-20 ">
-		<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
-		<div class="grid gap-x-3 gap-y-3 grid-cols-2 md:grid-cols-3 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8">
-			{% for speaker_page in d.talksCollection.items %}
-				{% set talk=speaker_page.content.speaker %}
-				<a href="/{{ speaker_page.slug }}" class="no-underline flex flex-col justify-between shadow overflow-hidden bg-tedGray rounded-lg transition ease-in-out mt-10 delay-100 duration-200 select-none md:hover:scale-110">
-						<div>	
-							<div class="flex-shrink-0 mb-6">
-								<picture>
-									<source type="image/webp" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&fm=webp">
-									<source type="image/jpeg" srcset="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg">
-									<img class="w-full" src="{{ talk.image.url }}?w=500&h=500&fit=thumb&q=70&fm=jpg" alt="{{ speaker.image.name }} {{ speaker.image.surname }}">
-								</picture>
-							</div>
-							<div class="px-2 md:px-4">
-								<p class="mb-2 text-tedDarkWhite">{{ talk.name }} {{ talk.surname }}</p>
-								<h3> {{ talk.talkTitle }}</h3>
-							</div>
-						</div>
-						<p class="w-full px-2 md:px-4 md:text-center mt-4 pb-4">
-							<span class="link-underline link-underline-fixed">Guarda il talk →</span>
-						</p>				
-					</a>
-			{% endfor %}
-		</div>
-	</section>
 	{% for group in d.partnersCollection.items %}
 		<section>
 			<h2 class="mb-6">{{ group.name }}</h2>
@@ -92,4 +161,36 @@
 			</div>
 		</section>
 	{% endfor %}
+
+
 </div>
+
+{% if d.layout == "ubuntu" %}
+	<script src="/assets/js/swiper.min.js"></script>
+	<script>
+		// speakers slider
+		function initSwiper(refs){
+			swiper = new Swiper(refs.container, {
+				loop: false,
+				slidesPerView: 1.4,
+				spaceBetween: 40,
+			
+				breakpoints: {
+					1024: {
+						slidesPerView: 3.5,
+						spaceBetween: 60,
+					},
+					1400: {
+						slidesPerView: 4.5,
+						spaceBetween: 60,
+					},
+				},
+			});
+			swiper.on('transitionEnd', function() {
+				index=swiper.realIndex;
+			});
+			return swiper;
+		}
+
+	</script>
+{% endif %}

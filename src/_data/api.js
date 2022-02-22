@@ -29,6 +29,17 @@ module.exports = {
       .then(function(response){
         // console.log(response.data.homePage)
 
+        response.data.homePage.speakersCollection.items = response.data.homePage.speakersCollection.items.map(function(speaker){
+          if (speaker.__typename=="Page"){
+            speaker.content.speaker.slug = speaker.slug;
+            return speaker.content.speaker;
+          }
+          else
+            return speaker;
+        });
+
+        // console.log(response.data.homePage.speakersCollection.items)
+
         return response.data.homePage
       })
       .catch(console.error);
@@ -67,6 +78,17 @@ module.exports = {
     let page = await this.fetchGraphQL(query)
       .then(function(response){
         // console.log(response)
+
+        response.data.eventPage.talksCollection.items = response.data.eventPage.talksCollection.items.map(function(speaker){
+          if (speaker.__typename=="Page"){
+            speaker.content.speaker.slug = speaker.slug;
+            return speaker.content.speaker;
+          }
+          else
+            return speaker;
+        });
+
+        // console.log(response.data.eventPage.talksCollection.items)
 
         return response.data.eventPage
       })
