@@ -75,17 +75,17 @@
                          {% endfor %}
                      </div>
                 </div>
-                {% if d.speakersCollection.items.length > 2 %}
+                {% if d.talksCollection.items.length > 2 %}
                     <div class="flex justify-center items-center {% if d.speakersCollection.items.length < 5 %}lg:hidden{% endif %}">
                         <div class="flex items-center">
-                            <button @click="{ swiper.slideTo(swiper.activeIndex-2);}" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                            <button @click="swiper.slideTo(swiper.activeIndex-1);" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
                                 <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.449 -1.18467e-06L9.17939e-07 10.5L10.449 21L12.2449 19.1953L4.85131 11.7891L24 11.7891L24 9.21094L4.85131 9.21093L12.2449 1.78125L10.449 -1.18467e-06Z" fill="white"/>
                                 </svg>
                             </button>
                         </div>
                         <div class="flex items-center">
-                            <button @click="{ swiper.slideTo(swiper.activeIndex+2); }" 
+                            <button @click="swiper.slideTo(swiper.activeIndex+1);" 
                                     class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
                                 <svg class="w-6" viewBox="0 0 24 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13.551 21L24 10.5L13.551 0L11.7551 1.80469L19.1487 9.21094H0V11.7891H19.1487L11.7551 19.2188L13.551 21Z" fill="white"/>
