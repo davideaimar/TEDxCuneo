@@ -7,7 +7,7 @@
 		<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
 		<p class="mb-10 w-full lg:w-5/12 lg:mb-14">{{ d.introText }}</p>
 
-		{% if d.text %}
+		{# {% if d.text %}
 			<div class="mb-36 ">
 				<div class="faq-block mb-8">
 					{% documentToHtmlStringWithLinks d.text %}
@@ -18,7 +18,7 @@
 					</div>
 				{% endif %}
 			</div>
-		{% endif %}
+		{% endif %} #}
 
 		{% if d.newsletterForm %}
 			{% set form=d.newsletterForm %}
