@@ -240,10 +240,6 @@
 </div>
 
 {% block bottom %}
-	{% if page.url=="/diventa-partner/" %}
-		<!-- Event snippet for Website traffic conversion page --> 
-		<script> gtag('event', 'conversion', {'send_to': 'AW-10798185441/ixpMCOO_xpQDEOH3_Jwo'}); </script>
-	{% endif %}
 <script src="/assets/js/swiper.min.js"></script>
 <script>
     function initSwiper(refs){
@@ -270,6 +266,7 @@
     }
 </script>
 
+{# 
 <!-- Facebook Pixel Code -->
 <script>
 	!function(f,b,e,v,n,t,s)
@@ -285,7 +282,7 @@
 	</script>
 	<noscript><img height="1" width="1" style="display:none"
 	src="https://www.facebook.com/tr?id=263186541806655&ev=PageView&noscript=1"
-	/></noscript>
+	/></noscript> 
 <!-- End Facebook Pixel Code -->
-	
+#}
 {% endblock %}

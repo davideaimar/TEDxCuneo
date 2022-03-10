@@ -6,9 +6,6 @@
     {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/partnership.njk" or page_data.layout=="layouts/event.njk" %}
       <link rel="stylesheet" href="/assets/css/swiper.min.css" />  
     {% endif %}
-    {% if page.url=="/form-partner-ricevuta/" %}
-      <!-- Event snippet for Website traffic conversion page --> <script> gtag('event', 'conversion', {'send_to': 'AW-10798185441/ixpMCOO_xpQDEOH3_Jwo'}); </script>
-    {% endif %}
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -42,9 +39,12 @@
 
     {# Lib for locking scroll in a right way #}
     <script src="/assets/js/scroll-lock.js"></script>    
+    {# 
+    Metricool tag
     <script>
       function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"3bca7334c6c41c78f09fae6e02fe7006"})});
-    </script>
+    </script> 
+    #}
     {% block bottom %}{% endblock %}
 
     {# Uncomment to make Netlify identity working for new users #}
