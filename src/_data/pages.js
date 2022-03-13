@@ -44,6 +44,12 @@ const pages_query = `query {
               id
             }
           }
+          ...on UbuntuLanding{
+            sys{
+              publishedAt
+              id
+            }
+          }
           ...on TedPage{
             sys{
               publishedAt
@@ -127,6 +133,10 @@ module.exports = async function() {
       switch(page.content.__typename){
         case "PrivacyPolicy":
           page.layout = "layouts/privacyPolicy.njk"
+          break;
+        case "UbuntuLanding":
+          page.content = await api.fetchUbuntuLandingPage(page.content.sys.id);
+          page.layout = "layouts/landingUbuntu.njk"
           break;
         case "LandingPage":
           page.layout = "layouts/landingPage.njk"

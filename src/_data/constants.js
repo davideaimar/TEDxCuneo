@@ -23,6 +23,75 @@ module.exports = {
         json
       }
     }`,
+  "LANDING_UBUNTU_FIELDS": `
+    ticketsCta{
+      ticketsUrl
+      show
+      ticketsPage{
+        slug
+      }
+      buttonText
+      initialText
+    }
+    bgImage{
+      url
+      title
+    }
+    speakersCarousel{
+      title
+      speakersCollection{
+        items{
+          image{
+            title
+            url
+          }
+          name
+          surname
+          job
+        }
+      }
+    }
+    textBlocksCollection(limit: 5){
+      items{
+        text{
+          json
+          links{
+            entries{
+              hyperlink{
+                ...on Page{
+                  sys{
+                    id
+                  }
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    tedxcuneoBlock{
+      image{
+        url
+        title
+      }
+      text{
+        json
+        links{
+          entries{
+            hyperlink{
+              ...on Page{
+                sys{
+                  id
+                }
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
   "LANDING_PAGE_FIELDS": `
     introText
     introSecondaryText

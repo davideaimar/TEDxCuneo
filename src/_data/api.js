@@ -194,6 +194,25 @@ module.exports = {
     return page;
   },
 
+  fetchUbuntuLandingPage: async function(content_id){
+    const query = `
+      query{
+        ubuntuLanding(id: "${content_id}"){
+          ${constants.LANDING_UBUNTU_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        // console.log(response)
+
+        return response.data.ubuntuLanding
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
   fetchPartnerPage: async function(content_id){
     const query = `
       query{
