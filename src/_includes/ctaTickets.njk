@@ -2,7 +2,7 @@
 {% if cta.show %}
     <section class="{{ class }} bg-tedGray rounded-lg flex flex-col justify-center relative overflow-hidden p-2">
         <img class="z-10 absolute top-0 left-8" src="/assets/img/ubuntu/tetris_1.svg" alt="Tetris block">
-        <img class="z-10 absolute bottom-0 right-8" src="/assets/img/ubuntu/tetris_2.svg" alt="Tetris block">
+        <img class="z-10 absolute hidde md:block bottom-0 right-8" src="/assets/img/ubuntu/tetris_2.svg" alt="Tetris block">
         <h2 class="z-20 text-center max-w-615 mx-auto mt-10 mb-16">{{ cta.initialText }}</h2>
         {% if cta.ticketsPage.slug %}
             <a href="{{ cta.ticketsPage.slug | absoluteUrl }}" class="z-20 text-center no-underline link-underline link-underline-fixed  mx-auto mb-10">
