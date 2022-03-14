@@ -10,6 +10,11 @@
       "target": "local"
     },
     {
+      "label": "Cookie policy",
+      "url": "/cookie-policy/",
+      "target": "local"
+    },
+    {
       "label": "Repository sito web",
       "url": "https://github.com/davideaimar/TEDxCuneo",
       "target": "_blank"
