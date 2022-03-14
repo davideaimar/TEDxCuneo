@@ -4,11 +4,18 @@
 <div class="container">
 	<p class="mt-9 mb-6 uppercase text-tedDarkWhite md:mt-16">{{ d.pageName }}</p>
 	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
-	<p class="mb-28 w-full md:w-1/2 md:mb-36">{{ d.introText }}</p>
+	<p class="w-full md:w-1/2">{{ d.introText }}</p>
 	{% if d.speakersTitle %}
 		<h2 class="mb-12 md:mb-16">{{ d.speakersTitle }}</h2>
 	{% endif %}
-	{% for s in d.speakersCollection.items %}
-		{% include "speaker.njk" %}
-	{% endfor %}
+	<section class="mb-24">
+		{% for s in d.speakersCollection.items %}
+			{% include "speaker.njk" %}
+		{% endfor %}
+	</section>
+	{% if d.ticketsCta %}
+		{% set class="mb-32 " %}
+		{% set cta=d.ticketsCta %}
+		{% include "ctaTickets.njk" %}
+	{% endif %}
 </div>

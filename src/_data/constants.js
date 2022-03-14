@@ -555,6 +555,15 @@ module.exports = {
           json
         }
       }
+    }
+    ticketsCta{
+      ticketsUrl
+      show
+      ticketsPage{
+        slug
+      }
+      buttonText
+      initialText
     }`,
   "SPEAKER_PAGE_FIELDS": `
     edition{
