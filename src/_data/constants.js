@@ -33,7 +33,11 @@ module.exports = {
       buttonText
       initialText
     }
-    bgImage{
+    bgImageMobile{
+      url
+      title
+    }
+    bgImageDesktop{
       url
       title
     }
@@ -214,6 +218,7 @@ module.exports = {
       show
       initialText
       buttonText
+      ticketsUrl
       ticketsPage{
         slug
       }
@@ -275,6 +280,7 @@ module.exports = {
     }
     ctaTickets{
       show
+      ticketsUrl
       initialText
       buttonText
       ticketsPage{
@@ -287,7 +293,15 @@ module.exports = {
     layout
     vimeoUrl
     date
-
+    ctaTickets{
+      show
+      ticketsUrl
+      initialText
+      buttonText
+      ticketsPage{
+        slug
+      }
+    }
     textBlocksCollection(limit: 10){
       items{
         text{
