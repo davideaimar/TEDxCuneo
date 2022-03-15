@@ -21,7 +21,7 @@
     {% else %}
 
       <div class="relative">
-        {% if page_data.slug=="/diventa-partner/" or page_data.slug=="/landing-ubuntu/"  %}
+        {% if page_data.slug=="/diventa-partner/" or page_data.layout=="layouts/landingUbuntu.njk"  %}
           {% include "header-basic.njk" %}
         {% else %}
           {% include "header.njk" %}
