@@ -2,9 +2,15 @@
 {# {{ d | log }} #}
 
 	<div 
-		style="background-image: url('{{ d.bgImage.url }}?fit=fill&w=1440&h=600&q=70')" 
+		style="background-image: url('{{ d.bgImageMobile.url }}?fit=fill&w=1440&h=600&q=70')" 
 		alt="ubuntu - TEDxCuneo 2022"
-		class="absolute top-0 left-0 right-0 h-550 -z-1 bg-left-bottom bg-no-repeat bg-cover sm:h-600">
+		class="absolute top-0 left-0 right-0 h-550 -z-1 bg-left-bottom bg-no-repeat bg-cover md:hidden">
+	</div>
+
+	<div 
+		style="background-image: url('{{ d.bgImageDesktop.url }}?fit=fill&w=1440&h=600&q=70')" 
+		alt="ubuntu - TEDxCuneo 2022"
+		class="absolute hidden top-0 left-0 right-0 h-750 -z-1 bg-left-bottom bg-no-repeat bg-cover md:block">
 	</div>
 
 <div class="container">
