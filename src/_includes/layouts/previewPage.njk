@@ -1,0 +1,21 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+	{% if d.showPreview and d.previewContent.json %}
+		<div class="mb-20">
+			<div class="mt-9 markdown mb-20">
+				{% documentToHtmlString d.previewContent.json %}
+			</div>
+			{% if d.buttonText %}
+				<div class="block">
+					<a href="#" onClick="window.location.reload();" class="cursor-pointer font-bold text-small uppercase text-tedWhite bg-tedRed py-3 px-4 rounded-none no-underline">{{ d.buttonText }}</a>
+				</div>
+			{% endif %}
+		</div>
+	{% else %}
+		<div class="mt-9 markdown mb-20">
+			{% documentToHtmlString d.standardContent.json %}
+		</div>
+	{% endif %}
+</div>

@@ -68,6 +68,12 @@ const pages_query = `query {
             }
             ${constants.LIVE_PAGE_FIELDS}
           }
+          ...on PreviewPage{
+            sys{
+              publishedAt
+            }
+            ${constants.PREVIEW_PAGE_FIELDS}
+          }
           ...on EventPage{
             sys{
               publishedAt
@@ -140,6 +146,9 @@ module.exports = async function() {
           break;
         case "LandingPage":
           page.layout = "layouts/landingPage.njk"
+          break;
+        case "PreviewPage":
+          page.layout = "layouts/previewPage.njk"
           break;
         case "NewsletterSuccessPage":
           page.layout = "layouts/newsletterSuccess.njk"

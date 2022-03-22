@@ -655,6 +655,15 @@ module.exports = {
     text{
       json
     }`,
+  "PREVIEW_PAGE_FIELDS": `
+    showPreview
+    buttonText
+    previewContent{
+      json
+    }
+    standardContent{
+      json
+    }`,
   "NEWSLETTER_SUCCESS_PAGE": `
     buttonText
     content{
