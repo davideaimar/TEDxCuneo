@@ -122,6 +122,11 @@ module.exports = {
     subtitle
     introText
     initialText
+    showLive
+      livePage{
+        slug
+      }
+    liveText
     ctaEvent{
       image{
         title
