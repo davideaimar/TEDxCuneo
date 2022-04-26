@@ -39,7 +39,7 @@
 	{# Images slider #}
 	{% if d.imagesCollection.items and d.imagesCollection.items.length > 0 %}
 		<div class="flex flex-row justify-between items-center mb-4">
-			<h2>Edizione 2021</h2>
+			<h2>Edizione 2022</h2>
 			{% if d.imagesCollection.items.length > 2 %}
 				<div class="justify-center items-center hidden md:flex" x-data={}>
 					<div class="flex items-center">
@@ -80,18 +80,18 @@
 		</div>
 	{% endif %}
 
-	{# some numbers about 2021 TED #}
+	{# some numbers about 2022 TED #}
 	<div class="grid grid-cols-1 gap-y-6 md:grid-cols-3 md:gap-x-10 lg:grid-cols-4 mb-24">
 		<div class="">
-			<h1 class="mb-4">75/100</h1>
+			<h1 class="mb-4">85/100</h1>
 			<h3>Score medio feedback TED</h3>
 		</div>
 		<div >
-			<h1 class="mb-4">520</h1>
+			<h1 class="mb-4">475</h1>
 			<h3>registrazioni su eventbrite</h3>
 		</div>
 		<div class="lg:col-span-2 lg:w-1/2">
-			<h1 class="mb-4">350</h1>
+			<h1 class="mb-4">300</h1>
 			<h3>spettatori collegati in media via streaming</h3>
 		</div>
 	</div>
@@ -137,38 +137,6 @@
 							style="{{style}}"
 							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
 					</a>
-				{% set p=d.oldPartnersCollection.items[1].partnersCollection.items[1] %}
-				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
-						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
-						class="block w-full relative rounded">
-						{% if (p.logo.width / p.logo.height) > 1.2 %}
-							{# HORIZONTAL #}
-							{% set style="max-width: 80%; max-height: 80%;" %}
-						{% else %}
-							{# VERTICAL #}
-							{% set style="max-height: 80%;" %}
-						{% endif %}
-						<img src="{{ p.logo.url }}"
-							alt="{{p.name}} logo"
-							style="{{style}}"
-							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
-					</a>
-				{% set p=d.oldPartnersCollection.items[1].partnersCollection.items[2] %}
-				<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
-						style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
-						class="block w-full relative rounded">
-						{% if (p.logo.width / p.logo.height) > 1.2 %}
-							{# HORIZONTAL #}
-							{% set style="max-width: 80%; max-height: 80%;" %}
-						{% else %}
-							{# VERTICAL #}
-							{% set style="max-height: 80%;" %}
-						{% endif %}
-						<img src="{{ p.logo.url }}"
-							alt="{{p.name}} logo"
-							style="{{style}}"
-							class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
-					</a>
 			</div>
 		</div>
 		<div class="hidden lg:block md:col-span-3 "></div>
@@ -193,7 +161,7 @@
 								style="{{style}}"
 								class="absolute m-auto left-0 right-0 top-0 bottom-0 p-2">
 					</a>
-					{% set p=d.oldPartnersCollection.items[2].partnersCollection.items[4] %}
+					{% set p=d.oldPartnersCollection.items[2].partnersCollection.items[1] %}
 					<a 	{% if p.url %}href="{{ p.url }}" target="_blank" {% endif %}
 							style="background: rgba(255, 255, 255, 0.06); padding-bottom: 66.66%" 
 							class="block w-full relative rounded">
@@ -211,8 +179,8 @@
 					</a>
 				</div>
 				<p class="mt-8 text-center md:text-left md:mt-0 md:ml-4">
-					e oltre 30 partner tecnici <br/>
-					<a class="underline text-decoration-tedRed" href="/eventi/festinalente/">scoprili tutti</a>
+					e più di altri 4 partner <br/>
+					<a class="underline text-decoration-tedRed" href="/eventi/ubuntu/">scoprili tutti</a>
 				</p>
 			</div>
 		</div>

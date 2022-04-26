@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 pt-16 md:grid-cols-12 md:gap-x-4 md:pt-24" id="{{ s.name | lower }}-{{ s.surname | lower }}">
+<div class="grid grid-cols-1 md:grid-cols-12 md:gap-x-4 {{ cl }}" id="{{ s.name | lower }}-{{ s.surname | lower }}">
     <picture class="w-full mb-6 md:mb-0 md:col-span-4">
         <source type="image/avif" srcset="{{ s.image.url }}?w=600&h=600&fit=thumb&fm=avif 1x, {{ s.image.url }}?w=900&h=900&fit=thumb&fm=avif 2x">
         <source type="image/webp" srcset="{{ s.image.url }}?w=600&h=600&fit=thumb&fm=webp 1x, {{ s.image.url }}?w=900&h=900&fit=thumb&fm=webp 2x">
