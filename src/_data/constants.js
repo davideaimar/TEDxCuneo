@@ -45,13 +45,16 @@ module.exports = {
       title
       speakersCollection{
         items{
-          image{
-            title
-            url
+          __typename
+          ... on Speaker{
+            image{
+              title
+              url
+            }
+            name
+            surname
+            job
           }
-          name
-          surname
-          job
         }
       }
     }
@@ -583,6 +586,47 @@ module.exports = {
       }
       buttonText
       initialText
+    }`,
+  "TALK_PAGE_FIELDS": `
+    pageName
+    title
+    introText
+    talksCollection(limit: 20){
+      items{
+        title
+        ctaText
+        editionPage{
+          slug
+        }
+        speakersCollection(limit: 20){
+          items{
+            __typename
+            ...on Page {
+              slug
+              content{
+                ...on SpeakerPage {
+                  speaker{
+                    name
+                    surname
+                    talkTitle
+                    image{
+                      url
+                    }
+                  }
+                }
+              }
+            }
+            ...on Speaker{
+              name
+              surname
+              talkTitle
+              image{
+                url
+              }
+            }
+          }
+        }
+      }
     }`,
   "SPEAKER_PAGE_FIELDS": `
     edition{

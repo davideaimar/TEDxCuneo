@@ -156,6 +156,31 @@ module.exports = {
     return page;
   },
 
+  fetchTalksPage: async function(content_id){
+    const query = `
+      query{
+        talkPage(id: "${content_id}"){
+          ${constants.TALK_PAGE_FIELDS}
+        }
+      }
+    `
+    let page = await this.fetchGraphQL(query)
+      .then(function(response){
+        response.data.talkPage.talksCollection.items.map(edition => {
+          edition.speakersCollection.items = edition.speakersCollection.items.map(speaker => {
+            speaker.content.speaker.slug = speaker.slug;
+            speaker.content.speaker.__typename = speaker.__typename;
+            return speaker.content.speaker;
+
+          })
+        });
+        return response.data.talkPage
+      })
+      .catch(console.error);
+    
+    return page;
+  },
+
   fetchSpeakerPage: async function(content_id){
     const query = `
       query{

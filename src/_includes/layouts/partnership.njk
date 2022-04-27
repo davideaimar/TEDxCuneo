@@ -64,7 +64,7 @@
 		<div x-data="{swiper: null, index: 0}"
 			 x-init="swiper = initSwiper($refs)">
 			<div class="swiper-container w-full mb-12 h-auto" x-ref="container">
-				<div class="swiper-wrapper">
+				<div class="swiper-wrapper mb-4">
 					{% for img in d.imagesCollection.items %}
 						<div class="swiper-slide">
 							<picture>
@@ -76,6 +76,7 @@
 					{% endfor %}
 					
 				</div>
+				<p>Fotografie di <a href="https://www.marcosasia.com/" target="_blank">Marco Sasia</a></p>
 			</div>
 		</div>
 	{% endif %}

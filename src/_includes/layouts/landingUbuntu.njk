@@ -33,6 +33,7 @@
 
 	{% if d.speakersCarousel %}
 		{% set class="mb-32" %}
+		{% set slider=true %}
 		{% set carousel=d.speakersCarousel %}
 		{% include "speakers-carousel.njk" %}
 	{% endif %}
