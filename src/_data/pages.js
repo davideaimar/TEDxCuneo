@@ -86,6 +86,12 @@ const pages_query = `query {
               id
             }
           }
+          ...on TalkPage{
+            sys{
+              publishedAt
+              id
+            }
+          }
           ...on SpeakersPage{
             sys{
               publishedAt
@@ -193,6 +199,10 @@ module.exports = async function() {
         case "SpeakerPage":
           page.content = await api.fetchSpeakerPage(page.content.sys.id);
           page.layout = "layouts/speaker.njk"
+          break;
+        case "TalkPage":
+          page.content = await api.fetchTalksPage(page.content.sys.id);
+          page.layout = "layouts/talks.njk"
           break;
         case "TeamPage":
           page.content = await api.fetchTeamPage(page.content.sys.id);

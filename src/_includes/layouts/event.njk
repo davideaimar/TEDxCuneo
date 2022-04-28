@@ -32,9 +32,9 @@
 		{% endfor %}
 	</div>
 	
-	{% if d.layout == "ubuntu" %}
+	{# {% if d.layout == "ubuntu" %} #}
        {# Speaker swiper (without pages)  #}
-        <section class="mb-32">
+        {# <section class="mb-32">
             <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
                 <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
                 {% if d.speakersPage.slug %}
@@ -95,15 +95,16 @@
                     </div>
                  {% endif %}
             </div>
-        </section>
+        </section> #}
 
-	{% else %}
+	{# {% else %} #}
 		<section class="mb-20 ">
 			<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
 			<div class="grid gap-x-3 gap-y-3 grid-cols-2 md:grid-cols-3 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8">
 				{% for speaker in d.talksCollection.items %}
+					{% if speaker.slug %}
 					{% set talk=speaker %}
-					<a href="/{{ talk.slug }}" class="no-underline flex flex-col justify-between shadow overflow-hidden bg-tedGray rounded-lg transition ease-in-out mt-10 delay-100 duration-200 select-none md:hover:scale-110">
+					<a href="/{{ talk.slug }}" class="no-underline flex flex-col justify-between shadow overflow-hidden bg-tedGray rounded-lg transition ease-in-out mt-10 	delay-100 duration-200 select-none md:hover:scale-110">
 							<div>	
 								<div class="flex-shrink-0 mb-6">
 									<picture>
@@ -121,10 +122,11 @@
 								<span class="link-underline link-underline-fixed">Guarda il talk →</span>
 							</p>				
 						</a>
+					{% endif %}
 				{% endfor %}
 			</div>
 		</section>
-	{% endif %}
+	{# {% endif %} #}
 
 
 	{% if d.ctaTickets %}

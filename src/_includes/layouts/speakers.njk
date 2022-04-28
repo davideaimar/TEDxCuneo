@@ -15,6 +15,7 @@
 	{% endif %}
 	<section class="mb-24">
 		{% for s in d.speakersCollection.items %}
+			{% set cl="pt-16 md:pt-24" %}
 			{% include "speaker.njk" %}
 		{% endfor %}
 	</section>

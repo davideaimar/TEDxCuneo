@@ -5,7 +5,7 @@
             transitioning: false,
             closing: false,
             hasScrolled: false, 
-            ignoreScroll: {% if page_data.layout=='layouts/partnership.njk' or page_data.layout=='layouts/joinTeam.njk'%}false{% else %}true{% endif %},
+            ignoreScroll: {% if page_data.layout=='layouts/partnership.njk' or page_data.layout=='layouts/joinTeam.njk' or page_data.layout=='layouts/homepage.njk' %}false{% else %}true{% endif %},
             reactOnScroll() {
                 if (window.scrollY > 100) {
                     this.hasScrolled = true;

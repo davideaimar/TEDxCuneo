@@ -1,0 +1,18 @@
+{# Uncomment for logging page fields avaliable #}
+{# {{ d | log }} #}
+
+<div class="container">
+
+	<p class="mt-9 mb-6 uppercase text-tedDarkWhite md:mt-16">{{ d.pageName }}</p>
+	<h1 class="mb-12 max-w-660 md:mb-16 ">{{ d.title }}</h1>
+	<p class="mb-28 w-full md:w-1/2 md:mb-36">{{ d.introText }}</p>
+
+	{% if d.talksCollection.items.length > 0 %}
+		{% for carousel in d.talksCollection.items %}
+			{% set class="mb-32" %}
+			{% set slider=false %}
+			{% include "speakers-carousel.njk" %}
+		{% endfor %}
+	{% endif %}
+
+</div>
