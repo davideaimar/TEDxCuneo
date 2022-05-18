@@ -3,6 +3,11 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/54fc7156-1b8f-4aa0-838f-3919466d90fb/deploy-status)](https://app.netlify.com/sites/tedxcuneo/deploys)
 
 
+<p align="center">
+	<img src="./readme/pagespeed.svg" width="800px">
+</p>
+
+
 This is the repository of the [TEDxCuneo](https://www.tedxcuneo.com) website, it's built following the JAMstack paradigm, you can learn more about it on their [website](https://jamstack.org/).\
 Based on [this starter](https://github.com/gregwolanski/eleventy-tailwindcss-alpinejs-starter), uses Eleventy as SSG + TailwindCSS + Alpine.js and Contentful as CMS (but the CMS can be easily changed). It's also used Netlify CMS for managing some infos like footer and settings.\
 You can use this repository for building the website of your TEDx event or just for taking inspiration.
