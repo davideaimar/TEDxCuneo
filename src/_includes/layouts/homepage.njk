@@ -37,14 +37,22 @@
         </div>
 
         {# ubuntu animation #}
+<<<<<<< HEAD
         {# <div class="mb-32 overflow-x-visible md:mb-44">
+=======
+        <div class="mb-32 overflow-x-visible md:mb-44">
+>>>>>>> master
             <div id="top-writing" class="home-writing home-top-writing">
 
             </div>
             <div id="bottom-writing" class="home-writing home-bottom-writing">
 
             </div>
+<<<<<<< HEAD
         </div> #}
+=======
+        </div>
+>>>>>>> master
         
        {# Speaker swiper (with cards and pages)   #}
         <section class="mb-32 md:mb-44">
@@ -259,5 +267,21 @@
         return swiper;
     }
 
+<<<<<<< HEAD
+=======
+    var top_writing = document.querySelector('#top-writing');
+    var bottom_writing = document.querySelector('#bottom-writing');
+    var speed = 1;
+    const writing_offset = top_writing.offsetTop;
+    console.log(writing_offset);
+    // on page scroll event
+    window.onscroll = function() {
+        // get window height
+        if (window.pageYOffset > writing_offset - window.innerHeight - 100) {
+            top_writing.style.transform = "translateX(calc(-200vw + " + (speed*window.scrollY - window.innerHeight - 100) + "px))";
+            bottom_writing.style.transform = "translateX(calc(-200vw - " + (speed*window.scrollY - window.innerHeight - 100) + "px))";
+        }
+    }
+>>>>>>> master
 
 </script>
