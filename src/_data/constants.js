@@ -650,10 +650,10 @@ module.exports = {
     pageName
     title
     introText
-    departmentsCollection(limit: 20){
+    departmentsCollection(limit: 25){
       items{
         title
-        membersCollection(limit: 20){
+        membersCollection(limit: 30){
           items{
             name
             surname
