@@ -4,7 +4,7 @@
     "build": "ELEVENTY_ENV=production eleventy && NODE_ENV=production postcss styles/main.css --o _site/style/main.css && cleancss _site/style/main.css -o _site/style/main.css"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^2.0.0",
     "autoprefixer": "^10.4.2",
     "clean-css-cli": "^4.3.0",
     "html-minifier": "^4.0.0",

@@ -65,6 +65,10 @@ module.exports = {
       bold: 700
     },
     extend: {
+      animation: {
+        'spin-slow': 'spin 6s linear infinite',
+        'spin-super-slow': 'spin 18s linear infinite',
+      },
       height:{
         '550': '550px',
         '600': '600px',
