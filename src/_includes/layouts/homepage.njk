@@ -2,12 +2,44 @@
 {# {{ d | log }} #}
 <div class="overflow-x-hidden">
 
-    <img class="absolute -z-1 w-32 animate-spin-super-slow" style="top: 0px; right: 80px;" src="/assets/img/home/sun.svg" alt="sole" />
-
+    <div class="animation-wrapper">
+        <div class="shooting-stars-wrapper shooting-stars-wrapper-1">
+            <div class="shooting-star shooting-star-1"></div>
+        </div>
+        <div class="shooting-stars-wrapper shooting-stars-wrapper-2">
+            <div class="shooting-star shooting-star-2"></div>
+        </div>
+        <div class="absolute -z-1 w-32 blue-planet-1">
+            <div class="relative">
+                <img class="absolute"  src="/assets/img/home/blue_planet.svg" alt="pianeta blu" />
+            </div>
+        </div>
+        <div class="absolute -z-1 w-32 blue-planet-2">
+            <div class="relative">
+                <img class="absolute" src="/assets/img/home/blue_planet_2.svg" alt="pianeta blu" />
+            </div>
+        </div>
+        <div class="absolute -z-1 w-32 red-planet">
+            <div class="relative">
+                <img class="absolute" src="/assets/img/home/red_dot.svg" alt="pianeta rosso" />
+            </div>
+        </div>
+        <div class="absolute -z-1 w-32 purple-planet">
+            <div class="relative">
+                <img class="absolute" src="/assets/img/home/purple_planet.svg" alt="pianeta viola" />
+            </div>
+        </div>
+        <div class="absolute -z-1 w-32 orange-planet">
+            <div class="relative">
+                <img class="absolute" src="/assets/img/home/orange_planet.svg" alt="pianeta arancio" />
+            </div>
+        </div>
+        <img class="absolute -z-1 sun animate-spin-super-slow" src="/assets/img/home/sun.svg" alt="sole" />
+    </div>
 
     <div class="container relative">
 
-        <section class="mb-32 md:mb-44">
+        <section class="mb-32 md:mb-44 min-h-screen">
             <h1 class=" mb-6 mt-12 md:mb-8"  style="max-width: 610px;">{{ d.introText }}</h1>
             <p class="max-w-400">{{ d.initialText }}</p>
         </section>
@@ -37,22 +69,14 @@
         </div>
 
         {# ubuntu animation #}
-<<<<<<< HEAD
         {# <div class="mb-32 overflow-x-visible md:mb-44">
-=======
-        <div class="mb-32 overflow-x-visible md:mb-44">
->>>>>>> master
             <div id="top-writing" class="home-writing home-top-writing">
 
             </div>
             <div id="bottom-writing" class="home-writing home-bottom-writing">
 
             </div>
-<<<<<<< HEAD
         </div> #}
-=======
-        </div>
->>>>>>> master
         
        {# Speaker swiper (with cards and pages)   #}
         <section class="mb-32 md:mb-44">
@@ -267,21 +291,5 @@
         return swiper;
     }
 
-<<<<<<< HEAD
-=======
-    var top_writing = document.querySelector('#top-writing');
-    var bottom_writing = document.querySelector('#bottom-writing');
-    var speed = 1;
-    const writing_offset = top_writing.offsetTop;
-    console.log(writing_offset);
-    // on page scroll event
-    window.onscroll = function() {
-        // get window height
-        if (window.pageYOffset > writing_offset - window.innerHeight - 100) {
-            top_writing.style.transform = "translateX(calc(-200vw + " + (speed*window.scrollY - window.innerHeight - 100) + "px))";
-            bottom_writing.style.transform = "translateX(calc(-200vw - " + (speed*window.scrollY - window.innerHeight - 100) + "px))";
-        }
-    }
->>>>>>> master
 
 </script>

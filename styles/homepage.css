@@ -2,6 +2,51 @@
   min-height: 100vh;
 }
 
+.animation-wrapper{
+  top: 0;
+  position: absolute;
+  width: 100%;
+  max-width: 1800px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.blue-planet-1{
+  top: 5%;
+  right: 5%;
+  animation: spin 100s linear infinite;
+}
+
+.blue-planet-2{
+  top: 80vh;
+  right: 10%;
+  animation: reverse-spin 100s linear infinite;
+}
+
+.sun{
+  width: 280px;
+  top: 10%;
+  right: 20%;
+}
+
+.red-planet{
+  top: 40%;
+  right: 60%;
+  animation: reverse-spin 800s linear infinite;
+}
+
+.purple-planet{
+  right: 30%;
+  bottom: 20%;
+  animation: spin 60s linear infinite;
+}
+
+.orange-planet{
+  top: 10%;
+  left: 5%;
+  animation: spin 100s linear infinite;
+}
+
 .swiper-slide {
   height: auto !important;
 }
@@ -44,7 +89,25 @@
   
 }
 
-@keyframes "blink" {
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverse-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes blink {
   from, to {
     opacity: 0;
   }
@@ -62,7 +125,7 @@
   }
 }
 
-@-webkit-keyframes "blink" {
+@-webkit-keyframes blink {
   from, to {
     opacity: 0;
   }
@@ -71,7 +134,7 @@
   }
 }
 
-@-ms-keyframes "blink" {
+@-ms-keyframes blink {
   from, to {
     opacity: 0;
   }
@@ -80,7 +143,7 @@
   }
 }
 
-@-o-keyframes "blink" {
+@-o-keyframes blink {
   from, to {
     opacity: 0;
   }
