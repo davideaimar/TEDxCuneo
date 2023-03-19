@@ -2,6 +2,20 @@
   min-height: 100vh;
 }
 
+.extraordinario-writing img{
+  width: 200px;
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+}
+
+.extraordinario-writing {
+  height: calc(100vh - 120px) ;
+  min-height: 400px;
+  position: relative;
+  margin-bottom: 64px;
+}
+
 .animation-wrapper{
   top: 0;
   position: absolute;
@@ -12,7 +26,7 @@
 }
 
 .blue-planet-1{
-  top: 5%;
+  top: 10%;
   right: 5%;
   animation: spin 100s linear infinite;
 }
@@ -25,24 +39,24 @@
 
 .sun{
   width: 280px;
-  top: 10%;
-  right: 20%;
+  top: 13%;
+  right: -10%;
 }
 
 .red-planet{
   top: 40%;
-  right: 60%;
+  left: 5%;
   animation: reverse-spin 800s linear infinite;
 }
 
 .purple-planet{
-  right: 30%;
-  bottom: 20%;
+  right: 20%;
+  bottom: 40%;
   animation: spin 60s linear infinite;
 }
 
 .orange-planet{
-  top: 10%;
+  top: 30%;
   left: 5%;
   animation: spin 100s linear infinite;
 }
@@ -181,7 +195,7 @@
   background-image: url('../assets/img/home/bottom_write.svg');
 }
 
-@screen md{
+@screen md {
   .home-writing{
     height: 100px;
     margin-bottom: 60px;
@@ -208,5 +222,35 @@
     width: 1437px;
     height: 1668px;
     right: -500px;
+  }
+  .blue-planet-1{
+    top: 20%;
+    right: 20%;
+  }
+  
+  .blue-planet-2{
+    top: 80vh;
+    right: 10%;
+  }
+  
+  .sun{
+    width: 280px;
+    top: 25%;
+    right: 25%;
+  }
+  
+  .red-planet{
+    top: 40%;
+    right: 50%;
+  }
+  
+  .purple-planet{
+    right: 30%;
+    bottom: 30%;
+  }
+  
+  .orange-planet{
+    top: 20%;
+    left: 5%;
   }
 }
