@@ -1,7 +1,7 @@
 .shooting-stars-wrapper{
   position: absolute;
   width: 350px;
-  height: 40px;
+  height: 100px;
   overflow: hidden;
 }
 
@@ -13,7 +13,7 @@
 .shooting-stars-wrapper-2{
   bottom: 40%;
   right: 10%;
-  transform: rotate(-45deg);
+  transform: rotate(-25deg);
 }
 .shooting-stars-wrapper-3{
   bottom: 10%;
@@ -23,7 +23,7 @@
 
 .shooting-star {
   position: absolute;
-  top: 10px;
+  top: 42.5px;
   height: 15px;
   border-radius: 999px; 
 }
