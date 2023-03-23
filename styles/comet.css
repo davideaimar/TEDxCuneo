@@ -1,0 +1,158 @@
+.shooting-stars-wrapper{
+  position: absolute;
+  width: 350px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.shooting-stars-wrapper-1{
+  top: 60px;
+  left: 10%;
+  transform: rotate(135deg);
+}
+.shooting-stars-wrapper-2{
+  bottom: 40%;
+  right: 10%;
+  transform: rotate(-25deg);
+}
+.shooting-stars-wrapper-3{
+  bottom: 10%;
+  right: 0;
+  transform: rotate(135deg);
+}
+
+.shooting-star {
+  position: absolute;
+  top: 42.5px;
+  height: 15px;
+  border-radius: 999px; 
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -5px;
+  top: -2px;
+  border-radius: 100%;
+}
+
+.shooting-star-1 {
+  background: linear-gradient(-45deg, rgba(215, 245, 255, 1), rgba(53, 110, 255, 0));
+  filter: drop-shadow(0 0 6px rgb(170, 196, 248));
+  animation:
+    tail 3000ms ease-in-out infinite 3000ms,
+    shooting 3000ms ease-in-out infinite 3000ms,
+    pause-animation 6000ms infinite 3000ms;  
+}
+
+.shooting-star-1::before {
+  animation: shining 3000ms ease-in-out infinite 3000ms,
+  pause-animation 6000ms infinite 3000ms;
+  background: linear-gradient(-45deg, rgba(233, 242, 255, 1), rgba(188, 219, 255, 1));
+}
+
+.shooting-star-2 {
+  background: linear-gradient(-45deg, rgba(255, 220, 95, 1), rgba(255, 53, 53, 0));
+  filter: drop-shadow(0 0 6px rgb(217, 81, 13));
+  animation:
+    tail 3000ms ease-in-out infinite 1000ms,
+    shooting 3000ms ease-in-out infinite 1000ms,
+    pause-animation 6000ms infinite 1000ms;  
+}
+
+.shooting-star-2::before {
+  animation: shining 3000ms ease-in-out infinite 1000ms,
+    pause-animation 6000ms infinite 1000ms;
+  background: radial-gradient(100% 100% at 68.75% 18.75%, #FFF500 0%, #FF1F00 100%);
+}
+
+.shooting-star-3 {
+  background: linear-gradient(-45deg, rgb(250, 23, 209), rgba(175, 2, 255, 0));
+  filter: drop-shadow(0 0 6px rgb(239, 59, 255));
+  animation:
+    tail 3000ms ease-in-out infinite,
+    shooting 3000ms ease-in-out infinite,
+    pause-animation 6000ms infinite;  
+}
+
+.shooting-star-3::before {
+  animation: shining 3000ms ease-in-out infinite,
+    pause-animation 6000ms infinite;
+  background: radial-gradient(100% 100% at 68.75% 18.75%, #ff88f5 0%, #ff55a4 100%);
+}
+
+@keyframes tail {
+  0% {
+    width: 0;
+  }
+  
+  30% {
+    width: 100px;
+  }
+  
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes shining {
+  0% {
+    opacity: 0;
+  }
+  
+  30% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shooting {
+  0% {
+    transform: translateX(0);
+  }
+  
+  100% {
+    transform: translateX(300px);
+  }
+}
+
+@keyframes pause-animation {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@screen md {
+
+  .shooting-stars-wrapper-1{
+    top: 30%;
+    left: 20%;
+  }
+  .shooting-stars-wrapper-2{
+    bottom: 40%;
+    right: 40%;
+  }
+  .shooting-stars-wrapper-3{
+    bottom: 10%;
+    right: 0;
+  }
+
+}

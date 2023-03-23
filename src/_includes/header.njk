@@ -56,9 +56,10 @@
             </ul>
         </nav>
         {# hamburger links #}
-        <nav class="flex flex-col justify-end fixed top-16 right-0 left-0 bottom-0 p-2 transition-opacity duration-200 "
+        <nav class="flex flex-col justify-end fixed right-0 left-0 bottom-0 p-2 transition-opacity duration-200 "
              :class="{ 'visible z-50': open, 'invisible -z-50': !open, 'bg-tedBlack': open }"
-             x-ref="navbar_wrapper">
+             x-ref="navbar_wrapper"
+             style="top:62px;">
             <ul class="container flex flex-col px-2 mb-8 overflow-y-auto md:px-12 xl:text-right"
                 :class="{ 'hidden xl:flex': !open }"
                 x-ref="navbar"
