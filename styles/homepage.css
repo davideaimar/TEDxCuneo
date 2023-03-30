@@ -38,6 +38,73 @@
   animation: reverse-spin 100s linear infinite;
 }
 
+.white-dot{
+  width: 40px;
+  position: absolute;
+  display: none;
+}
+
+.white-circle{
+  width: 17px;
+  position: absolute;
+  display: none;
+}
+
+.white-dot-1{
+  right: 5%;
+  bottom: 2%;
+}
+
+.white-dot-2{
+  right: 40%;
+  bottom: 32%;
+}
+
+.white-dot-3{
+  right: 40%;
+  bottom: 32%;
+}
+
+.white-dot-4{
+  right: 55%;
+  top: 15%;
+}
+
+.white-dot-5{
+  right: 40%;
+  top: 25%;
+}
+
+.white-circle-1{
+  right: 64px;
+  top: 80px;
+}
+
+.white-circle-2{
+  left: 64px;
+  top: 90px;
+}
+
+.white-circle-3{
+  left: 184px;
+  top: 160px;
+}
+
+.white-circle-3{
+  left: 384px;
+  top: 120px;
+}
+
+.white-circle-4{
+  left: 45%;
+  top: 30%;
+}
+
+.white-circle-5{
+  right: 25%;
+  bottom: 35px;
+}
+
 .blue-star {
   width: 60px;
   height: 60px;
@@ -232,6 +299,12 @@
 }
 
 @screen md {
+  .white-dot{
+    display: block;
+  }
+  .white-circle{
+    display: block;
+  }
   .home-writing{
     height: 100px;
     margin-bottom: 60px;
