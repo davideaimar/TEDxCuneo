@@ -5,21 +5,21 @@
 	<p class="mt-9 mb-6 uppercase text-tedDarkWhite md:mt-16">{{ d.pageName }}</p>
 	<h1 class=" mb-20 max-w-660 md:mb-28 ">{{ d.title }}</h1>
 
-	<section  class="mb-16 -mx-4 px-4 bg-tedGray md:bg-tedBlack md:px-0 md:mx-0 md:mb-20">
+	<section  class="mb-16 -mx-4 px-4 bg-tedGray lg:bg-tedBlack lg:px-0 lg:mx-0 lg:mb-20">
 		{% for e in d.events %}
-			<div class="event-preview mb-8 cursor-pointer py-8 bg-tedGray md:rounded-lg md:p-8 w-full grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-x-8" onclick="location.href='/{{ e.page.slug }}';" >
-				<div class="md:col-span-5">
+			<div class="event-preview mb-8 cursor-pointer py-8 bg-tedGray lg:rounded-lg lg:p-8 w-full grid grid-cols-1 gap-y-8 lg:grid-cols-12 lg:gap-x-8" onclick="location.href='/{{ e.page.slug }}';" >
+				<div class="lg:col-span-5">
 					<picture>
-						<source type="image/webp" srcset="{{ e.image.url }}?w=700&h=350&fit=fill&fm=webp 1x, {{ e.image.url }}?w=1400&h=650&fit=fill&fm=webp 2x">
-						<source type="image/jpeg" srcset="{{ e.image.url }}?w=700&h=350&fit=fill&q=60&fm=jpg 1x, {{ e.image.url }}?w=1400&h=650&fit=fill&q=60&fm=jpg 2x">
-						<img class="object-cover w-full rounded-lg h-full mb-12 md:mb-0" src="{{ e.image.url }}?w=700&h=350&fit=fill&q=60&fm=jpg" alt="alt"/>
+						<source type="image/webp" srcset="{{ e.image.url }}?h=410&fit=fill&fm=webp 1x, {{ e.image.url }}?h=820&fit=fill&fm=webp 2x">
+						<source type="image/jpeg" srcset="{{ e.image.url }}?h=410&fit=fill&q=70&fm=jpg 1x, {{ e.image.url }}?h=820&fit=fill&q=70&fm=jpg 2x">
+						<img class="object-cover w-full rounded-lg h-full mb-12 lg:mb-0" src="{{ e.image.url }}?h=410&fit=fill&q=70&fm=jpg" alt="alt"/>
 					</picture>
 				</div>
-				<div class="md:col-span-7 flex flex-col justify-between">
+				<div class="lg:col-span-7 flex flex-col justify-between">
 					<div>
-						<h3 class="mb-4 md:mb-6 text-tedDarkWhite">{{ e.topText }}</p>
-						<h1 class="mb-4 md:mb-6">{{ e.title }}</h2>
-						<p class="mb-6 md:mb-8">{{ e.description | nl2br | safe }}</p>
+						<h3 class="mb-4 lg:mb-6 text-tedDarkWhite">{{ e.topText }}</p>
+						<h1 class="mb-4 lg:mb-6">{{ e.title }}</h2>
+						<p class="mb-6 lg:mb-8">{{ e.description | nl2br | safe }}</p>
 					</div>
 					<div class="w-full text-right">
 						<a href="/{{ e.page.slug }}" class="event-preview-action link-underline link-underline-fixed no-underline">{{ e.buttonText }} →</a>
