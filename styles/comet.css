@@ -25,6 +25,7 @@
   position: absolute;
   top: 42.5px;
   height: 15px;
+  left: -15px;
   border-radius: 999px; 
 }
 

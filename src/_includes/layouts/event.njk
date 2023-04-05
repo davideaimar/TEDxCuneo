@@ -6,6 +6,13 @@
 	<h1 class=" mb-6 max-w-660 md:mb-12 ">{{ d.title }}</h1>
 	<h3 class=" mb-20 text-tedDarkWhite md:mb-16">{{ d.date }}</h3>
 
+	{% if d.layout == "extraordinario" %}
+	<picture>
+		<source media="(min-width:650px)" srcset="/assets/img/extraordinario/banner.svg">
+		<img src="/assets/img/extraordinario/banner_mobile.svg" alt="banner extraordinario" class="w-full mb-20 md:mb-28">
+	</picture>
+	{% endif %}
+
 	{% if d.layout == "ubuntu" %}
 		<div class="home-banner-2022 p-8 md:p-16 mb-20 bg-tedWhite rounded-lg w-full md:mb-28">
             <img width="420px" class="max-w-full mb-10 md:mb-40" src="/assets/img/home/logo_ubuntu.svg" alt="logo ubuntu">
@@ -32,9 +39,9 @@
 		{% endfor %}
 	</div>
 	
-	{# {% if d.layout == "ubuntu" %} #}
+	{% if d.layout == "extraordinario" %}
        {# Speaker swiper (without pages)  #}
-        {# <section class="mb-32">
+        <section class="mb-32">
             <div class="mb-8 md:mb-16 flex flex-col md:flex-row md:justify-between">
                 <h1 class="mb-4 md:mb-0">{{ d.speakersTitle }}</h1>
                 {% if d.speakersPage.slug %}
@@ -75,7 +82,7 @@
                          {% endfor %}
                      </div>
                 </div>
-                {% if d.talksCollection.items.length > 2 %}
+                {% if d.talksCollection.items.length > 1 %}
                     <div class="flex justify-center items-center {% if d.speakersCollection.items.length < 5 %}lg:hidden{% endif %}">
                         <div class="flex items-center">
                             <button @click="swiper.slideTo(swiper.activeIndex-1);" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
@@ -95,9 +102,9 @@
                     </div>
                  {% endif %}
             </div>
-        </section> #}
+        </section>
 
-	{# {% else %} #}
+	{% else %}
 		<section class="mb-20 ">
 			<h1 class="mb-6 md:mb-8">{{ d.speakersTitle }}</h1>
 			<div class="grid gap-x-3 gap-y-3 grid-cols-2 md:grid-cols-3 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8">
@@ -126,7 +133,7 @@
 				{% endfor %}
 			</div>
 		</section>
-	{# {% endif %} #}
+	{% endif %}
 
 
 	{% if d.ctaTickets %}
@@ -167,7 +174,7 @@
 
 </div>
 
-{% if d.layout == "ubuntu" %}
+{% if d.layout == "ubuntu" or d.layout == "extraordinario"  %}
 	<script src="/assets/js/swiper.min.js"></script>
 	<script>
 		// speakers slider
