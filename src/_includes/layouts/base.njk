@@ -3,7 +3,7 @@
   <head>
     {% include "head.njk" %}
     {% block head %}{% endblock %}
-    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/partnership.njk" or page_data.layout=="layouts/event.njk" or page_data.layout=="layouts/landingUbuntu.njk" %}
+    {% if page_data.layout=="layouts/homepage.njk" or page_data.layout=="layouts/partnership.njk" or page_data.layout=="layouts/event.njk" or page_data.layout=="layouts/landingStreaming.njk" %}
       <link rel="stylesheet" href="/assets/css/swiper.min.css" />  
     {% endif %}
   </head>
@@ -21,7 +21,7 @@
     {% else %}
 
       <div class="relative">
-        {% if page_data.slug=="/diventa-partner/" or page_data.layout=="layouts/landingUbuntu.njk"  %}
+        {% if page_data.slug=="/diventa-partner/" or page_data.layout=="layouts/landingStreaming.njk"  %}
           {% include "header-basic.njk" %}
         {% else %}
           {% include "header.njk" %}

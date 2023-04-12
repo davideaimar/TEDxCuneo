@@ -148,7 +148,7 @@ module.exports = async function() {
           break;
         case "UbuntuLanding":
           page.content = await api.fetchUbuntuLandingPage(page.content.sys.id);
-          page.layout = "layouts/landingUbuntu.njk"
+          page.layout = "layouts/landingStreaming.njk"
           break;
         case "LandingPage":
           page.layout = "layouts/landingPage.njk"

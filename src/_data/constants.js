@@ -41,6 +41,13 @@ module.exports = {
       url
       title
     }
+    newsletter{
+      title
+      buttonText
+      privacyPage{
+        slug
+      }
+    }
     speakersCarousel{
       title
       speakersCollection{
