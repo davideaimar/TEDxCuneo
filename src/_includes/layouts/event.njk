@@ -53,11 +53,9 @@
             <div x-data="{swiper: null, index: 0}"
                 x-init="swiper = initSwiper($refs)"
                 class="relative w-full mx-auto flex flex-col">
-
                  <div class="swiper-container w-full mb-12" x-ref="container">
                      <div class="swiper-wrapper">
                          {% for speaker in d.talksCollection.items %}
-                            
                              <div class="swiper-slide">
                                 {% if speaker.slug %}
                                     <a href="{{ speaker.slug }}" class="flex flex-col shadow overflow-hidden no-underline">

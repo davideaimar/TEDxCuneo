@@ -120,8 +120,12 @@
                 <div class="swiper-container w-full mb-8 h-auto" style="overflow: visible !important"  x-ref="container">
                     <div class="swiper-wrapper flex items-stretch">
                         {% for speaker in d.speakersCollection.items %}
+                        {% if speaker.slug %}
                             <a href="/{{ speaker.slug }}" class="swiper-slide rounded-lg no-underline bg-tedGray flex flex-col justify-between shadow overflow-hidden h-auto self-stretch transition ease-in-out delay-100 duration-200 select-none md:hover:scale-110">
-                                <div>
+                        {% else %}
+                            <div class="swiper-slide rounded-lg no-underline bg-tedGray flex flex-col justify-between shadow overflow-hidden h-auto self-stretch transition ease-in-out delay-100 duration-200 select-none md:hover:scale-110">
+                        {% endif %}
+                            <div>
                                     <div class=" mb-6">
                                         <picture>
                                             <source type="image/webp" srcset="{{ speaker.image.url }}?w=700&h=700&fit=thumb&fm=webp">
@@ -130,15 +134,26 @@
                                         </picture>
                                     </div>
                                     <div class="px-4 pb-4">
-                                        <p class="mb-2 text-tedDarkWhite">{{ speaker.name }}&nbsp;{{ speaker.surname }}</p>
-                                        <h3> {{ speaker.talkTitle }}</h3>
+                                        {% if speaker.talkTitle %}
+                                            <p class="mb-2 text-tedDarkWhite">{{ speaker.name }}&nbsp;{{ speaker.surname }}</p>
+                                            <h3>{{ speaker.talkTitle }}</h3>
+                                        {% else %}
+                                            <h3 class="mb-2">{{ speaker.name }}&nbsp;{{ speaker.surname }}</h3>
+                                            <p class="text-tedDarkWhite">{{ speaker.job }}</p>
+                                        {% endif %}
                                         <div class="flex-grow"></div>
                                     </div>
                                 </div>
-                                <p class="w-full text-center mt-4 pb-4">
-                                    <span class="link-underline link-underline-fixed">Guarda il talk →</span>
-                                </p>
-                            </a>
+                                {% if speaker.slug %}
+                                    <p class="w-full text-center mt-4 pb-4">
+                                        <span class="link-underline link-underline-fixed">Guarda il talk →</span>
+                                    </p>
+                                {% endif %}
+                            {% if speaker.slug %}
+                                </a>
+                            {% else %}
+                                </div>
+                            {% endif %}
                         {% endfor %}
                         
                     </div>
