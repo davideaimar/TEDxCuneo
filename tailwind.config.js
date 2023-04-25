@@ -3,7 +3,8 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     '_site/**/*.html',
-    'src/**/*.njk'
+    'src/**/*.njk',
+    '.eleventy.js'
   ],
   theme: {
     screens: {

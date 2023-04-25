@@ -2,7 +2,7 @@ const htmlmin = require('html-minifier')
 require('dotenv').config()
 const { DateTime } = require("luxon");
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
-const { BLOCKS, INLINES } = require('@contentful/rich-text-types');
+const { BLOCKS, INLINES, TABLE_BLOCKS } = require('@contentful/rich-text-types');
 const helpers = require('./src/_data/helpers');
 const { normalizeSlug } = require('./src/_data/helpers');
 
@@ -13,6 +13,20 @@ const options = {
     [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace(/\n/g, '<br/>')}</p>`,
     [INLINES.HYPERLINK]: (node, next) => {
       return `<a class="no-underline link-underline link-underline-fixed " href="${node.data.uri}"${node.data.uri.startsWith('https://www.tedxcuneo.com') || node.data.uri.startsWith('/') ? '' : ' target="_blank"'}>${next(node.content)}</a>`;
+    },
+    [BLOCKS.TABLE]: (node, next) => {
+      return `<div class="overflow-x-auto">
+          <table class="table-auto overflow-scroll w-full border-collapse border border-white-500 overflow-x-auto">${next(node.content)}</table>
+        </div>`;
+    },
+    [BLOCKS.TABLE_ROW]: (node, next) => {
+      return `<tr>${next(node.content)}</tr>`;
+    },
+    [BLOCKS.TABLE_CELL]: (node, next) => {
+      return `<td class="border border-white-500 px-4 py-2">${next(node.content)}</td>`;
+    },
+    [BLOCKS.TABLE_HEADER_CELL]: (node, next) => {
+      return `<td class="border border-white-500 px-4 py-2">${next(node.content)}</td>`;
     }
   }
 };
