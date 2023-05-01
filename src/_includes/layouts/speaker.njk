@@ -2,22 +2,25 @@
 {# {{ d | log }} #}
 
 <div class="container">
-	<section class="mb-9">
-		<p class="mt-9 mb-6 uppercase md:mt-10"><a class="no-underline link-underline link-underline-fixed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
-		<h1 class="mb-4 max-w-800 md:mb-5 ">{{ d.speaker.talkTitle }}</h1>
-		<h3 class="text-tedDarkWhite">{{ d.speaker.name }}&nbsp;{{ d.speaker.surname }}</h3>
-	</section>
-	<section class="mb-20">
-		<div class="w-full lg:w-8/12 lg:m-auto">
-			<div class="relative h-0 overflow-hidden w-full" style="padding-bottom:  56.25%;">
-				<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/{{ d.speaker.youtubeId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	{% if d.skeaker.talkTitle and d.speaker.youtubeId %}
+		<section class="mb-9">
+			<p class="mt-9 mb-6 uppercase md:mt-10"><a class="no-underline link-underline link-underline-fixed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
+			<h1 class="mb-4 max-w-800 md:mb-5 ">{{ d.speaker.talkTitle }}</h1>
+			<h3 class="text-tedDarkWhite">{{ d.speaker.name }}&nbsp;{{ d.speaker.surname }}</h3>
+		</section>
+		<section class="mb-20">
+			<div class="w-full lg:w-8/12 lg:m-auto">
+				<div class="relative h-0 overflow-hidden w-full" style="padding-bottom:  56.25%;">
+					<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/{{ d.speaker.youtubeId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	{% else %}
 	<section class="mb-20">
-		<h2 class="mb-6">Speaker</h2>
+		<p class="mt-9 mb-12 uppercase md:mt-10"><a class="no-underline link-underline link-underline-fixed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
 		{% set s=d.speaker %}
 		{% set cl="" %}
 		{% include "speaker.njk" %}
 	</section>
+	{% endif %}
 </div>
