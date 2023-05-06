@@ -126,9 +126,9 @@ module.exports = {
     introText
     initialText
     showLive
-      livePage{
-        slug
-      }
+    livePage{
+      slug
+    }
     liveText
     ctaEvent{
       image{

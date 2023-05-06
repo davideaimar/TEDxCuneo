@@ -70,6 +70,18 @@
         <div class="extraordinario-writing">
             <img src="/assets/img/home/extraordinario.svg" class="z-10" alt="extraordinario tedxcuneo 2023">
         </div>
+        
+        
+        {% if d.showLive %}
+            <div class="my-24 w-full flexx items-center justify-center">
+                <div class="text-center">
+                <svg height="22" width="20" class="blinking inline-block">
+                    <circle cx="10" cy="11" r="7" fill="#FF2B06" />
+                </svg> 
+                <a href="{{ d.livePage.slug }}" class="text-tedWhite no-underline link-underline link-underline-fixed">{{ d.liveText }}</a>
+                </div>
+            </div>
+        {% endif %}
 
 
         {# Past event CTA #}
