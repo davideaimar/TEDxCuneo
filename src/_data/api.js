@@ -168,10 +168,13 @@ module.exports = {
       .then(function(response){
         response.data.talkPage.talksCollection.items.map(edition => {
           edition.speakersCollection.items = edition.speakersCollection.items.map(speaker => {
-            speaker.content.speaker.slug = speaker.slug;
-            speaker.content.speaker.__typename = speaker.__typename;
-            return speaker.content.speaker;
-
+            if (speaker.__typename=="Page") {
+              speaker.content.speaker.slug = speaker.slug;
+              speaker.content.speaker.__typename = speaker.__typename;
+              return speaker.content.speaker;
+            } else {
+              return speaker;
+            }
           })
         });
         return response.data.talkPage
