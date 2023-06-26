@@ -2,75 +2,14 @@
 {# {{ d | log }} #}
 <div class="overflow-x-hidden">
 
-    <div class="animation-wrapper container">
-        <div class="shooting-stars-wrapper shooting-stars-wrapper-1">
-            <div class="shooting-star shooting-star-1"></div>
-        </div>
-        <div class="shooting-stars-wrapper shooting-stars-wrapper-2">
-            <div class="shooting-star shooting-star-2"></div>
-        </div>
-        <div class="shooting-stars-wrapper shooting-stars-wrapper-3">
-            <div class="shooting-star shooting-star-3"></div>
-        </div>
-        <div class="absolute -z-1 w-32 blue-planet-1">
-            <div class="relative">
-                <img class="absolute"  src="/assets/img/home/blue_planet.svg" alt="pianeta blu" />
-            </div>
-        </div>
-        <div class="absolute -z-1 w-32 blue-planet-2">
-            <div class="relative">
-                <img class="absolute" src="/assets/img/home/blue_planet_2.svg" alt="pianeta blu" />
-            </div>
-        </div>
-        <div class="absolute -z-1 w-32 red-planet">
-            <div class="relative">
-                <img class="absolute" src="/assets/img/home/red_dot.svg" alt="pianeta rosso" />
-            </div>
-        </div>
-        <div class="absolute -z-1 w-32 purple-planet">
-            <div class="relative">
-                <img class="absolute" src="/assets/img/home/purple_planet.svg" alt="pianeta viola" />
-            </div>
-        </div>
-        <div class="absolute -z-1 w-32 orange-planet">
-            <div class="relative">
-                <img class="absolute" src="/assets/img/home/orange_planet.svg" alt="pianeta arancio" />
-            </div>
-        </div>
-        <img class="absolute -z-1 sun animate-spin-super-slow" src="/assets/img/home/sun.svg" alt="sole" />
-        <img class="absolute -z-1 moon" src="/assets/img/home/moon.svg" alt="luna" />
-        <img class="absolute -z-1 blue-star pulse" src="/assets/img/home/blue_star.svg" alt="stella blu" />
-        <img class="absolute -z-1 white-star pulse" src="/assets/img/home/white_star.svg" alt="stella bianca" />
-        
-        <img class="absolute -z-1 white-dot white-dot-1" src="/assets/img/home/white_dot.svg" alt="pallino bianco" />
-        <img class="absolute -z-1 white-dot white-dot-2" src="/assets/img/home/white_dot.svg" alt="pallino bianco" />
-        <img class="absolute -z-1 white-dot white-dot-3" src="/assets/img/home/white_dot.svg" alt="pallino bianco" />
-        <img class="absolute -z-1 white-dot white-dot-4" src="/assets/img/home/white_dot.svg" alt="pallino bianco" />
-        <img class="absolute -z-1 white-dot white-dot-5" src="/assets/img/home/white_dot.svg" alt="pallino bianco" />
-        
-        <img class="absolute -z-1 white-circle white-circle-1" src="/assets/img/home/white_circle.svg" alt="cerchio bianco" />
-        <img class="absolute -z-1 white-circle white-circle-2" src="/assets/img/home/white_circle.svg" alt="cerchio bianco" />
-        <img class="absolute -z-1 white-circle white-circle-3" src="/assets/img/home/white_circle.svg" alt="cerchio bianco" />
-        <img class="absolute -z-1 white-circle white-circle-4" src="/assets/img/home/white_circle.svg" alt="cerchio bianco" />
-        <img class="absolute -z-1 white-circle white-circle-5" src="/assets/img/home/white_circle.svg" alt="cerchio bianco" />
-        
-        <div class="absolute -z-1 blue-moon">
-            <div class="relative">
-                <img class="absolute" src="/assets/img/home/blue_moon.svg" alt="luna blu" />            
-            </div>
-        </div>
-    </div>
-
     <div class="container relative">
 
-        {# <section class="mb-32 md:mb-44 min-h-screen">
+        <section class="mb-64">
             <h1 class=" mb-6 mt-12 md:mb-8"  style="max-width: 610px;">{{ d.introText }}</h1>
             <p class="max-w-400">{{ d.initialText }}</p>
-        </section> #}
-        <div class="extraordinario-writing">
-            <img src="/assets/img/home/extraordinario.svg" class="z-10" alt="extraordinario tedxcuneo 2023">
-        </div>
-        
+        </section>
+                
+        <img class="hidden absolute -z-1 max-w-[500px] md:block" style="top: 0px; right: 80px;" src="/assets/img/home/ubuntu-x.svg" alt="x con pezzi di tetris" />
         
         {% if d.showLive %}
             <div class="my-24 w-full flexx items-center justify-center">

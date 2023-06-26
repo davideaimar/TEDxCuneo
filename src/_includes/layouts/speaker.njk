@@ -2,7 +2,7 @@
 {# {{ d | log }} #}
 
 <div class="container">
-	{% if d.skeaker.talkTitle and d.speaker.youtubeId %}
+	{% if d.speaker.talkTitle and d.speaker.youtubeId %}
 		<section class="mb-9">
 			<p class="mt-9 mb-6 uppercase md:mt-10"><a class="no-underline link-underline link-underline-fixed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
 			<h1 class="mb-4 max-w-800 md:mb-5 ">{{ d.speaker.talkTitle }}</h1>
@@ -15,12 +15,15 @@
 				</div>
 			</div>
 		</section>
+		<section class="mb-32 max-w-[900px] m-auto">
+            {% documentToHtmlString d.speaker.description.json %}
+		</section>
 	{% else %}
-	<section class="mb-20">
-		<p class="mt-9 mb-12 uppercase md:mt-10"><a class="no-underline link-underline link-underline-fixed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
-		{% set s=d.speaker %}
-		{% set cl="" %}
-		{% include "speaker.njk" %}
-	</section>
+		<section class="mb-20">
+			<p class="mt-9 mb-12 uppercase md:mt-10"><a class="no-underline link-underline link-underline-fixed" href="/{{ d.edition.slug }}">← TORNA ALL'EDIZIONE</a></p>
+			{% set s=d.speaker %}
+			{% set cl="" %}
+			{% include "speaker.njk" %}
+		</section>
 	{% endif %}
 </div>
