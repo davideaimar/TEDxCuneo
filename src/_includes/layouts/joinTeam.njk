@@ -1,51 +1,72 @@
-{# Uncomment for logging page fields avaliable #}
-{# {{ d | log }}  #}
+{# Uncomment for logging page fields avaliable #} {# {{ d | log }} #}
 
-<div 
-	style="background-image: url('/assets/img/tedxcuneo_joinus.jpg')" 
-	alt="TEDxCuneo join us"
-	class="absolute top-0 w-full h-550 -z-1 bg-center bg-no-repeat bg-cover sm:h-600 md:h-800">
-</div>
+<div
+  style="background-image: url('/assets/img/entra-nel-team.jpeg')"
+  alt="TEDxCuneo join us"
+  class="absolute top-0 w-full h-550 -z-1 bg-center bg-no-repeat bg-cover sm:h-600 md:h-800"
+></div>
 
 <div class="container">
- 
-	<h1 class=" mt-9 mb-20 max-w-660 md:mb-28 md:mt-16">{{ d.introTitle }}</h1>
+  <h1 class="mt-9 mb-20 max-w-660 md:mb-28 md:mt-16">{{ d.introTitle }}</h1>
 
-	<a href="#posizioni" class="no-uderline inline-block text-center box-content uppercase no-underline font-bold text-small p-3 border-tedWhite border mb-4 md:p-4 md:text-d_base md:mb-5">{{ d.ctaText }}</a>
+  <a
+    href="#posizioni"
+    class="no-uderline inline-block text-center box-content uppercase no-underline font-bold text-small p-3 border-tedWhite border mb-4 md:p-4 md:text-d_base md:mb-5"
+    >{{ d.ctaText }}</a
+  >
 
-	<svg class="h-6 mb-4 md:mb-10" viewBox="0 0 13 24" xmlns="http://www.w3.org/2000/svg">
-		<path fill="white" d="M2.03383e-07 17.1647L6.5 24L13 17.1647L11.8973 15.9898L7.29799 20.8264L7.29799 -2.49243e-07L5.70201 -3.19005e-07L5.70201 20.8264L1.11719 15.9898L2.03383e-07 17.1647Z" />
-	</svg>
+  <svg
+    class="h-6 mb-4 md:mb-10"
+    viewBox="0 0 13 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill="white"
+      d="M2.03383e-07 17.1647L6.5 24L13 17.1647L11.8973 15.9898L7.29799 20.8264L7.29799 -2.49243e-07L5.70201 -3.19005e-07L5.70201 20.8264L1.11719 15.9898L2.03383e-07 17.1647Z"
+    />
+  </svg>
 
-	<div id="posizioni" class="mb-36 mt-14 pt-20 grid md:mt-32 md:pt-32 md:grid-cols-12 md:gap-x-4">
-		<h2 class="mb-4 md:col-span-4">Perchè diventare volontari* di TEDxCuneo?</h2>
-		<div class="md:col-span-8 lg:col-span-4">
-			<p class="block mb-4">{{ d.introText }}</p>
-			<a href="{{ d.urlGoogleForm }}" class="no-underline inline-block uppercase px-4 py-2 bg-tedWhite font-bold text-small text-tedBlack">candidati</a>
-		</div>
-	</div>
+  <div
+    id="posizioni"
+    class="mb-36 mt-14 pt-20 grid md:mt-32 md:pt-32 md:grid-cols-12 md:gap-x-4"
+  >
+    <h2 class="mb-4 md:col-span-4">
+      Perchè diventare volontari* di TEDxCuneo?
+    </h2>
+    <div class="md:col-span-8 lg:col-span-4">
+      <p class="block mb-4">{{ d.introText }}</p>
+      <a
+        href="{{ d.urlGoogleForm }}"
+        class="no-underline inline-block uppercase px-4 py-2 bg-tedWhite font-bold text-small text-tedBlack"
+        >candidati</a
+      >
+    </div>
+  </div>
 
-	<div class="mb-36 ">
-		{% if d.openedPositionsCollection.items and d.openedPositionsCollection.items.length > 0 %}
-			{% for team in d.openedPositionsCollection.items %}
-				<section class="mb-16">
-					<h2 class="mb-6">{{ team.name }}</h2>
-					<div class="grid mb-4 gap-x-4 gap-y-8 md:grid-cols-12">
-						{% for pos in team.positionsCollection.items %}
-							<div class="md:col-span-4 ">
-								<h3 class="mb-3">{{ pos.title }}</h3>
-								<p>{{ pos.description }}</p>
-							</div>
-						{% endfor %}
-					</div>
-				</section>
-			{% endfor %}
-		{% endif %}
-	</div>
+  <div class="mb-36">
+    {% if d.openedPositionsCollection.items and
+    d.openedPositionsCollection.items.length > 0 %} {% for team in
+    d.openedPositionsCollection.items %}
+    <section class="mb-16">
+      <h2 class="mb-6">{{ team.name }}</h2>
+      <div class="grid mb-4 gap-x-4 gap-y-8 md:grid-cols-12">
+        {% for pos in team.positionsCollection.items %}
+        <div class="md:col-span-4">
+          <h3 class="mb-3">{{ pos.title }}</h3>
+          <p>{{ pos.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %} {% endif %}
+  </div>
 
-	<section class="mb-20">
-		<h1 class="max-w-500 mb-8">Entra nel team di TEDxCuneo</h1>
-		<a href="{{ d.urlGoogleForm }}" class="no-underline inline-block uppercase px-4 py-2 bg-tedWhite font-bold text-small text-tedBlack">candidati</a>
-	</section>
+  <section class="mb-20">
+    <h1 class="max-w-500 mb-8">Entra nel team di TEDxCuneo</h1>
+    <a
+      href="{{ d.urlGoogleForm }}"
+      class="no-underline inline-block uppercase px-4 py-2 bg-tedWhite font-bold text-small text-tedBlack"
+      >candidati</a
+    >
+  </section>
 </div>
-
