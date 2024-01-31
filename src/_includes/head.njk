@@ -1,56 +1,77 @@
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% set seo=page_data.seo %}
-{% set slug=page_data.slug %}
-{% include "seo.njk" %}
-<meta name="theme-color" content="#0E0E0E">
-<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% set seo=page_data.seo %} {% set slug=page_data.slug %} {% include "seo.njk"
+%}
+<meta name="theme-color" content="#0E0E0E" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
 <style>
-    @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
     font-weight: 400;
-    src:
-        url("/assets/font/Inter-Regular.woff2") format("woff2"),
-        url("/assets/font/Inter-Regular.woff") format("woff");
-    }
+    src: url("/assets/font/Inter-Regular.woff2") format("woff2"),
+      url("/assets/font/Inter-Regular.woff") format("woff");
+  }
 
-    @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
     font-weight: 700;
-    src:
-        url("/assets/font/Inter-Bold.woff2") format("woff2"),
-        url("/assets/font/Inter-Bold.woff") format("woff");
-    }
+    src: url("/assets/font/Inter-Bold.woff2") format("woff2"),
+      url("/assets/font/Inter-Bold.woff") format("woff");
+  }
 </style>
-<link rel="stylesheet" href="/style/main.css?v={% version %}"/>
+<link rel="stylesheet" href="/style/main.css?v={% version %}" />
 
-<!-- Start cookieyes banner --> 
-<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/a94dd53e9c1e847e97c0e7f4/script.js"></script> 
+<!-- Start cookieyes banner -->
+{#
+<script
+  id="cookieyes"
+  type="text/javascript"
+  src="https://cdn-cookieyes.com/client_data/a94dd53e9c1e847e97c0e7f4/script.js"
+></script>
+#}
 <!-- End cookieyes banner -->
 
 {% if page_data.slug=="/" %}
-    <meta name="facebook-domain-verification" content="aei0k7kgeaw6u7jdd9s9oz5w0lfsdc" />
+<meta
+  name="facebook-domain-verification"
+  content="aei0k7kgeaw6u7jdd9s9oz5w0lfsdc"
+/>
 {% endif %}
 
 <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
 
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T7BLKWQ');</script>
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-T7BLKWQ");
+</script>
 <!-- End Google Tag Manager -->
 
-{# <!-- Old Google Analytics --> #}
-{# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"></script>
+{#
+<!-- Old Google Analytics -->
+#} {#
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-179034238-1"
+></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
 
-    gtag('config', 'UA-179034238-1');
-    gtag('config', 'AW-10798185441');
-</script> #}
+  gtag("config", "UA-179034238-1");
+  gtag("config", "AW-10798185441");
+</script>
+#}
